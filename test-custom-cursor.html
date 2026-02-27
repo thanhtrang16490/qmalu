@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Custom Cursor</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      padding: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .test-section {
+      margin: 30px 0;
+      padding: 20px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+    }
+    
+    button, a, input, select, label {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    
+    button {
+      background: #175ead;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    
+    a {
+      color: #175ead;
+      text-decoration: underline;
+    }
+    
+    .form-checkbox {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Test Custom Cursor</h1>
+  
+  <div class="test-section">
+    <h2>Buttons</h2>
+    <button>Button 1</button>
+    <button>Button 2</button>
+    <button onclick="alert('Clicked!')">Button with onclick</button>
+  </div>
+  
+  <div class="test-section">
+    <h2>Links</h2>
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+  </div>
+  
+  <div class="test-section">
+    <h2>Form Elements</h2>
+    <input type="text" placeholder="Text input">
+    <select>
+      <option>Option 1</option>
+      <option>Option 2</option>
+    </select>
+    <label>
+      <input type="checkbox" class="form-checkbox"> Checkbox
+    </label>
+  </div>
+  
+  <div class="test-section">
+    <h2>Interactive Elements</h2>
+    <div role="button" style="display: inline-block; padding: 10px 20px; background: #10b981; color: white; border-radius: 6px; cursor: pointer;">
+      Role Button
+    </div>
+    <div draggable="true" style="display: inline-block; padding: 10px 20px; background: #f59e0b; color: white; border-radius: 6px; cursor: move;">
+      Draggable
+    </div>
+  </div>
+
+  <script type="module">
+    // Import custom cursor
+    import { initCustomCursor } from './dist/inline/custom-cursor.js';
+    
+    // Initialize
+    initCustomCursor();
+    
+    console.log('Custom cursor initialized');
+  </script>
+</body>
+</html>

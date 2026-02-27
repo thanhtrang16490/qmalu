@@ -1,0 +1,194 @@
+---
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'vi' } = Astro.props;
+
+const translations = {
+  vi: {
+    badge: 'Chất lượng đảm bảo',
+    title: 'Chứng nhận & Giấy phép',
+    subtitle: 'Đạt tiêu chuẩn chất lượng, cam kết sản phẩm\nchính hãng và an toàn tuyệt đối',
+    verified: 'Đã xác minh',
+    commitmentTitle: 'Cam kết chất lượng 100%',
+    commitmentText: 'Tất cả sản phẩm của Quang Minh đều được kiểm tra nghiêm ngặt theo quy trình sản xuất chuẩn. Chúng tôi cam kết hoàn tiền 100% nếu sản phẩm không đạt chất lượng cam kết.',
+    certifications: [
+      { name: 'Giấy phép kinh doanh', description: 'Đăng ký kinh doanh hợp pháp - MST: 0106124982' },
+      { name: 'Certificate of Quality', description: 'Chứng nhận chất lượng sản phẩm' },
+      { name: 'Chất lượng bền vững', description: 'Chứng nhận chất lượng bền vững' },
+      { name: 'Kết quả kiểm nghiệm', description: 'Kiểm nghiệm chất lượng định kỳ' },
+      { name: 'Giấy chứng nhận KNA', description: 'Chứng nhận tiêu chuẩn kỹ thuật ngành nhôm' },
+      { name: 'Xuất khẩu quốc tế', description: 'Sản phẩm đạt tiêu chuẩn xuất khẩu' }
+    ]
+  },
+  en: {
+    badge: 'Quality Assured',
+    title: 'Certifications & Licenses',
+    subtitle: 'Meeting quality standards, committed to\ngenuine and absolutely safe products',
+    verified: 'Verified',
+    commitmentTitle: '100% Quality Commitment',
+    commitmentText: 'All Quang Minh products are rigorously tested according to standard production processes. We commit to a 100% refund if the product does not meet the committed quality.',
+    certifications: [
+      { name: 'Business License', description: 'Legal business registration - Tax code: 0106124982' },
+      { name: 'Certificate of Quality', description: 'Product quality certification' },
+      { name: 'Sustainable Quality', description: 'Sustainable quality certification' },
+      { name: 'Test Results', description: 'Periodic quality testing' },
+      { name: 'KNA Certificate', description: 'Aluminum industry technical standard certification' },
+      { name: 'International Export', description: 'Products meet export standards' }
+    ]
+  },
+  cn: {
+    badge: '质量保证',
+    title: '认证和许可证',
+    subtitle: '符合质量标准，致力于\n正品和绝对安全的产品',
+    verified: '已验证',
+    commitmentTitle: '100%质量承诺',
+    commitmentText: '所有Quang Minh产品均按照标准生产流程进行严格测试。如果产品不符合承诺的质量，我们承诺100%退款。',
+    certifications: [
+      { name: '营业执照', description: '合法商业登记 - 税号：0106124982' },
+      { name: '质量证书', description: '产品质量认证' },
+      { name: '可持续质量', description: '可持续质量认证' },
+      { name: '测试结果', description: '定期质量测试' },
+      { name: 'KNA证书', description: '铝行业技术标准认证' },
+      { name: '国际出口', description: '产品符合出口标准' }
+    ]
+  }
+};
+
+const t = translations[lang as keyof typeof translations] || translations.vi;
+
+const certifications = [
+  {
+    name: t.certifications[0].name,
+    icon: '📋',
+    description: t.certifications[0].description,
+    year: '2008',
+    color: 'from-blue-500 to-blue-600'
+  },
+  {
+    name: t.certifications[1].name,
+    icon: '🏆',
+    description: t.certifications[1].description,
+    year: '2020',
+    color: 'from-green-500 to-green-600'
+  },
+  {
+    name: t.certifications[2].name,
+    icon: '✓',
+    description: t.certifications[2].description,
+    year: '2021',
+    color: 'from-purple-500 to-purple-600'
+  },
+  {
+    name: t.certifications[3].name,
+    icon: '🔬',
+    description: t.certifications[3].description,
+    year: '2022',
+    color: 'from-orange-500 to-orange-600'
+  },
+  {
+    name: t.certifications[4].name,
+    icon: '⚙️',
+    description: t.certifications[4].description,
+    year: '2023',
+    color: 'from-teal-500 to-teal-600'
+  },
+  {
+    name: t.certifications[5].name,
+    icon: '🌏',
+    description: t.certifications[5].description,
+    year: '2024',
+    color: 'from-red-500 to-red-600'
+  }
+]
+---
+
+<section class="py-16 md:py-32 px-4 relative overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-blue-50"></div>
+  
+  <!-- Animated gradient mesh -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-1/3 left-1/3 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+    <div class="absolute bottom-1/3 right-1/3 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+  </div>
+  
+  <div class="container mx-auto relative z-10">
+    <!-- Header -->
+    <div class="text-center mb-12 md:mb-20 scroll-reveal">
+      <div class="inline-block mb-3 md:mb-4">
+        <span class="text-xs md:text-sm font-semibold text-blue-600 tracking-wide uppercase bg-blue-50 px-3 py-1.5 md:px-4 md:py-2 rounded-full">
+          {t.badge}
+        </span>
+      </div>
+      <h2 class="text-3xl md:text-5xl lg:text-6xl font-semibold text-gray-900 mb-4 md:mb-6 tracking-tight px-4">
+        {t.title}
+      </h2>
+      <p class="text-base md:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed px-4">
+        {t.subtitle.split('\n').map((line, i) => (
+          <>{i > 0 && <br class="hidden md:block" />}{line}</>
+        ))}
+      </p>
+    </div>
+
+    <!-- Certifications Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto">
+      {certifications.map((cert, index) => (
+        <div 
+          class="group relative bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 hover:shadow-2xl transition-all duration-500 scroll-reveal overflow-hidden shadow-md"
+          style={`animation-delay: ${index * 0.1}s`}
+        >
+          <!-- Gradient background on hover -->
+          <div class={`absolute inset-0 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+          
+          <!-- Content -->
+          <div class="relative z-10">
+            <!-- Icon & Year -->
+            <div class="flex items-start justify-between mb-4 md:mb-6">
+              <div class="text-5xl md:text-6xl transform group-hover:scale-110 transition-transform duration-500">
+                {cert.icon}
+              </div>
+              <div class={`text-xs md:text-sm font-semibold bg-gradient-to-r ${cert.color} bg-clip-text text-transparent`}>
+                {cert.year}
+              </div>
+            </div>
+            
+            <!-- Name -->
+            <h3 class="text-xl md:text-2xl font-semibold text-gray-900 mb-2 md:mb-3 tracking-tight">
+              {cert.name}
+            </h3>
+            
+            <!-- Description -->
+            <p class="text-sm md:text-base text-gray-600 leading-relaxed">
+              {cert.description}
+            </p>
+            
+            <!-- Badge -->
+            <div class="mt-4 md:mt-6 inline-flex items-center gap-2 text-xs md:text-sm font-medium text-gray-700">
+              <svg class="w-4 h-4 md:w-5 md:h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              <span>{t.verified}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Trust Statement -->
+    <div class="text-center mt-12 md:mt-16 scroll-reveal px-4">
+      <div class="max-w-4xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-lg">
+        <div class="flex items-center justify-center gap-2 md:gap-3 mb-3 md:mb-4">
+          <svg class="w-6 h-6 md:w-8 md:h-8 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+          <h3 class="text-lg md:text-2xl font-semibold text-gray-900">{t.commitmentTitle}</h3>
+        </div>
+        <p class="text-sm md:text-lg text-gray-600 leading-relaxed">
+          {t.commitmentText}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

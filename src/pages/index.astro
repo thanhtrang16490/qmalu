@@ -1,0 +1,1268 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Hero3DBackground from '../components/Hero3DBackground'
+import DNA3DHelix from '../components/DNA3DHelix'
+import ParticleWave3D from '../components/ParticleWave3D'
+import AnimatedSphere3D from '../components/AnimatedSphere3D'
+import ExitIntentPopup from '../components/ExitIntentPopup'
+import ProcessTimeline from '../components/ProcessTimeline'
+import AnimatedCounter from '../components/AnimatedCounter'
+import Product3DCarousel from '../components/Product3DCarousel'
+import ComparisonSlider from '../components/ComparisonSlider'
+import LiveMetricsDashboard from '../components/LiveMetricsDashboard'
+import TrustBadgesCarousel from '../components/TrustBadgesCarousel'
+import VideoTestimonials from '../components/VideoTestimonials'
+import InteractiveMap from '../components/InteractiveMap'
+import ComparisonCalculator from '../components/ComparisonCalculator'
+import ScrollProgress from '../components/ScrollProgress.astro'
+import { companyInfo } from '../data/company-info'
+import { homepageContent } from '../data/homepage-content'
+
+const seoTitle = "Quang Minh - Sản xuất nhôm công nghiệp và năng lượng mặt trời"
+const seoDescription = "Quang Minh chuyên sản xuất, gia công vật tư thiết bị phụ kiện điện năng lượng mặt trời và nhôm công nghiệp A6005. Sản phẩm siêu bền, chống cháy, dễ vệ sinh. Nhà máy 3,000m² tại KCN Nguyên Khê, Xã Phúc Thịnh, Hà Nội."
+const seoKeywords = [
+  "nhôm công nghiệp",
+  "nhôm A6005",
+  "năng lượng mặt trời",
+  "Quang Minh Solar",
+  "nhôm định hình",
+  "phụ kiện điện mặt trời",
+  "aluminum A6005",
+  "solar energy equipment",
+  "KCN Nguyên Khê",
+  "Phúc Thịnh Hà Nội",
+  "sản xuất nhôm",
+  "gia công nhôm"
+]
+
+const stats = [
+  { number: "24", label: "Giao hàng trong 24h", countUp: false, suffix: "h", icon: "🚚" },
+  { number: "5", label: "Bảo hành lên đến", countUp: false, suffix: " năm", icon: "🛡️" },
+  { number: "100", label: "Đổi trả miễn phí", countUp: false, suffix: "%", icon: "↩️" },
+  { number: "0", label: "Phí tư vấn", countUp: false, suffix: "đ", icon: "💬" }
+]
+
+const testimonials = [
+  {
+    name: "Anh Nguyễn Văn Thành",
+    role: "Giám đốc Công ty Năng lượng Mặt trời Hà Nội",
+    company: "Solar Energy HN",
+    avatar: "👨‍💼",
+    rating: 5,
+    quote: "Sử dụng sản phẩm Quang Minh được 2 năm, tiết kiệm 30% chi phí so với nhà cung cấp trước. Chất lượng ổn định, siêu bền dưới mọi thời tiết.",
+    result: "Tiết kiệm 30% chi phí"
+  },
+  {
+    name: "Chị Trần Thị Mai",
+    role: "Chủ đầu tư Dự án Khu đô thị Bắc Ninh",
+    company: "Mai Construction",
+    avatar: "👩‍💼",
+    rating: 5,
+    quote: "Nhôm A6005 của Quang Minh chất lượng cao, độ bền tốt. Giao hàng đúng hẹn, giúp dự án hoàn thành sớm 2 tuần.",
+    result: "Hoàn thành sớm 2 tuần"
+  },
+  {
+    name: "Anh Phạm Đức Long",
+    role: "Trưởng phòng Kỹ thuật Công ty Điện lực",
+    company: "Điện lực Hải Phòng",
+    avatar: "🧑‍💼",
+    rating: 5,
+    quote: "Phụ kiện điện năng lượng mặt trời của Quang Minh tăng 40% hiệu suất so với sản phẩm cũ. Chống cháy tốt, an toàn tuyệt đối.",
+    result: "Tăng 40% hiệu suất"
+  }
+]
+
+const faqs = [
+  {
+    question: "Giá nhôm A6005 bao nhiêu?",
+    answer: "Giá nhôm A6005 từ 85,000đ/kg tùy theo khối lượng đặt hàng. Liên hệ 0947 776 662 để nhận báo giá chi tiết và ưu đãi đặc biệt."
+  },
+  {
+    question: "Thời gian giao hàng bao lâu?",
+    answer: "Giao hàng trong vòng 24h tại Hà Nội và các tỉnh lân cận. Các tỉnh xa hơn từ 2-3 ngày. Miễn phí vận chuyển cho đơn hàng trên 20 triệu."
+  },
+  {
+    question: "Có chính sách bảo hành không?",
+    answer: "Bảo hành 5 năm cho sản phẩm nhôm A6005 và thiết bị năng lượng mặt trời. Đổi trả miễn phí trong 30 ngày nếu có lỗi từ nhà sản xuất."
+  },
+  {
+    question: "Thanh toán như thế nào?",
+    answer: "Hỗ trợ thanh toán linh hoạt: Chuyển khoản, tiền mặt, trả góp 0% cho đơn hàng trên 50 triệu. Đặt cọc 30%, thanh toán 70% khi nhận hàng."
+  }
+]
+
+
+
+const products = [
+  {
+    name: "Aluminum A6005",
+    title: "Nhôm A6005",
+    subtitle: "HỢP KIM NHÔM KẾT CẤU",
+    description: "Hợp kim kết cấu có độ bền tốt, kết hợp tốt giữa độ bền, độ dẻo dai, độ hoàn thiện bề mặt. Phù hợp cho quá trình anodizing trang trí.",
+    features: [
+      "Grade 6063 T5, 6005 T5/6061 T6",
+      "Độ bền kéo: 260-270 MPa",
+      "Ứng dụng kết cấu, đường sắt, giao thông",
+      "Chống mài mòn, dẻo và định hình tốt"
+    ],
+    image: "/aluminum-a6005.svg",
+    color: "#175ead"
+  },
+  {
+    name: "Solar Equipment",
+    title: "Thiết bị năng lượng mặt trời",
+    subtitle: "PHỤ KIỆN ĐIỆN MẶT TRỜI",
+    description: "Vật tư thiết bị phụ kiện điện năng lượng mặt trời chất lượng cao, siêu bền dưới mọi thời tiết, chống cháy.",
+    features: [
+      "Siêu bền dưới mọi thời tiết",
+      "Chống cháy, an toàn tuyệt đối",
+      "Dễ vệ sinh, bảo trì đơn giản",
+      "Lắp đặt nhanh chóng, chuyên nghiệp"
+    ],
+    image: "/solar-equipment.svg",
+    color: "#f59e0b"
+  },
+  {
+    name: "Aluminum Extrusion",
+    title: "Nhôm đùn ép",
+    subtitle: "GIA CÔNG NHÔM CHUYÊN NGHIỆP",
+    description: "Dịch vụ đùn ép nhôm, si mạ nhôm, sơn tĩnh điện với độ dày lớp phủ từ 6µm đến 18µm. Gia công chính xác đến từng chi tiết.",
+    features: [
+      "Đùn ép nhôm theo khuôn mẫu",
+      "Si mạ nhôm chất lượng cao",
+      "Sơn tĩnh điện bền màu",
+      "Gia công chính xác, tỉ mỉ"
+    ],
+    image: "/aluminum-extrusion.svg",
+    color: "#10b981"
+  },
+  {
+    name: "Custom Manufacturing",
+    title: "Gia công theo yêu cầu",
+    subtitle: "GIẢI PHÁP TÙY CHỈNH",
+    description: "Chế tạo khuôn mẫu mới, gia công sản phẩm theo yêu cầu khách hàng với độ chính xác cao, đáp ứng mọi yêu cầu kỹ thuật.",
+    features: [
+      "Chế tạo khuôn mẫu theo yêu cầu",
+      "Nghiên cứu sản phẩm mới",
+      "Gia công chính xác, tỉ mỉ",
+      "Đáp ứng yêu cầu kỹ thuật cao"
+    ],
+    image: "/custom-manufacturing.svg",
+    color: "#8b5cf6"
+  }
+]
+
+const pricePreview = [
+  {
+    name: "Nhôm định hình 50x50",
+    price: "85,000",
+    unit: "đ/kg",
+    features: ["Grade 6063 T5", "Độ dày 1.2mm", "Giao hàng 24h"],
+    popular: true
+  },
+  {
+    name: "Tấm nhôm 2mm",
+    price: "95,000",
+    unit: "đ/kg",
+    features: ["Bề mặt nhẵn", "Chống ăn mòn", "Cắt theo size"],
+    popular: false
+  },
+  {
+    name: "Phụ kiện điện mặt trời",
+    price: "Liên hệ",
+    unit: "",
+    features: ["Chống cháy", "Bảo hành 5 năm", "Lắp đặt miễn phí"],
+    popular: false
+  }
+]
+
+const whyChooseUs = [
+  {
+    title: "Giá cả",
+    us: "Từ 85,000đ/kg",
+    competitor: "Từ 110,000đ/kg",
+    better: true
+  },
+  {
+    title: "Giao hàng",
+    us: "24 giờ",
+    competitor: "3-5 ngày",
+    better: true
+  },
+  {
+    title: "Bảo hành",
+    us: "5 năm",
+    competitor: "1-2 năm",
+    better: true
+  },
+  {
+    title: "Đổi trả",
+    us: "30 ngày miễn phí",
+    competitor: "Không hỗ trợ",
+    better: true
+  }
+]
+---
+
+<BaseLayout 
+  title={seoTitle}
+  description={seoDescription}
+  keywords={seoKeywords}
+  ogImage="/nhom-quang-minh-logo.png"
+  canonical="/"
+>
+  <ScrollProgress />
+  <div class="min-h-screen bg-white">
+  <!-- Hero Section - Apple Style -->
+  <section class="min-h-screen flex items-center justify-center px-4 pt-24 pb-20 relative overflow-hidden" id="hero-section">
+    <!-- 3D Enhanced Background - client:only for SSR compatibility -->
+    <div class="absolute inset-0 opacity-20" data-parallax="0.3">
+      <Hero3DBackground client:only="react" />
+    </div>
+    
+    <!-- Multi-layer gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50/60 via-white/70 to-green-50/60" data-parallax="0.4"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent"></div>
+    
+    <!-- Radial gradient spotlight -->
+    <div class="absolute inset-0 bg-radial-gradient" data-parallax="0.5"></div>
+    
+    <!-- Animated gradient mesh with parallax -->
+    <div class="absolute inset-0 opacity-30" data-parallax="0.6">
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+      <div class="absolute top-0 right-1/4 w-96 h-96 bg-green-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+      <div class="absolute bottom-0 left-1/3 w-96 h-96 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+    </div>
+    
+    <div class="container mx-auto text-center relative z-10">
+      <!-- New Badge -->
+      <div class="mb-6 opacity-0 hero-fade-in" style="animation-delay: 0.1s">
+        <div class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-green-600 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <span>Thương hiệu uy tín 16+ năm • KCN Nguyên Khê</span>
+        </div>
+      </div>
+      
+      <!-- Main Heading - Value Proposition -->
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 leading-[1.1] opacity-0 hero-fade-in tracking-tight" style="animation-delay: 0.3s" data-depth="0.3">
+        Nhôm <span class="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">A6005</span><br />
+        Siêu Bền - Chống Cháy
+      </h1>
+      
+      <!-- Subheading - Clear Benefits -->
+      <p class="text-xl md:text-2xl lg:text-3xl text-gray-700 mb-4 max-w-4xl mx-auto leading-relaxed opacity-0 hero-fade-in font-medium" style="animation-delay: 0.5s" data-depth="0.2">
+        Giải pháp nhôm công nghiệp và năng lượng mặt trời
+      </p>
+      
+      <div class="flex flex-col md:flex-row md:flex-wrap md:justify-center gap-3 md:gap-0 text-base md:text-lg lg:text-xl text-gray-600 mb-10 max-w-3xl mx-auto opacity-0 hero-fade-in font-light" style="animation-delay: 0.6s">
+        <span class="flex items-center gap-2 md:mx-2">
+          <svg class="w-5 h-5 flex-shrink-0 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Siêu bền mọi thời tiết</span>
+        </span>
+        <span class="flex items-center gap-2 md:mx-2">
+          <svg class="w-5 h-5 flex-shrink-0 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Chống cháy an toàn</span>
+        </span>
+        <span class="flex items-center gap-2 md:mx-2">
+          <svg class="w-5 h-5 flex-shrink-0 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Dễ vệ sinh bảo trì</span>
+        </span>
+      </div>
+      
+      <!-- Enhanced CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center opacity-0 hero-fade-in mb-16" style="animation-delay: 0.8s">
+        <a 
+          href="/san-pham"
+          class="magnetic-button group bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-10 py-5 rounded-full font-bold text-lg transition-all inline-flex items-center justify-center gap-3 shadow-xl hover:shadow-2xl hover:scale-105 transform"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+          <span>Xem sản phẩm & giá ngay</span>
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a 
+          href="/lien-he"
+          class="magnetic-button group bg-white hover:bg-gray-50 text-gray-900 px-10 py-5 rounded-full font-bold text-lg border-2 border-gray-300 hover:border-gray-400 transition-all inline-flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:scale-105 transform"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          <span>Tư vấn miễn phí 24/7</span>
+        </a>
+      </div>
+      
+      <!-- Enhanced Trust Indicators with Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 max-w-5xl mx-auto opacity-0 hero-fade-in" style="animation-delay: 1s">
+        <div class="bg-white/95 backdrop-blur-md rounded-xl md:rounded-2xl p-4 md:p-6 shadow-xl border border-gray-200 hover:shadow-2xl transition-all hover:-translate-y-1 hover:border-green-300">
+          <div class="flex items-center justify-center mb-2 md:mb-3">
+            <div class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center">
+              <svg class="w-6 h-6 md:w-8 md:h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+          </div>
+          <div class="text-xl md:text-2xl font-bold text-gray-900 mb-1">ISO 9001</div>
+          <div class="text-xs md:text-sm text-gray-600 font-medium">Chứng nhận quốc tế</div>
+        </div>
+        
+        <div class="bg-white/95 backdrop-blur-md rounded-xl md:rounded-2xl p-4 md:p-6 shadow-xl border border-gray-200 hover:shadow-2xl transition-all hover:-translate-y-1 hover:border-blue-300">
+          <div class="flex items-center justify-center mb-2 md:mb-3">
+            <div class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center">
+              <svg class="w-6 h-6 md:w-8 md:h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+          </div>
+          <div class="text-xl md:text-2xl font-bold text-gray-900 mb-1">16+ năm</div>
+          <div class="text-xs md:text-sm text-gray-600 font-medium">Kinh nghiệm</div>
+        </div>
+        
+        <div class="bg-white/95 backdrop-blur-md rounded-xl md:rounded-2xl p-4 md:p-6 shadow-xl border border-gray-200 hover:shadow-2xl transition-all hover:-translate-y-1 hover:border-purple-300">
+          <div class="flex items-center justify-center mb-2 md:mb-3">
+            <div class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center">
+              <svg class="w-6 h-6 md:w-8 md:h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+          </div>
+          <div class="text-xl md:text-2xl font-bold text-gray-900 mb-1">1,500+</div>
+          <div class="text-xs md:text-sm text-gray-600 font-medium">Khách hàng</div>
+        </div>
+        
+        <div class="bg-white/95 backdrop-blur-md rounded-xl md:rounded-2xl p-4 md:p-6 shadow-xl border border-gray-200 hover:shadow-2xl transition-all hover:-translate-y-1 hover:border-orange-300">
+          <div class="flex items-center justify-center mb-2 md:mb-3">
+            <div class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-full flex items-center justify-center">
+              <svg class="w-6 h-6 md:w-8 md:h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+          </div>
+          <div class="text-xl md:text-2xl font-bold text-gray-900 mb-1">Xuất khẩu</div>
+          <div class="text-xs md:text-sm text-gray-600 font-medium">Đông Nam Á & Châu Âu</div>
+        </div>
+      </div>
+      
+      <!-- Scroll indicator with animation -->
+      <div class="mt-16 opacity-0 hero-fade-in scroll-indicator" style="animation-delay: 1.2s">
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex items-start justify-center p-2 hover:border-gray-600 transition-colors cursor-pointer">
+            <div class="w-1.5 h-3 bg-gray-500 rounded-full animate-bounce"></div>
+          </div>
+          <span class="text-xs text-gray-500 font-semibold tracking-wide uppercase">Khám phá thêm</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Urgency Banner -->
+  <section class="py-4 px-4 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full filter blur-3xl animate-pulse"></div>
+    </div>
+    <div class="container mx-auto relative z-10">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-white text-center">
+        <div class="flex items-center gap-2">
+          <svg class="w-6 h-6 animate-bounce" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-lg md:text-xl font-bold">🔥 Ưu đãi đặc biệt tháng 3</span>
+        </div>
+        <div class="text-base md:text-lg font-semibold">
+          Giảm <span class="text-2xl md:text-3xl font-bold">15%</span> cho đơn hàng trên 10 triệu
+        </div>
+        <div class="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="font-bold">Còn 5 ngày</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Badges Carousel Section - MOVED UP from position #9 -->
+  <TrustBadgesCarousel section={homepageContent.trustBadges} client:visible />
+
+  <!-- Stats Section + Animated Counter - MERGED -->
+  <section class="py-32 relative overflow-hidden">
+    <!-- Multi-layer background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50/30 to-gray-50"></div>
+    
+    <!-- Animated gradient orbs -->
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+      <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-20">
+        {stats.map(stat => (
+          <div class="text-center stat-item">
+            <div class="text-5xl mb-3">{stat.icon}</div>
+            <div 
+              class="text-4xl md:text-5xl font-bold text-gray-900 mb-2 stat-number tracking-tight" 
+              data-target={stat.number}
+              data-countup={stat.countUp}
+              data-suffix={stat.suffix || ''}
+            >
+              {stat.number}{stat.suffix}
+            </div>
+            <div class="text-sm md:text-base text-gray-600 font-medium">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Animated Counter integrated -->
+      <AnimatedCounter section={homepageContent.animatedCounter} client:visible />
+    </div>
+  </section>
+
+  <!-- Products Section - Apple-Style with Category Cards - MOVED UP from position #10 -->
+  <section class="py-32 px-4 relative overflow-hidden">
+    <!-- Base gradient -->
+    <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50" data-parallax="0.3"></div>
+    
+    <!-- 3D Wave Background -->
+    <div class="absolute inset-0 opacity-[0.08]" data-parallax="0.5">
+      <ParticleWave3D client:only="react" />
+    </div>
+    
+    <div class="container mx-auto relative z-10">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 tracking-tight">Sản phẩm của chúng tôi</h2>
+        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
+          Nhôm công nghiệp A6005 và thiết bị năng lượng mặt trời chất lượng cao
+        </p>
+      </div>
+
+      <!-- Product Category Cards -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-16 scroll-reveal">
+        {products.map((product) => (
+          <a 
+            href="/san-pham"
+            class="group bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+          >
+            <!-- Product Image -->
+            <div class="relative h-48 md:h-64 overflow-hidden" style={`background: linear-gradient(135deg, ${product.color}15 0%, ${product.color}05 100%)`}>
+              <div class="absolute inset-0 flex items-center justify-center p-6 md:p-8">
+                <img 
+                  src={product.image} 
+                  alt={product.title}
+                  class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-700"
+                />
+              </div>
+              <!-- Category Badge -->
+              <div class="absolute top-3 left-3 md:top-4 md:left-4">
+                <span class="bg-white/90 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold" style={`color: ${product.color}`}>
+                  {product.name}
+                </span>
+              </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="p-6 md:p-8">
+              <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-2 md:mb-3 group-hover:text-blue-600 transition-colors">
+                {product.title}
+              </h3>
+              <p class="text-sm md:text-base text-gray-600 mb-4 md:mb-6 leading-relaxed line-clamp-2 md:line-clamp-none">
+                {product.description}
+              </p>
+
+              <!-- Key Features -->
+              <div class="space-y-1.5 md:space-y-2 mb-4 md:mb-6">
+                {product.features.slice(0, 3).map((feature) => (
+                  <div class="flex items-start gap-2 text-xs md:text-sm text-gray-700">
+                    <svg class="w-4 h-4 md:w-5 md:h-5 flex-shrink-0 mt-0.5" style={`color: ${product.color}`} fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="line-clamp-1">{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              <!-- View Details Link -->
+              <div class="flex items-center gap-2 text-blue-600 font-semibold text-sm md:text-base group-hover:gap-3 transition-all">
+                <span>Xem chi tiết</span>
+                <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- Product Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 scroll-reveal">
+        <div class="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-md hover:shadow-xl transition-all">
+          <div class="text-4xl font-bold text-blue-600 mb-2">24h</div>
+          <div class="text-sm text-gray-600 font-medium">Giao hàng nhanh</div>
+        </div>
+        <div class="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-md hover:shadow-xl transition-all">
+          <div class="text-4xl font-bold text-green-600 mb-2">5 năm</div>
+          <div class="text-sm text-gray-600 font-medium">Bảo hành</div>
+        </div>
+        <div class="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-md hover:shadow-xl transition-all">
+          <div class="text-4xl font-bold text-purple-600 mb-2">100%</div>
+          <div class="text-sm text-gray-600 font-medium">Đổi trả miễn phí</div>
+        </div>
+        <div class="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-md hover:shadow-xl transition-all">
+          <div class="text-4xl font-bold text-orange-600 mb-2">0đ</div>
+          <div class="text-sm text-gray-600 font-medium">Phí tư vấn</div>
+        </div>
+      </div>
+
+      <!-- CTA to Full Product Page -->
+      <div class="text-center scroll-reveal">
+        <a 
+          href="/san-pham"
+          class="magnetic-button inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-10 py-5 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all hover:scale-105 transform"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <span>Xem tất cả sản phẩm & bảng giá</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+        <p class="mt-4 text-sm text-gray-500">
+          Giá công khai • Giao hàng 24h • Hỗ trợ kỹ thuật 24/7
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product 3D Carousel Section -->
+  <Product3DCarousel section={homepageContent.product3DCarousel} client:visible />
+
+  <!-- Comparison Slider Section -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12 md:mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          {homepageContent.comparisonSlider.title}
+        </h2>
+        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+          {homepageContent.comparisonSlider.subtitle}
+        </p>
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <ComparisonSlider 
+          beforeImage={homepageContent.comparisonSlider.beforeImage}
+          afterImage={homepageContent.comparisonSlider.afterImage}
+          beforeLabel={homepageContent.comparisonSlider.beforeLabel}
+          afterLabel={homepageContent.comparisonSlider.afterLabel}
+          client:visible
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us - Comparison Section - MOVED UP from position #13 -->
+  <section class="py-32 px-4 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-green-50"></div>
+    
+    <div class="container mx-auto relative z-10">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 tracking-tight">Tại sao chọn Quang Minh?</h2>
+        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
+          So sánh với các nhà cung cấp khác trên thị trường
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+          <div class="grid grid-cols-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white p-6">
+            <div class="text-center font-semibold text-lg">Tiêu chí</div>
+            <div class="text-center font-bold text-xl">Quang Minh ✓</div>
+            <div class="text-center font-semibold text-lg opacity-80">Đối thủ</div>
+          </div>
+          
+          {whyChooseUs.map((item, index) => (
+            <div class={`grid grid-cols-3 p-6 items-center ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
+              <div class="text-gray-900 font-semibold">{item.title}</div>
+              <div class="text-center">
+                <span class="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full font-bold">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  {item.us}
+                </span>
+              </div>
+              <div class="text-center text-gray-500 line-through">{item.competitor}</div>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-12 grid md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+            <div class="text-4xl mb-3">🏆</div>
+            <h3 class="font-bold text-lg mb-2">Chất lượng hàng đầu</h3>
+            <p class="text-sm text-gray-600">100% nhôm nguyên chất dòng 6xxx</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+            <div class="text-4xl mb-3">💰</div>
+            <h3 class="font-bold text-lg mb-2">Giá tốt nhất</h3>
+            <p class="text-sm text-gray-600">Cam kết hoàn tiền nếu tìm được giá rẻ hơn</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+            <div class="text-4xl mb-3">⚡</div>
+            <h3 class="font-bold text-lg mb-2">Giao hàng nhanh</h3>
+            <p class="text-sm text-gray-600">24h tại Hà Nội và các tỉnh lân cận</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Testimonials Section - MOVED UP from position #14 -->
+  <VideoTestimonials section={homepageContent.videoTestimonials} client:visible />
+
+  <!-- Live Metrics Dashboard Section - MOVED from position #8 -->
+  <LiveMetricsDashboard section={homepageContent.liveMetrics} client:visible />
+
+  <!-- Price Preview Section -->
+  <!-- Price Preview Section -->
+  <section class="py-32 px-4 relative overflow-hidden bg-gradient-to-b from-white to-gray-50">
+    <div class="container mx-auto relative z-10">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 tracking-tight">Bảng giá tham khảo</h2>
+        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
+          Giá cạnh tranh nhất thị trường • Miễn phí vận chuyển đơn hàng trên 20 triệu
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+        {pricePreview.map((item) => (
+          <div class={`bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 relative ${item.popular ? 'ring-4 ring-blue-500 transform scale-105' : ''}`}>
+            {item.popular && (
+              <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                  Phổ biến nhất
+                </span>
+              </div>
+            )}
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-2">{item.name}</h3>
+            <div class="mb-6">
+              <span class="text-5xl font-bold text-blue-600">{item.price}</span>
+              {item.unit && <span class="text-xl text-gray-600 ml-2">{item.unit}</span>}
+            </div>
+            <ul class="space-y-3 mb-8">
+              {item.features.map((feature) => (
+                <li class="flex items-center gap-2 text-gray-700">
+                  <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <a 
+              href="tel:+84947776662"
+              class="magnetic-button block w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-center px-6 py-4 rounded-full font-bold transition-all hover:scale-105 transform shadow-lg"
+            >
+              Gọi đặt hàng ngay
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center">
+        <a 
+          href="/san-pham"
+          class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold text-lg"
+        >
+          <span>Xem bảng giá đầy đủ</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Calculator Section -->
+  <ComparisonCalculator section={homepageContent.comparisonCalculator} client:visible />
+
+  <!-- Process Timeline Section - MOVED DOWN from position #4 -->
+  <ProcessTimeline data={homepageContent.processTimeline} client:visible />
+
+  <!-- FAQ Section - Apple Style Enhanced -->
+  <section class="py-32 px-4 relative overflow-hidden">
+    <!-- Gradient background - smooth transition from gray-50 -->
+    <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-white"></div>
+    
+    <!-- Animated gradient orbs -->
+    <div class="absolute inset-0 opacity-15">
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+      <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+    </div>
+    
+    <div class="container mx-auto max-w-4xl relative z-10">
+      <div class="text-center mb-20 scroll-reveal">
+        <h2 class="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 tracking-tight">Câu hỏi thường gặp</h2>
+        <p class="text-xl md:text-2xl text-gray-600 font-light leading-relaxed">
+          Giải đáp những thắc mắc phổ biến về sản phẩm và dịch vụ
+        </p>
+      </div>
+      <div class="space-y-2">
+        {faqs.map((faq) => (
+          <details class="group bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 scroll-reveal ring-1 ring-gray-900/5">
+            <summary class="flex justify-between items-center cursor-pointer p-8 font-semibold text-gray-900 text-lg md:text-xl">
+              <span class="pr-8">{faq.question}</span>
+              <svg class="w-6 h-6 text-gray-400 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-8 pb-8 text-gray-600 text-lg leading-relaxed font-light">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Map Section -->
+  <section class="py-32 px-4 relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50">
+    <div class="container mx-auto relative z-10">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 tracking-tight">
+          {homepageContent.interactiveMap.title}
+        </h2>
+        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
+          {homepageContent.interactiveMap.subtitle}
+        </p>
+      </div>
+
+      <div class="max-w-5xl mx-auto scroll-reveal">
+        <InteractiveMap 
+          location={homepageContent.interactiveMap.location}
+          zoom={homepageContent.interactiveMap.zoom}
+          fallbackImage={homepageContent.interactiveMap.fallbackImage}
+          client:visible
+        />
+      </div>
+
+      <!-- Location Details -->
+      <div class="mt-12 max-w-3xl mx-auto grid md:grid-cols-3 gap-6 scroll-reveal">
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 text-center shadow-sm ring-1 ring-gray-900/5">
+          <div class="text-3xl mb-3">📍</div>
+          <h3 class="font-semibold text-gray-900 mb-2">Địa chỉ</h3>
+          <p class="text-gray-600 text-sm">{homepageContent.interactiveMap.location.address}</p>
+        </div>
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 text-center shadow-sm ring-1 ring-gray-900/5">
+          <div class="text-3xl mb-3">📞</div>
+          <h3 class="font-semibold text-gray-900 mb-2">Điện thoại</h3>
+          <a href={`tel:${homepageContent.interactiveMap.location.phone}`} class="text-primary-600 hover:text-primary-700 font-medium">
+            {homepageContent.interactiveMap.location.phone}
+          </a>
+        </div>
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 text-center shadow-sm ring-1 ring-gray-900/5">
+          <div class="text-3xl mb-3">🏭</div>
+          <h3 class="font-semibold text-gray-900 mb-2">Quy mô</h3>
+          <p class="text-gray-600 text-sm">Nhà máy {companyInfo.capacity.factoryArea}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mobile Sticky CTA - Hidden -->
+  <!-- Removed to avoid clutter on mobile -->
+
+  <!-- Sticky CTA Bar - Desktop -->
+  <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-gray-200 py-4 px-4 z-40 transform translate-y-full transition-transform duration-300 hidden md:block">
+    <div class="container mx-auto flex items-center justify-between">
+      <div>
+        <div class="font-semibold text-gray-900">Sẵn sàng nâng cao hiệu quả sản xuất nhôm?</div>
+        <div class="text-sm text-gray-600">Liên hệ ngay để được tư vấn miễn phí từ chuyên gia</div>
+      </div>
+      <div class="flex gap-3">
+        <a href="tel:+84947776662" class="magnetic-button px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-full font-medium transition-colors inline-flex items-center gap-2 shadow-sm">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          Gọi ngay
+        </a>
+        <a href="/lien-he" class="magnetic-button px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-colors shadow-sm">
+          Đăng ký tư vấn
+        </a>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <!-- Exit Intent Popup -->
+  <ExitIntentPopup client:load />
+
+  <!-- Scroll Animations -->
+  <script>
+    import { initScrollAnimations } from '../lib/scroll-animations';
+    import { initScrollParallax, initMouseParallax } from '../lib/parallax';
+    import { initMagneticButtons } from '../lib/magnetic-buttons';
+    // import { initCustomCursor } from '../lib/custom-cursor'; // Temporarily disabled
+    import { startPerformanceMonitoring } from '../lib/performance-monitor';
+    
+    initScrollAnimations();
+    initScrollParallax();
+    initMouseParallax();
+    
+    // Start performance monitoring
+    startPerformanceMonitoring();
+    
+    // Initialize magnetic buttons after DOM is loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        initMagneticButtons();
+        // initCustomCursor(); // Temporarily disabled
+      });
+    } else {
+      initMagneticButtons();
+      // initCustomCursor(); // Temporarily disabled
+    }
+  </script>
+
+  <!-- Count-up Animation Script -->
+  <script>
+    function animateCountUp() {
+      const statNumbers = document.querySelectorAll('.stat-number');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+            const target = entry.target as HTMLElement;
+            const shouldCountUp = target.dataset.countup === 'true';
+            
+            if (shouldCountUp) {
+              const finalValue = parseInt(target.dataset.target || '0');
+              const suffix = target.dataset.suffix || '';
+              const duration = 2000;
+              const steps = 60;
+              const increment = finalValue / steps;
+              let current = 0;
+              
+              const timer = setInterval(() => {
+                current += increment;
+                if (current >= finalValue) {
+                  target.textContent = finalValue.toLocaleString() + suffix;
+                  clearInterval(timer);
+                } else {
+                  target.textContent = Math.floor(current).toLocaleString() + suffix;
+                }
+              }, duration / steps);
+              
+              target.classList.add('counted');
+            }
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      statNumbers.forEach(stat => observer.observe(stat));
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', animateCountUp);
+    } else {
+      animateCountUp();
+    }
+  </script>
+
+  <!-- Scroll Reveal Animations -->
+  <script>
+    function initScrollReveal() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      }, { 
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+      
+      document.querySelectorAll('.scroll-reveal').forEach(el => {
+        observer.observe(el);
+      });
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initScrollReveal);
+    } else {
+      initScrollReveal();
+    }
+  </script>
+
+  <!-- Enhanced Parallax Scroll Effects -->
+  <script>
+    let ticking = false;
+    
+    function updateParallax() {
+      const scrolled = window.pageYOffset;
+      
+      // Hide scroll indicator after scrolling
+      const scrollIndicator = document.querySelector('.scroll-indicator') as HTMLElement | null;
+      if (scrollIndicator) {
+        if (scrolled > 100) {
+          scrollIndicator.style.opacity = '0';
+          scrollIndicator.style.pointerEvents = 'none';
+        } else {
+          scrollIndicator.style.opacity = '1';
+          scrollIndicator.style.pointerEvents = 'auto';
+        }
+      }
+      
+      // Scale effect on sections
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        const el = section as HTMLElement;
+        const rect = el.getBoundingClientRect();
+        const scrollProgress = 1 - (rect.top / window.innerHeight);
+        
+        if (scrollProgress > 0 && scrollProgress < 1) {
+          const scale = 0.95 + (scrollProgress * 0.05);
+          const opacity = Math.max(0.3, scrollProgress);
+          
+          // Apply subtle scale and opacity
+          if (el.id !== 'hero-section') {
+            el.style.transform = `scale(${Math.min(scale, 1)})`;
+            el.style.opacity = String(opacity);
+          }
+        }
+      });
+      
+      ticking = false;
+    }
+    
+    function requestTick() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
+    
+    window.addEventListener('scroll', requestTick);
+    
+    // Initial call
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateParallax);
+    } else {
+      updateParallax();
+    }
+  </script>
+
+  <!-- Sticky CTA Bar Script -->
+  <script>
+    let lastScroll = 0;
+    const stickyCTA = document.getElementById('sticky-cta') as HTMLElement | null;
+    const heroHeight = window.innerHeight;
+    
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      // Show sticky CTA after scrolling past hero
+      if (currentScroll > heroHeight && currentScroll > lastScroll) {
+        stickyCTA?.classList.remove('translate-y-full');
+      } else if (currentScroll < lastScroll || currentScroll < heroHeight) {
+        stickyCTA?.classList.add('translate-y-full');
+      }
+      
+      lastScroll = currentScroll;
+    });
+  </script>
+
+  <style>
+    /* Apple-style Typography */
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Hero Fade-in Animation */
+    @keyframes heroFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero-fade-in {
+      animation: heroFadeIn 1s ease-out forwards;
+    }
+
+    /* Fade In Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    .animate-fadeIn {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    /* Fade Out Animation */
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+    
+    .animate-fadeOut {
+      animation: fadeOut 0.3s ease-out forwards;
+    }
+
+    /* Scale In Animation */
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .animate-scaleIn {
+      animation: scaleIn 0.3s ease-out forwards;
+    }
+
+    /* Scale Out Animation */
+    @keyframes scaleOut {
+      from {
+        opacity: 1;
+        transform: scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+    }
+    
+    .animate-scaleOut {
+      animation: scaleOut 0.3s ease-out forwards;
+    }
+
+    /* Scroll Reveal Animation */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Blob Animation for gradient mesh */
+    @keyframes blob {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      25% {
+        transform: translate(20px, -50px) scale(1.1);
+      }
+      50% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+      75% {
+        transform: translate(50px, 50px) scale(1.05);
+      }
+    }
+    
+    .animate-blob {
+      animation: blob 20s infinite;
+    }
+    
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+    
+    .animation-delay-4000 {
+      animation-delay: 4s;
+    }
+
+    /* Radial gradient */
+    .bg-radial-gradient {
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(59, 130, 246, 0.1) 0%,
+        transparent 50%
+      );
+    }
+    
+    /* Radial gradient purple */
+    .bg-radial-gradient-purple {
+      background: radial-gradient(
+        circle at 30% 50%,
+        rgba(147, 51, 234, 0.08) 0%,
+        transparent 50%
+      );
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Scroll indicator fade */
+    .scroll-indicator {
+      transition: opacity 0.5s ease-out;
+    }
+
+    /* Section transitions */
+    section {
+      transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+      will-change: transform, opacity;
+    }
+
+    /* Hide mobile CTA on desktop */
+    @media (min-width: 768px) {
+      .mobile-cta {
+        display: none;
+      }
+    }
+    
+    /* Bounce animation for phone button */
+    @keyframes bounce-slow {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    .animate-bounce-slow {
+      animation: bounce-slow 2s infinite;
+    }
+
+    /* Apple-style button hover effects */
+    a[href] {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Backdrop blur support */
+    @supports (backdrop-filter: blur(20px)) {
+      .mobile-cta {
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+      }
+    }
+
+    /* Remove default details marker */
+    details > summary {
+      list-style: none;
+    }
+    
+    details > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    /* Smooth transitions for details */
+    details {
+      transition: all 0.3s ease;
+    }
+
+    /* Custom scrollbar (Apple-like) */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      border: 3px solid transparent;
+      background-clip: padding-box;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 0, 0, 0.3);
+      background-clip: padding-box;
+    }
+
+    /* Prevent layout shift */
+    section {
+      contain: layout;
+    }
+
+    /* Smooth scale animations */
+    @media (prefers-reduced-motion: no-preference) {
+      section {
+        transform-origin: center center;
+      }
+    }
+
+    /* Disable parallax on mobile for performance */
+    @media (max-width: 768px) {
+      /* Better mobile spacing */
+      section {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+      
+      /* Optimize touch targets */
+      button, a {
+        min-height: 44px;
+      }
+      
+      /* Line clamp utilities */
+      .line-clamp-1 {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      
+      .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+
+    /* Tab Styles */
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .tab-button.active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</BaseLayout>

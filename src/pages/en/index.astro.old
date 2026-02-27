@@ -1,0 +1,214 @@
+---
+const lang = 'en'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Hero3DBackground from '../../components/Hero3DBackground'
+import DNA3DHelix from '../../components/DNA3DHelix'
+import ParticleWave3D from '../../components/ParticleWave3D'
+import AnimatedSphere3D from '../../components/AnimatedSphere3D'
+import ExitIntentPopup from '../../components/ExitIntentPopup'
+import ProcessTimeline from '../../components/ProcessTimeline'
+import AnimatedCounter from '../../components/AnimatedCounter'
+import Product3DCarousel from '../../components/Product3DCarousel'
+import ComparisonSlider from '../../components/ComparisonSlider'
+import LiveMetricsDashboard from '../../components/LiveMetricsDashboard'
+import TrustBadgesCarousel from '../../components/TrustBadgesCarousel'
+import VideoTestimonials from '../../components/VideoTestimonials'
+import InteractiveMap from '../../components/InteractiveMap'
+import ComparisonCalculator from '../../components/ComparisonCalculator'
+import ScrollProgress from '../../components/ScrollProgress.astro'
+import { companyInfo } from '../../data/company-info'
+import { homepageContent } from '../../data/homepage-content'
+
+const seoTitle = "Quang Minh - Industrial Aluminum and Solar Energy Manufacturing"
+const seoDescription = "Quang Minh specializes in manufacturing and processing solar energy electrical equipment accessories and A6005 industrial aluminum. Super durable, fire-resistant, easy to clean products. 3,000m² factory at Nguyen Khe Industrial Park, Phuc Thinh Commune, Hanoi."
+const seoKeywords = [
+  "industrial aluminum",
+  "aluminum A6005",
+  "solar energy",
+  "Quang Minh Solar",
+  "aluminum profiles",
+  "solar electrical accessories",
+  "aluminum A6005",
+  "solar energy equipment",
+  "Nguyen Khe Industrial Park",
+  "Phuc Thinh Hanoi",
+  "aluminum manufacturing",
+  "aluminum processing"
+]
+
+const stats = [
+  { number: "24", label: "Delivery within 24h", countUp: false, suffix: "h", icon: "🚚" },
+  { number: "5", label: "Warranty up to", countUp: false, suffix: " years", icon: "🛡️" },
+  { number: "100", label: "Free returns", countUp: false, suffix: "%", icon: "↩️" },
+  { number: "0", label: "Consultation fee", countUp: false, suffix: "đ", icon: "💬" }
+]
+
+const testimonials = [
+  {
+    name: "Mr. Nguyen Van Thanh",
+    role: "Director of Hanoi Solar Energy Company",
+    company: "Solar Energy HN",
+    avatar: "👨‍💼",
+    rating: 5,
+    quote: "Using Quang Minh products for 2 years, saving 30% costs compared to previous supplier. Stable quality, super durable in all weather conditions.",
+    result: "Save 30% costs"
+  },
+  {
+    name: "Ms. Tran Thi Mai",
+    role: "Investor of Bac Ninh Urban Area Project",
+    company: "Mai Construction",
+    avatar: "👩‍💼",
+    rating: 5,
+    quote: "Quang Minh's A6005 aluminum is high quality, good durability. On-time delivery helped the project complete 2 weeks early.",
+    result: "Completed 2 weeks early"
+  },
+  {
+    name: "Mr. Pham Duc Long",
+    role: "Head of Technical Department, Power Company",
+    company: "Hai Phong Power",
+    avatar: "🧑‍💼",
+    rating: 5,
+    quote: "Quang Minh's solar energy electrical accessories increased efficiency by 40% compared to old products. Good fire resistance, absolute safety.",
+    result: "Increased 40% efficiency"
+  }
+]
+
+const faqs = [
+  {
+    question: "What is the price of A6005 aluminum?",
+    answer: "A6005 aluminum price from 85,000đ/kg depending on order volume. Contact 0947 776 662 for detailed quotes and special offers."
+  },
+  {
+    question: "How long is the delivery time?",
+    answer: "Delivery within 24 hours in Hanoi and neighboring provinces. More distant provinces 2-3 days. Free shipping for orders over 20 million."
+  },
+  {
+    question: "Is there a warranty policy?",
+    answer: "5-year warranty for A6005 aluminum products and solar energy equipment. Free returns within 30 days if there are manufacturing defects."
+  },
+  {
+    question: "How to pay?",
+    answer: "Flexible payment support: Bank transfer, cash, 0% installment for orders over 50 million. 30% deposit, 70% payment upon receipt."
+  }
+]
+
+const products = [
+  {
+    name: "Aluminum A6005",
+    title: "Aluminum A6005",
+    subtitle: "STRUCTURAL ALUMINUM ALLOY",
+    description: "Structural alloy with good strength, combining strength, toughness, surface finish. Suitable for decorative anodizing process.",
+    features: [
+      "Grade 6063 T5, 6005 T5/6061 T6",
+      "Tensile strength: 260-270 MPa",
+      "Structural, railway, transportation applications",
+      "Wear resistant, ductile and formable"
+    ],
+    image: "/aluminum-a6005.svg",
+    color: "#175ead"
+  },
+  {
+    name: "Solar Equipment",
+    title: "Solar energy equipment",
+    subtitle: "SOLAR ELECTRICAL ACCESSORIES",
+    description: "High-quality solar energy electrical equipment accessories, super durable in all weather conditions, fire-resistant.",
+    features: [
+      "Super durable in all weather",
+      "Fire resistant, absolutely safe",
+      "Easy to clean, simple maintenance",
+      "Fast, professional installation"
+    ],
+    image: "/solar-equipment.svg",
+    color: "#f59e0b"
+  },
+  {
+    name: "Aluminum Extrusion",
+    title: "Aluminum extrusion",
+    subtitle: "PROFESSIONAL ALUMINUM PROCESSING",
+    description: "Aluminum extrusion, aluminum plating, powder coating services with coating thickness from 6µm to 18µm. Precise processing down to every detail.",
+    features: [
+      "Aluminum extrusion according to mold",
+      "High quality aluminum plating",
+      "Durable powder coating",
+      "Precise, meticulous processing"
+    ],
+    image: "/aluminum-extrusion.svg",
+    color: "#10b981"
+  },
+  {
+    name: "Custom Manufacturing",
+    title: "Custom processing",
+    subtitle: "CUSTOM SOLUTIONS",
+    description: "Manufacturing new molds, processing products according to customer requirements with high precision, meeting all technical requirements.",
+    features: [
+      "Custom mold manufacturing",
+      "New product research",
+      "Precise, meticulous processing",
+      "Meeting high technical requirements"
+    ],
+    image: "/custom-manufacturing.svg",
+    color: "#8b5cf6"
+  }
+]
+
+const pricePreview = [
+  {
+    name: "50x50 aluminum profile",
+    price: "85,000",
+    unit: "đ/kg",
+    features: ["Grade 6063 T5", "Thickness 1.2mm", "24h delivery"],
+    popular: true
+  },
+  {
+    name: "2mm aluminum sheet",
+    price: "95,000",
+    unit: "đ/kg",
+    features: ["Smooth surface", "Corrosion resistant", "Cut to size"],
+    popular: false
+  },
+  {
+    name: "Solar electrical accessories",
+    price: "Contact",
+    unit: "",
+    features: ["Fire resistant", "5-year warranty", "Free installation"],
+    popular: false
+  }
+]
+
+const whyChooseUs = [
+  {
+    title: "Price",
+    us: "From 85,000đ/kg",
+    competitor: "From 110,000đ/kg",
+    better: true
+  },
+  {
+    title: "Delivery",
+    us: "24 hours",
+    competitor: "3-5 days",
+    better: true
+  },
+  {
+    title: "Warranty",
+    us: "5 years",
+    competitor: "1-2 years",
+    better: true
+  },
+  {
+    title: "Returns",
+    us: "30 days free",
+    competitor: "Not supported",
+    better: true
+  }
+]
+---
+
+<BaseLayout 
+  title={seoTitle}
+  description={seoDescription}
+  keywords={seoKeywords}
+  ogImage="/nhom-quang-minh-logo.png"
+  canonical="/en/"
+>
+  <ScrollProgress />
+  <div class="min-h-screen bg-white">

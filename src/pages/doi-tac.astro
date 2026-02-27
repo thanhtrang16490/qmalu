@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { featuredProjects, partners, partnerStats, partnerTestimonials } from '../data/partners'
+
+const seoTitle = "Đối tác - Quang Minh | Khách hàng và dự án tiêu biểu"
+const seoDescription = "Quang Minh tự hào phục vụ hơn 1,000 khách hàng và 100 đơn vị hợp tác trong lĩnh vực nhôm công nghiệp và năng lượng mặt trời. Đối tác: Tisco, Hòa Phát, Vinacomin, VAS Steel, Komatsu, SCG, BDO, Sonha."
+const seoKeywords = [
+  "đối tác Quang Minh",
+  "khách hàng Quang Minh",
+  "Tisco",
+  "Hòa Phát",
+  "Vinacomin",
+  "VAS Steel",
+  "Komatsu",
+  "SCG",
+  "BDO",
+  "Sonha"
+]
+---
+
+<BaseLayout 
+  title={seoTitle}
+  description={seoDescription}
+  keywords={seoKeywords}
+  canonical="/doi-tac"
+>
+  <!-- Hero Section -->
+  <section class="pt-24 md:pt-32 pb-16 md:pb-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold text-gray-900 mb-6 tracking-tight leading-tight">
+          Đối tác & Khách hàng
+        </h1>
+        <p class="text-lg sm:text-xl md:text-2xl text-gray-600 font-light max-w-3xl mx-auto leading-relaxed">
+          Hơn {partnerStats.totalCustomers}+ khách hàng tin tưởng và {partnerStats.totalPartners}+ đơn vị hợp tác
+        </p>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl">
+          <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2">{partnerStats.totalCustomers}+</div>
+          <div class="text-sm text-gray-700">Khách hàng</div>
+        </div>
+        <div class="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl">
+          <div class="text-3xl md:text-4xl font-bold text-green-600 mb-2">{partnerStats.totalPartners}+</div>
+          <div class="text-sm text-gray-700">Đơn vị hợp tác</div>
+        </div>
+        <div class="text-center p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl">
+          <div class="text-3xl md:text-4xl font-bold text-purple-600 mb-2">{partnerStats.yearsExperience}+</div>
+          <div class="text-sm text-gray-700">Năm kinh nghiệm</div>
+        </div>
+        <div class="text-center p-6 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl">
+          <div class="text-3xl md:text-4xl font-bold text-orange-600 mb-2">{partnerStats.projectsCompleted}+</div>
+          <div class="text-sm text-gray-700">Dự án hoàn thành</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners Logo Section -->
+  <section class="py-20 md:py-24 bg-white">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 tracking-tight">
+          Đối tác khách hàng
+        </h2>
+        <p class="text-[17px] text-gray-600 max-w-2xl mx-auto font-light">
+          Các đối tác và khách hàng tin tưởng sử dụng sản phẩm của Quang Minh
+        </p>
+      </div>
+
+      <!-- Partners Logo Image from Catalogue -->
+      <div class="max-w-4xl mx-auto mb-12">
+        <img 
+          src="/partners/partners-logos.jpg" 
+          alt="Đối tác khách hàng Quang Minh: Tisco, Hòa Phát, Vinacomin, VAS Steel, TQIS, Lideco, Komatsu, SCG, SEV, Vatec Saigon, BDO, SP Group, TYP Steel, Nami Energy, Sonha, Poma"
+          class="w-full h-auto rounded-3xl shadow-2xl"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- Partners Grid with Logo Placeholders -->
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
+        {partners.map((partner) => (
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-300 group">
+            <div class="flex flex-col items-center justify-center h-full">
+              <!-- Logo Placeholder with Company Initial -->
+              <div class="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <span class="text-2xl font-bold text-blue-600">
+                  {partner.name.charAt(0)}
+                </span>
+              </div>
+              <h3 class="text-sm font-semibold text-gray-900 mb-1 text-center">{partner.name}</h3>
+              <p class="text-xs text-gray-500 text-center">{partner.category}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Note about logos -->
+      <div class="mt-12 text-center">
+        <p class="text-sm text-gray-500 italic">
+          Logo các đối tác được hiển thị trong hình ảnh phía trên
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects Section -->
+  <section class="py-20 md:py-24 bg-[#f5f5f7]">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 tracking-tight">
+          Dự án tiêu biểu
+        </h2>
+        <p class="text-[17px] text-gray-600 max-w-2xl mx-auto font-light">
+          Các dự án năng lượng mặt trời và nhôm công nghiệp đã triển khai thành công
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featuredProjects.map((project) => (
+          <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+            <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+              <svg class="w-20 h-20 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </div>
+            <div class="p-6">
+              <div class="text-xs font-semibold text-blue-600 mb-2">{project.type}</div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">{project.name}</h3>
+              <p class="text-sm text-gray-600 mb-3">{project.description}</p>
+              <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                <span class="text-xs font-medium text-gray-700">{project.client}</span>
+                <span class="text-xs text-gray-500">{project.year}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-20 md:py-24 bg-white">
+    <div class="max-w-[1200px] mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 tracking-tight">
+          Đánh giá từ đối tác
+        </h2>
+        <p class="text-[17px] text-gray-600 max-w-2xl mx-auto font-light">
+          Những phản hồi tích cực từ khách hàng và đối tác
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {partnerTestimonials.map((testimonial) => (
+          <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 shadow-lg">
+            <div class="flex items-center gap-1 mb-4">
+              {[...Array(testimonial.rating)].map(() => (
+                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+            <p class="text-gray-700 mb-6 italic">"{testimonial.quote}"</p>
+            <div class="flex items-center gap-3">
+              <div class="text-3xl">{testimonial.avatar}</div>
+              <div>
+                <div class="font-semibold text-gray-900">{testimonial.name}</div>
+                <div class="text-sm text-gray-600">{testimonial.position}</div>
+                <div class="text-xs text-gray-500">{testimonial.company}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-[#f5f5f7]">
+    <div class="max-w-[692px] mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-4 tracking-tight">
+        Trở thành đối tác của chúng tôi
+      </h2>
+      <p class="text-[17px] text-gray-600 mb-8 font-light">
+        Liên hệ với chúng tôi để tìm hiểu thêm về các cơ hội hợp tác
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a 
+          href="tel:+84947776662"
+          class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-[15px] font-medium transition-all"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          Gọi ngay: 0947 776 662
+        </a>
+        <a 
+          href="/lien-he"
+          class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-gray-50 text-gray-900 rounded-xl text-[15px] font-medium transition-all border border-gray-200"
+        >
+          Liên hệ tư vấn
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

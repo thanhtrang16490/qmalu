@@ -1,0 +1,313 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { companyInfo } from '../data/company-info'
+
+const seoTitle = "Giới thiệu - Quang Minh | Sản xuất nhôm công nghiệp và năng lượng mặt trời"
+const seoDescription = "Quang Minh thành lập từ 2008, chuyên sản xuất nhôm A6005 và thiết bị năng lượng mặt trời. Nhà máy 3,000m² tại KCN Nguyên Khê, Hà Nội. Ứng dụng công nghệ tiên tiến, phục vụ thị trường trong nước và quốc tế."
+const seoKeywords = [
+  "giới thiệu Quang Minh",
+  "về Quang Minh",
+  "công ty nhôm công nghiệp",
+  "lịch sử Quang Minh",
+  "tầm nhìn sứ mệnh",
+  "nhôm A6005",
+  "năng lượng mặt trời",
+  "KCN Nguyên Khê",
+  "thành lập 2008"
+]
+---
+
+<BaseLayout 
+  title={seoTitle}
+  description={seoDescription}
+  keywords={seoKeywords}
+  canonical="/gioi-thieu"
+>
+  <!-- Hero Section -->
+  <section class="pt-24 md:pt-32 pb-16 md:pb-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 md:mb-16">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold text-gray-900 mb-4 tracking-tight leading-tight">
+          Về Quang Minh
+        </h1>
+        <p class="text-lg sm:text-xl md:text-2xl text-gray-600 font-light max-w-3xl mx-auto leading-relaxed">
+          Chuyên sản xuất nhôm A6005 và thiết bị năng lượng mặt trời chất lượng cao
+        </p>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-semibold text-gray-900 mb-2">2008</div>
+          <div class="text-[13px] md:text-[15px] text-gray-600">Năm thành lập</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-semibold text-gray-900 mb-2">3,000m²</div>
+          <div class="text-[13px] md:text-[15px] text-gray-600">Diện tích nhà máy</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-semibold text-gray-900 mb-2">35+</div>
+          <div class="text-[13px] md:text-[15px] text-gray-600">Nhân viên</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-semibold text-gray-900 mb-2">1,000+</div>
+          <div class="text-[13px] md:text-[15px] text-gray-600">Khách hàng</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="py-16 md:py-20 bg-[#f5f5f7]">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <!-- Mission -->
+        <div class="bg-white rounded-2xl p-8 md:p-10">
+          <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h2 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-4 tracking-tight">Sứ mệnh</h2>
+          <p class="text-[15px] md:text-[17px] text-gray-600 leading-relaxed">
+            {companyInfo.mission}
+          </p>
+        </div>
+
+        <!-- Vision -->
+        <div class="bg-white rounded-2xl p-8 md:p-10">
+          <div class="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+          </div>
+          <h2 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-4 tracking-tight">Tầm nhìn</h2>
+          <p class="text-[15px] md:text-[17px] text-gray-600 leading-relaxed">
+            {companyInfo.vision}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 md:mb-16">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900 mb-3 tracking-tight">
+          Giá trị cốt lõi
+        </h2>
+        <p class="text-[17px] text-gray-600 font-light">
+          Những giá trị định hướng mọi hoạt động của chúng tôi
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        {companyInfo.coreValues.slice(0, 3).map((value) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-[#f5f5f7] rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">{value.title}</h3>
+            <p class="text-[15px] text-gray-600 leading-relaxed">
+              {value.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-8">
+        {companyInfo.coreValues.slice(3, 6).map((value) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-[#f5f5f7] rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">{value.title}</h3>
+            <p class="text-[15px] text-gray-600 leading-relaxed">
+              {value.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="py-16 md:py-20 bg-[#f5f5f7]">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 md:mb-16">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900 mb-3 tracking-tight">
+          Chứng nhận & Tiêu chuẩn
+        </h2>
+        <p class="text-[17px] text-gray-600 font-light">
+          Cam kết chất lượng được công nhận quốc tế
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+        {companyInfo.certifications.map((cert, index) => (
+          <div class="bg-white rounded-2xl p-6 text-center">
+            <div class="text-4xl mb-3">
+              {index === 0 ? '📋' : index === 1 ? '🏆' : index === 2 ? '✓' : index === 3 ? '🔬' : '⚙️'}
+            </div>
+            <h3 class="text-[15px] font-semibold text-gray-900 mb-1">{cert.name || cert.nameVi}</h3>
+            <p class="text-[13px] text-gray-600">{cert.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-[692px] mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12 md:mb-16">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900 mb-3 tracking-tight">
+          Hành trình phát triển
+        </h2>
+        <p class="text-[17px] text-gray-600 font-light">
+          16 năm không ngừng đổi mới
+        </p>
+      </div>
+
+      <div class="space-y-8">
+        <!-- 2008 -->
+        <div class="flex gap-6">
+          <div class="flex-shrink-0 w-20 text-right">
+            <div class="text-2xl font-semibold text-gray-900">2008</div>
+          </div>
+          <div class="flex-1 pb-8 border-b border-gray-200">
+            <h3 class="text-[17px] font-semibold text-gray-900 mb-2">Thành lập</h3>
+            <p class="text-[15px] text-gray-600">
+              Khởi đầu hành trình tại KCN Nguyên Khê, chuyên sản xuất nhôm và thiết bị năng lượng mặt trời
+            </p>
+          </div>
+        </div>
+
+        <!-- 2013 -->
+        <div class="flex gap-6">
+          <div class="flex-shrink-0 w-20 text-right">
+            <div class="text-2xl font-semibold text-gray-900">2013</div>
+          </div>
+          <div class="flex-1 pb-8 border-b border-gray-200">
+            <h3 class="text-[17px] font-semibold text-gray-900 mb-2">Đăng ký chính thức</h3>
+            <p class="text-[15px] text-gray-600">
+              Đăng ký kinh doanh chính thức với mã số thuế 0106124982
+            </p>
+          </div>
+        </div>
+
+        <!-- 2016 -->
+        <div class="flex gap-6">
+          <div class="flex-shrink-0 w-20 text-right">
+            <div class="text-2xl font-semibold text-gray-900">2016</div>
+          </div>
+          <div class="flex-1 pb-8 border-b border-gray-200">
+            <h3 class="text-[17px] font-semibold text-gray-900 mb-2">Mở rộng sản xuất</h3>
+            <p class="text-[15px] text-gray-600">
+              Đầu tư dây chuyền công nghệ hiện đại, tăng công suất lên 3,000m²
+            </p>
+          </div>
+        </div>
+
+        <!-- 2020 -->
+        <div class="flex gap-6">
+          <div class="flex-shrink-0 w-20 text-right">
+            <div class="text-2xl font-semibold text-gray-900">2020</div>
+          </div>
+          <div class="flex-1 pb-8 border-b border-gray-200">
+            <h3 class="text-[17px] font-semibold text-gray-900 mb-2">Chứng nhận chất lượng</h3>
+            <p class="text-[15px] text-gray-600">
+              Đạt các chứng nhận chất lượng và kiểm nghiệm sản phẩm
+            </p>
+          </div>
+        </div>
+
+        <!-- 2024 -->
+        <div class="flex gap-6">
+          <div class="flex-shrink-0 w-20 text-right">
+            <div class="text-2xl font-semibold text-gray-900">2024</div>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-[17px] font-semibold text-gray-900 mb-2">1,000+ Khách hàng</h3>
+            <p class="text-[15px] text-gray-600">
+              Được tin dùng bởi hơn 1,000 khách hàng và 100 đơn vị hợp tác trên toàn quốc
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Info -->
+  <section class="py-16 md:py-20 bg-[#f5f5f7]">
+    <div class="max-w-[692px] mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-8 text-center tracking-tight">
+        Thông tin công ty
+      </h2>
+      <div class="bg-white rounded-2xl p-8 md:p-10">
+        <div class="space-y-6">
+          <div class="flex justify-between items-center pb-6 border-b border-gray-200">
+            <span class="text-[15px] text-gray-600">Tên công ty</span>
+            <span class="text-[15px] font-medium text-gray-900 text-right">{companyInfo.name}</span>
+          </div>
+          <div class="flex justify-between items-center pb-6 border-b border-gray-200">
+            <span class="text-[15px] text-gray-600">Tên quốc tế</span>
+            <span class="text-[15px] font-medium text-gray-900 text-right">{companyInfo.englishName}</span>
+          </div>
+          <div class="flex justify-between items-center pb-6 border-b border-gray-200">
+            <span class="text-[15px] text-gray-600">Năm thành lập</span>
+            <span class="text-[15px] font-medium text-gray-900">{companyInfo.history.founded}</span>
+          </div>
+          <div class="flex justify-between items-center pb-6 border-b border-gray-200">
+            <span class="text-[15px] text-gray-600">Lĩnh vực</span>
+            <span class="text-[15px] font-medium text-gray-900 text-right">Nhôm công nghiệp & Năng lượng mặt trời</span>
+          </div>
+          <div class="flex justify-between items-center pb-6 border-b border-gray-200">
+            <span class="text-[15px] text-gray-600">Địa điểm</span>
+            <span class="text-[15px] font-medium text-gray-900 text-right">{companyInfo.contact.factory}</span>
+          </div>
+          <div class="flex justify-between items-center pb-6 border-b border-gray-200">
+            <span class="text-[15px] text-gray-600">Diện tích</span>
+            <span class="text-[15px] font-medium text-gray-900">{companyInfo.capacity.factoryArea}</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-[15px] text-gray-600">Nhân viên</span>
+            <span class="text-[15px] font-medium text-gray-900">{companyInfo.capacity.employees}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-[692px] mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-4 tracking-tight">
+        Sẵn sàng hợp tác?
+      </h2>
+      <p class="text-[17px] text-gray-600 mb-8 font-light">
+        Hãy để chúng tôi đồng hành cùng bạn
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a 
+          href="/lien-he"
+          class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-[15px] font-medium transition-all"
+        >
+          Liên hệ ngay
+        </a>
+        <a 
+          href="/san-pham"
+          class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-gray-50 text-gray-900 rounded-xl text-[15px] font-medium transition-all border border-gray-200"
+        >
+          Xem sản phẩm
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

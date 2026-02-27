@@ -1,0 +1,387 @@
+---
+const lang = 'cn'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import { getProducts, getCategories } from '../../../lib/supabase'
+
+const seoTitle = "产品 - 光明 | 铝导轨、太阳能夹具、A6005-T6配件"
+const seoDescription = "光明铝产品目录：A6005-T6铝导轨、中间夹/端夹、L型支架、太阳能系统接地配件。高质量，有竞争力的价格。"
+const seoKeywords = [
+  "铝太阳能导轨",
+  "中间夹端夹",
+  "L型支架铝",
+  "太阳能配件",
+  "铝A6005-T6",
+  "QM Solar",
+  "光明",
+  "导轨连接器",
+  "seamlook夹",
+  "接地配件",
+  "太阳能配件"
+]
+
+// Get query parameters
+const url = new URL(Astro.request.url)
+const categoryFilter = url.searchParams.get('category') || 'all'
+const searchQuery = url.searchParams.get('search') || ''
+
+// Fetch data from Supabase
+const allProducts = await getProducts(undefined, Astro.url.pathname)
+const apiCategories = await getCategories(Astro.url.pathname)
+
+const categories = [
+  { id: 'all', name: '全部', icon: '🏭' },
+  ...apiCategories
+]
+
+// Count products per category
+const categoriesWithCount = categories.map(cat => {
+  const count = cat.id === 'all' 
+    ? allProducts.length 
+    : allProducts.filter(p => p.category_id === cat.id).length
+  return { ...cat, count }
+}).filter(cat => cat.count > 0)
+
+// Filter products
+let filteredProducts = allProducts
+
+if (categoryFilter !== 'all') {
+  filteredProducts = filteredProducts.filter(p => p.category_id === categoryFilter)
+}
+
+if (searchQuery) {
+  filteredProducts = filteredProducts.filter(p => 
+    p.name.toLowerCase().includes(searchQuery.toLowerCase())
+  )
+}
+
+function formatPrice(price: number): string {
+  return new Intl.NumberFormat('vi-VN').format(price)
+}
+---
+
+<BaseLayout 
+  title={seoTitle}
+  description={seoDescription}
+  keywords={seoKeywords}
+  canonical="/cn/products"
+>
+  <!-- Hero Section - Apple Style -->
+  <section class="pt-24 md:pt-32 pb-12 md:pb-16 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8 md:mb-12">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold text-gray-900 mb-4 tracking-tight leading-tight">
+          产品
+        </h1>
+        <p class="text-lg sm:text-xl md:text-2xl text-gray-600 font-light max-w-2xl mx-auto">
+          太阳能系统的高质量铝配件
+        </p>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="max-w-[692px] mx-auto mb-8">
+        <form method="get" class="relative">
+          <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            type="search"
+            name="search"
+            placeholder="搜索产品..."
+            value={searchQuery}
+            class="w-full pl-12 pr-4 py-3 bg-[#f5f5f7] rounded-xl text-[15px] focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+          />
+          <input type="hidden" name="category" value={categoryFilter} />
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Filter -->
+  <section class="py-6 bg-white border-b border-gray-200">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex gap-2 overflow-x-auto scrollbar-hide pb-2">
+        {categoriesWithCount.map((cat) => (
+          <button
+            type="button"
+            data-category-id={cat.id}
+            class={`category-filter-btn flex-shrink-0 px-4 py-2 rounded-full text-[13px] font-medium transition-all ${
+              categoryFilter === cat.id
+                ? 'bg-gray-900 text-white'
+                : 'bg-[#f5f5f7] text-gray-900 hover:bg-[#e8e8ed]'
+            }`}
+          >
+            <span class="mr-1.5">{cat.icon}</span>
+            {cat.name}
+            <span class="ml-1.5 opacity-60 category-count">({cat.count})</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="py-12 md:py-16 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Result count -->
+      <div class="mb-6">
+        <p class="text-[13px] text-gray-600">
+          <span class="result-count">{filteredProducts.length} 个产品</span>
+        </p>
+      </div>
+
+      <!-- No Results Message -->
+      <div id="no-results" class="text-center py-20" style={filteredProducts.length > 0 ? 'display: none;' : ''}>
+        <svg class="w-20 h-20 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+        </svg>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">未找到产品</h3>
+        <p id="no-results-message" class="text-[15px] text-gray-600 mb-6">尝试使用不同的关键词搜索或选择其他类别</p>
+        <a href="/cn/products" class="inline-block px-6 py-3 bg-blue-600 text-white rounded-xl text-[15px] font-medium hover:bg-blue-700 transition-all">
+          查看所有产品
+        </a>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="products-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4 md:gap-5 lg:gap-6" style={filteredProducts.length === 0 ? 'display: none;' : ''}>
+        {allProducts.map((product) => (
+          <a 
+            href={`/cn/products/${product.slug}`}
+            class="product-card group bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300"
+            data-product-name={product.name.toLowerCase()}
+            data-product-description={(product.description || '').toLowerCase()}
+            data-category-id={product.category_id}
+            style={
+              (categoryFilter !== 'all' && product.category_id !== categoryFilter) ||
+              (searchQuery && !product.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                ? 'display: none;'
+                : ''
+            }
+          >
+            <!-- Product Image -->
+            <div class="aspect-square bg-[#f5f5f7] overflow-hidden">
+              {product.image_url ? (
+                <img 
+                  src={product.image_url} 
+                  alt={product.name}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center">
+                  <svg class="w-16 h-16 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                  </svg>
+                </div>
+              )}
+            </div>
+
+            <!-- Product Info -->
+            <div class="p-4">
+              <h3 class="text-[15px] font-semibold text-gray-900 mb-1 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                {product.name}
+              </h3>
+              
+              {product.description && (
+                <p class="text-[13px] text-gray-600 mb-2 line-clamp-2">
+                  {product.description}
+                </p>
+              )}
+
+              <div class="flex items-baseline gap-2">
+                {product.price !== null ? (
+                  <>
+                    <span class="text-[17px] font-semibold text-gray-900">
+                      {formatPrice(product.price)}đ
+                    </span>
+                    {product.unit && (
+                      <span class="text-[13px] text-gray-500">
+                        /{product.unit}
+                      </span>
+                    )}
+                  </>
+                ) : (
+                  <span class="text-[15px] font-medium text-blue-600">
+                    联系报价
+                  </span>
+                )}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 bg-[#f5f5f7]">
+    <div class="max-w-[692px] mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-3xl sm:text-4xl font-semibold text-gray-900 mb-4 tracking-tight">
+        需要咨询？
+      </h2>
+      <p class="text-[17px] text-gray-600 mb-8 font-light">
+        我们的专家团队随时准备帮助您选择合适的产品
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a 
+          href="tel:+84947776662"
+          class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-[15px] font-medium transition-all"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          立即致电：0947 776 662
+        </a>
+        <a 
+          href="/cn/contact"
+          class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-gray-50 text-gray-900 rounded-xl text-[15px] font-medium transition-all border border-gray-200"
+        >
+          联系咨询
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.querySelector('input[name="search"]') as HTMLInputElement;
+      const productsGrid = document.getElementById('products-grid') as HTMLElement;
+      const noResultsDiv = document.getElementById('no-results') as HTMLElement;
+      const noResultsMessage = document.getElementById('no-results-message') as HTMLElement;
+      const resultCount = document.querySelector('.result-count') as HTMLElement;
+      const categoryButtons = document.querySelectorAll('.category-filter-btn') as NodeListOf<HTMLButtonElement>;
+      
+      if (!searchInput || !productsGrid) {
+        console.error('Search elements not found');
+        return;
+      }
+
+      const allProductCards = Array.from(document.querySelectorAll('.product-card')) as HTMLElement[];
+      
+      let currentCategory = 'all';
+      let currentSearch = '';
+
+      function debounce(func: Function, wait: number) {
+        let timeout: ReturnType<typeof setTimeout>;
+        return function executedFunction(...args: any[]) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
+      function filterProducts(searchTerm: string = currentSearch, categoryId: string = currentCategory) {
+        const term = searchTerm.toLowerCase().trim();
+        currentSearch = searchTerm;
+        currentCategory = categoryId;
+        
+        let visibleCount = 0;
+        
+        allProductCards.forEach((card) => {
+          const productName = card.getAttribute('data-product-name') || '';
+          const productDesc = card.getAttribute('data-product-description') || '';
+          const productCategory = card.getAttribute('data-category-id') || '';
+          
+          const searchMatches = term === '' || 
+                               productName.includes(term) || 
+                               productDesc.includes(term);
+          
+          const categoryMatches = categoryId === 'all' || productCategory === categoryId;
+          
+          if (searchMatches && categoryMatches) {
+            card.style.display = '';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (resultCount) {
+          resultCount.textContent = `${visibleCount} 个产品`;
+        }
+
+        if (visibleCount === 0) {
+          productsGrid.style.display = 'none';
+          if (noResultsDiv) {
+            noResultsDiv.style.display = 'block';
+            if (noResultsMessage) {
+              if (term) {
+                noResultsMessage.textContent = `未找到关键词"${searchTerm}"的产品`;
+              } else {
+                noResultsMessage.textContent = '此类别中未找到产品';
+              }
+            }
+          }
+        } else {
+          productsGrid.style.display = 'grid';
+          if (noResultsDiv) {
+            noResultsDiv.style.display = 'none';
+          }
+        }
+      }
+
+      function updateCategoryButtons(activeCategoryId: string) {
+        categoryButtons.forEach((btn) => {
+          const btnCategoryId = btn.getAttribute('data-category-id') || '';
+          if (btnCategoryId === activeCategoryId) {
+            btn.classList.remove('bg-[#f5f5f7]', 'text-gray-900', 'hover:bg-[#e8e8ed]');
+            btn.classList.add('bg-gray-900', 'text-white');
+          } else {
+            btn.classList.remove('bg-gray-900', 'text-white');
+            btn.classList.add('bg-[#f5f5f7]', 'text-gray-900', 'hover:bg-[#e8e8ed]');
+          }
+        });
+      }
+
+      categoryButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const categoryId = btn.getAttribute('data-category-id') || 'all';
+          updateCategoryButtons(categoryId);
+          filterProducts(currentSearch, categoryId);
+        });
+      });
+
+      const debouncedFilter = debounce((value: string) => {
+        filterProducts(value, currentCategory);
+      }, 300);
+
+      searchInput.addEventListener('input', (e) => {
+        const target = e.target as HTMLInputElement;
+        debouncedFilter(target.value);
+      });
+
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          filterProducts(searchInput.value, currentCategory);
+        }
+      });
+
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          searchInput.value = '';
+          filterProducts('', currentCategory);
+        }
+      });
+    });
+  </script>
+</BaseLayout>
