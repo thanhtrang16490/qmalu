@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "serve dist -l 3000",
+    "start": "serve dist -l 4321",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
