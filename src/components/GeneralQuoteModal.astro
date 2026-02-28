@@ -1263,14 +1263,23 @@ const productsJson = JSON.stringify(products.map(p => ({
 
       console.log('[PNG Preview] Rendering with html2canvas...')
 
-      const canvas = await html2canvas(tempContainer, {
-        scale: 2,
+      // Add timeout to prevent infinite loading
+      const renderPromise = html2canvas(tempContainer, {
+        scale: 1.5, // Reduce scale for mobile performance
         useCORS: true,
-        logging: false,
+        logging: true, // Enable logging to see what's happening
         backgroundColor: '#ffffff',
         allowTaint: true,
-        foreignObjectRendering: false
+        foreignObjectRendering: false,
+        imageTimeout: 15000, // 15 second timeout for images
+        removeContainer: true
       })
+
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Rendering timeout after 30 seconds')), 30000)
+      )
+
+      const canvas = await Promise.race([renderPromise, timeoutPromise])
 
       console.log('[PNG Preview] Canvas created, cleaning up...')
 
