@@ -360,8 +360,8 @@ const productsJson = JSON.stringify(products.map(p => ({
           <button type="submit" id="submit-button" form="general-quote-form" class="hidden flex-1 px-4 py-3.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 active:scale-98 transition-all text-sm font-medium touch-manipulation">{t.submit}</button>
         </div>
         
-        <!-- Download actions row -->
-        <div class="flex gap-2">
+        <!-- Download actions row - Hidden on mobile -->
+        <div class="hidden gap-2">
           <button type="button" id="preview-quote-button" class="flex-1 px-3 py-2.5 border border-gray-600 text-gray-700 rounded-lg hover:bg-gray-50 active:scale-98 transition-all text-xs font-medium flex items-center justify-center gap-1.5 touch-manipulation">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
