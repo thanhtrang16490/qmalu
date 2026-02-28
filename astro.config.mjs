@@ -16,8 +16,9 @@ export default defineConfig({
       },
     }),
   ],
-  output: 'static',
+  output: 'hybrid',
   site: 'https://qmalu.com',
+  adapter: undefined, // Will be configured based on deployment platform
   
   // Security Headers - Applied at build time for static hosting
   // For additional security, configure these at your CDN/edge (Cloudflare, Vercel, Nginx)
