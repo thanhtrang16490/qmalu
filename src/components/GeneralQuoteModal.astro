@@ -581,7 +581,12 @@ const productsJson = JSON.stringify(products.map(p => ({
     const panelWatt = parseInt(panelTypeSelect.value) || 550
 
     if (capacity === 0) {
-      alert(lang === 'vi' ? 'Vui lòng nhập công suất hệ thống' : lang === 'en' ? 'Please enter system capacity' : '请输入系统容量')
+      showToast(
+        lang === 'vi' ? 'Vui lòng nhập công suất hệ thống' : 
+        lang === 'en' ? 'Please enter system capacity' : 
+        '请输入系统容量',
+        'error'
+      )
       return
     }
 
@@ -922,7 +927,12 @@ const productsJson = JSON.stringify(products.map(p => ({
     nextButton.addEventListener('click', () => {
       // Check if at least one product is selected
       if (Object.keys(selectedProducts).length === 0) {
-        alert(lang === 'vi' ? 'Vui lòng chọn ít nhất một sản phẩm' : lang === 'en' ? 'Please select at least one product' : '请至少选择一个产品')
+        showToast(
+          lang === 'vi' ? 'Vui lòng chọn ít nhất một sản phẩm' : 
+          lang === 'en' ? 'Please select at least one product' : 
+          '请至少选择一个产品',
+          'error'
+        )
         return
       }
       currentStep = 2
@@ -934,7 +944,12 @@ const productsJson = JSON.stringify(products.map(p => ({
     nextButtonDesktop.addEventListener('click', () => {
       // Check if at least one product is selected
       if (Object.keys(selectedProducts).length === 0) {
-        alert(lang === 'vi' ? 'Vui lòng chọn ít nhất một sản phẩm' : lang === 'en' ? 'Please select at least one product' : '请至少选择一个产品')
+        showToast(
+          lang === 'vi' ? 'Vui lòng chọn ít nhất một sản phẩm' : 
+          lang === 'en' ? 'Please select at least one product' : 
+          '请至少选择一个产品',
+          'error'
+        )
         return
       }
       currentStep = 2
@@ -1056,7 +1071,12 @@ const productsJson = JSON.stringify(products.map(p => ({
   
   async function shareQuote() {
     if (Object.keys(selectedProducts).length === 0) {
-      alert(lang === 'vi' ? 'Vui lòng chọn sản phẩm trước' : lang === 'en' ? 'Please select products first' : '请先选择产品')
+      showToast(
+        lang === 'vi' ? 'Vui lòng chọn sản phẩm trước' : 
+        lang === 'en' ? 'Please select products first' : 
+        '请先选择产品',
+        'error'
+      )
       return
     }
 
@@ -1151,14 +1171,24 @@ const productsJson = JSON.stringify(products.map(p => ({
 
   async function showPNGPreviewModal() {
     if (Object.keys(selectedProducts).length === 0) {
-      alert(lang === 'vi' ? 'Vui lòng chọn sản phẩm trước' : lang === 'en' ? 'Please select products first' : '请先选择产品')
+      showToast(
+        lang === 'vi' ? 'Vui lòng chọn sản phẩm trước' : 
+        lang === 'en' ? 'Please select products first' : 
+        '请先选择产品',
+        'error'
+      )
       return
     }
 
     try {
       // Generate PNG and show in modal
       if (typeof window.html2canvas === 'undefined') {
-        alert('PNG library is loading, please try again in a moment')
+        showToast(
+          lang === 'vi' ? 'Thư viện đang tải, vui lòng thử lại' : 
+          lang === 'en' ? 'Library is loading, please try again' : 
+          '库正在加载，请重试',
+          'info'
+        )
         return
       }
 
@@ -1224,14 +1254,24 @@ const productsJson = JSON.stringify(products.map(p => ({
 
     } catch (error) {
       console.error('Error showing PNG preview:', error)
-      alert(lang === 'vi' ? 'Có lỗi khi xem trước. Vui lòng thử lại.' : lang === 'en' ? 'Error showing preview. Please try again.' : '预览时出错。请重试。')
+      showToast(
+        lang === 'vi' ? 'Có lỗi khi xem trước. Vui lòng thử lại.' : 
+        lang === 'en' ? 'Error showing preview. Please try again.' : 
+        '预览时出错。请重试。',
+        'error'
+      )
       closePreview()
     }
   }
 
   function showPreview() {
     if (Object.keys(selectedProducts).length === 0) {
-      alert(lang === 'vi' ? 'Vui lòng chọn sản phẩm trước' : lang === 'en' ? 'Please select products first' : '请先选择产品')
+      showToast(
+        lang === 'vi' ? 'Vui lòng chọn sản phẩm trước' : 
+        lang === 'en' ? 'Please select products first' : 
+        '请先选择产品',
+        'error'
+      )
       return
     }
 
@@ -1430,13 +1470,23 @@ const productsJson = JSON.stringify(products.map(p => ({
 
   async function downloadPDF() {
     if (Object.keys(selectedProducts).length === 0) {
-      alert(lang === 'vi' ? 'Vui lòng chọn sản phẩm trước khi tải PDF' : lang === 'en' ? 'Please select products before downloading PDF' : '请在下载PDF之前选择产品')
+      showToast(
+        lang === 'vi' ? 'Vui lòng chọn sản phẩm trước khi tải PDF' : 
+        lang === 'en' ? 'Please select products before downloading PDF' : 
+        '请在下载PDF之前选择产品',
+        'error'
+      )
       return
     }
 
     // Check if libraries are loaded
     if (typeof window.jspdf === 'undefined' || typeof window.html2canvas === 'undefined') {
-      alert('PDF library is loading, please try again in a moment')
+      showToast(
+        lang === 'vi' ? 'Thư viện đang tải, vui lòng thử lại' : 
+        lang === 'en' ? 'Library is loading, please try again' : 
+        '库正在加载，请重试',
+        'info'
+      )
       return
     }
 
@@ -1525,7 +1575,12 @@ const productsJson = JSON.stringify(products.map(p => ({
 
     } catch (error) {
       console.error('Error generating PDF:', error)
-      alert(lang === 'vi' ? 'Có lỗi khi tạo PDF. Vui lòng thử lại.' : lang === 'en' ? 'Error generating PDF. Please try again.' : '生成PDF时出错。请重试。')
+      showToast(
+        lang === 'vi' ? 'Có lỗi khi tạo PDF. Vui lòng thử lại.' : 
+        lang === 'en' ? 'Error generating PDF. Please try again.' : 
+        '生成PDF时出错。请重试。',
+        'error'
+      )
       downloadPDFButton.textContent = t.downloadPDF
       downloadPDFButton.disabled = false
     }
@@ -1533,13 +1588,23 @@ const productsJson = JSON.stringify(products.map(p => ({
 
   async function downloadPNG() {
     if (Object.keys(selectedProducts).length === 0) {
-      alert(lang === 'vi' ? 'Vui lòng chọn sản phẩm trước khi tải PNG' : lang === 'en' ? 'Please select products before downloading PNG' : '请在下载PNG之前选择产品')
+      showToast(
+        lang === 'vi' ? 'Vui lòng chọn sản phẩm trước khi tải PNG' : 
+        lang === 'en' ? 'Please select products before downloading PNG' : 
+        '请在下载PNG之前选择产品',
+        'error'
+      )
       return
     }
 
     // Check if html2canvas is loaded
     if (typeof window.html2canvas === 'undefined') {
-      alert('PNG library is loading, please try again in a moment')
+      showToast(
+        lang === 'vi' ? 'Thư viện đang tải, vui lòng thử lại' : 
+        lang === 'en' ? 'Library is loading, please try again' : 
+        '库正在加载，请重试',
+        'info'
+      )
       return
     }
 
@@ -1610,7 +1675,12 @@ const productsJson = JSON.stringify(products.map(p => ({
 
     } catch (error) {
       console.error('Error generating PNG:', error)
-      alert(lang === 'vi' ? 'Có lỗi khi tạo PNG. Vui lòng thử lại.' : lang === 'en' ? 'Error generating PNG. Please try again.' : '生成PNG时出错。请重试。')
+      showToast(
+        lang === 'vi' ? 'Có lỗi khi tạo PNG. Vui lòng thử lại.' : 
+        lang === 'en' ? 'Error generating PNG. Please try again.' : 
+        '生成PNG时出错。请重试。',
+        'error'
+      )
       if (downloadPNGButton) {
         downloadPNGButton.textContent = t.downloadPNG
         downloadPNGButton.disabled = false
