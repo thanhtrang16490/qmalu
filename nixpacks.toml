@@ -1,17 +1,18 @@
-# Nixpacks Configuration for appejv-web (Astro)
-
 [phases.setup]
-nixPkgs = ["nodejs_20"]
+nixPkgs = ["nodejs_20", "chromium"]
 
 [phases.install]
-cmds = ["npm install --legacy-peer-deps"]
+cmds = ["npm ci --legacy-peer-deps"]
 
 [phases.build]
 cmds = ["npm run build"]
 
 [start]
-cmd = "npx serve dist -p $PORT --no-port-switching --no-clipboard"
+cmd = "node dist/server/entry.mjs"
 
 [variables]
-PORT = "4321"
 NODE_ENV = "production"
+HOST = "0.0.0.0"
+PORT = "3000"
+PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
+PUPPETEER_EXECUTABLE_PATH = "/nix/store/*-chromium-*/bin/chromium"

@@ -15,13 +15,20 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     console.log('[Server] Starting browser...');
+    
+    // Use system Chromium if available (for production)
+    const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || undefined;
+    
     const browser = await puppeteer.launch({
       headless: true,
+      executablePath,
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
         '--disable-dev-shm-usage',
-        '--disable-gpu'
+        '--disable-gpu',
+        '--disable-software-rasterizer',
+        '--disable-extensions'
       ]
     });
 
