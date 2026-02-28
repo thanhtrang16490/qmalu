@@ -487,61 +487,61 @@ export const homepageContent: HomepageContent = {
       {
         id: 'iso-9001',
         name: 'ISO 9001:2015',
-        logo: '/images/badges/iso-9001.svg',
+        logo: '/partners/placeholder-logo.svg',
         type: 'certification'
       },
       {
         id: 'iso-14001',
         name: 'ISO 14001:2015',
-        logo: '/images/badges/iso-14001.svg',
+        logo: '/partners/placeholder-logo.svg',
         type: 'certification'
       },
       {
         id: 'quacert',
         name: 'Quacert',
-        logo: '/images/badges/quacert.svg',
+        logo: '/partners/placeholder-logo.svg',
         type: 'certification'
       },
       {
         id: 'vinacert',
         name: 'Vinacert',
-        logo: '/images/badges/vinacert.svg',
+        logo: '/partners/placeholder-logo.svg',
         type: 'certification'
       },
       {
-        id: 'partner-1',
-        name: 'Vingroup',
-        logo: '/images/badges/vingroup.svg',
+        id: 'partner-tisco',
+        name: 'Tisco',
+        logo: '/partners/tisco.png',
         type: 'partner'
       },
       {
-        id: 'partner-2',
+        id: 'partner-hoa-phat',
         name: 'Hòa Phát',
-        logo: '/images/badges/hoa-phat.svg',
+        logo: '/partners/hoa-phat.png',
         type: 'partner'
       },
       {
-        id: 'partner-3',
-        name: 'Coteccons',
-        logo: '/images/badges/coteccons.svg',
+        id: 'partner-vinacomin',
+        name: 'Vinacomin',
+        logo: '/partners/vinacomin.png',
         type: 'partner'
       },
       {
-        id: 'partner-4',
-        name: 'Hưng Thịnh',
-        logo: '/images/badges/hung-thinh.svg',
+        id: 'partner-vas',
+        name: 'VAS Steel',
+        logo: '/partners/vas-steel.png',
         type: 'partner'
       },
       {
-        id: 'partner-5',
-        name: 'Novaland',
-        logo: '/images/badges/novaland.svg',
+        id: 'partner-komatsu',
+        name: 'Komatsu',
+        logo: '/partners/komatsu.png',
         type: 'partner'
       },
       {
-        id: 'partner-6',
-        name: 'Vinhomes',
-        logo: '/images/badges/vinhomes.svg',
+        id: 'partner-scg',
+        name: 'SCG',
+        logo: '/partners/scg.png',
         type: 'partner'
       }
     ],

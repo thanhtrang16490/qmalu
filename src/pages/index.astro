@@ -1265,4 +1265,93 @@ const whyChooseUs = [
       background-color: rgba(255, 255, 255, 0.2);
     }
   </style>
+
+  <script>
+    // Note: scroll-animations.ts, parallax.ts, custom-cursor.ts, magnetic-buttons.ts, 
+    // and section-transitions.ts already have auto-initialization built-in.
+    // They will initialize automatically when the page loads.
+    
+    console.log('🎨 Homepage effects loading...');
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e: Event) {
+        const element = e.currentTarget as HTMLAnchorElement;
+        const href = element.getAttribute('href');
+        if (href && href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
+    });
+
+    // Scroll indicator fade out on scroll
+    let lastScrollTop = 0;
+    const scrollIndicator = document.querySelector('.scroll-indicator') as HTMLElement | null;
+    
+    if (scrollIndicator) {
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 100) {
+          scrollIndicator.style.opacity = '0';
+        } else {
+          scrollIndicator.style.opacity = '1';
+        }
+        
+        lastScrollTop = scrollTop;
+      }, { passive: true });
+    }
+
+    // Animated counter for stats
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const observerOptions = {
+      threshold: 0.5,
+      rootMargin: '0px'
+    };
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+          entry.target.classList.add('counted');
+          const target = parseInt(entry.target.getAttribute('data-target') || '0');
+          const suffix = entry.target.getAttribute('data-suffix') || '';
+          const countUp = entry.target.getAttribute('data-countup') === 'true';
+          
+          if (countUp) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                entry.target.textContent = target + suffix;
+                clearInterval(timer);
+              } else {
+                entry.target.textContent = Math.floor(current) + suffix;
+              }
+            }, 30);
+          } else {
+            entry.target.textContent = target + suffix;
+          }
+        }
+      });
+    }, observerOptions);
+
+    statNumbers.forEach(stat => statsObserver.observe(stat));
+    
+    console.log('✅ Homepage interactive features initialized');
+  </script>
+  
+  <!-- Load effect libraries - they auto-initialize -->
+  <script src="../lib/scroll-animations.ts"></script>
+  <script src="../lib/parallax.ts"></script>
+  <script src="../lib/custom-cursor.ts"></script>
+  <script src="../lib/magnetic-buttons.ts"></script>
+  <script src="../lib/section-transitions.ts"></script>
 </BaseLayout>
