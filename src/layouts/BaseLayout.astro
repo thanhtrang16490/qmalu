@@ -327,9 +327,9 @@ const websiteSchema = {
               {currentLang === 'en' ? 'Contact' : currentLang === 'cn' ? '联系我们' : 'Liên hệ'}
             </a>
             <LanguageSwitcher />
-            <a href={`${APP_URL}/auth/login`} class="text-[12px] font-normal text-blue-600 hover:text-blue-700 transition-colors duration-200 tracking-tight">
-              {currentLang === 'en' ? 'Login' : currentLang === 'cn' ? '登录' : 'Đăng nhập'}
-            </a>
+            <button id="header-quote-button" class="text-[12px] font-normal text-blue-600 hover:text-blue-700 transition-colors duration-200 tracking-tight cursor-pointer">
+              {currentLang === 'en' ? 'Get Quote' : currentLang === 'cn' ? '获取报价' : 'Báo giá'}
+            </button>
           </nav>
 
           <!-- Mobile Menu Button -->
@@ -422,9 +422,9 @@ const websiteSchema = {
               </div>
             </div>
             
-            <a href={`${APP_URL}/auth/login`} class="mobile-menu-link block px-3 py-2.5 text-[14px] text-blue-600 hover:bg-gray-100/60 rounded-lg transition-colors font-normal">
-              {currentLang === 'en' ? 'Login' : currentLang === 'cn' ? '登录' : 'Đăng nhập'}
-            </a>
+            <button id="mobile-header-quote-button" class="mobile-menu-link block px-3 py-2.5 text-[14px] text-blue-600 hover:bg-gray-100/60 rounded-lg transition-colors font-normal cursor-pointer w-full text-left">
+              {currentLang === 'en' ? 'Get Quote' : currentLang === 'cn' ? '获取报价' : 'Báo giá'}
+            </button>
           </div>
         </nav>
       </div>
@@ -467,6 +467,34 @@ if (menuButton && menuClose && menu && overlay) {
             closeMenu();
           }
         });
+      }
+
+      // Quote button handlers - Open general quote modal
+      const headerQuoteBtn = document.getElementById('header-quote-button');
+      const mobileHeaderQuoteBtn = document.getElementById('mobile-header-quote-button');
+      const footerQuoteBtn = document.getElementById('footer-quote-button');
+
+      function openGeneralQuoteModal() {
+        // Dispatch custom event to open general quote modal
+        const event = new CustomEvent('openGeneralQuoteModal');
+        window.dispatchEvent(event);
+        
+        // Close mobile menu if open
+        if (menu && overlay && !menu.classList.contains('-translate-y-full')) {
+          menu.classList.add('-translate-y-full');
+          overlay.classList.add('opacity-0', 'pointer-events-none');
+          document.body.style.overflow = '';
+        }
+      }
+
+      if (headerQuoteBtn) {
+        headerQuoteBtn.addEventListener('click', openGeneralQuoteModal);
+      }
+      if (mobileHeaderQuoteBtn) {
+        mobileHeaderQuoteBtn.addEventListener('click', openGeneralQuoteModal);
+      }
+      if (footerQuoteBtn) {
+        footerQuoteBtn.addEventListener('click', openGeneralQuoteModal);
       }
 
       // Header scroll effect
@@ -674,9 +702,9 @@ if (menuButton && menuClose && menu && overlay) {
                 <li><a href={currentLang === 'en' ? '/en/contact' : currentLang === 'cn' ? '/cn/contact' : '/lien-he'} class="text-sm text-gray-600 hover:text-gray-900 transition-colors">
                   {currentLang === 'en' ? 'Contact' : currentLang === 'cn' ? '联系我们' : 'Liên hệ'}
                 </a></li>
-                <li><a href={`${APP_URL}/auth/login`} class="text-sm text-gray-600 hover:text-gray-900 transition-colors">
-                  {currentLang === 'en' ? 'Login' : currentLang === 'cn' ? '登录' : 'Đăng nhập'}
-                </a></li>
+                <li><button id="footer-quote-button" class="text-sm text-gray-600 hover:text-gray-900 transition-colors cursor-pointer">
+                  {currentLang === 'en' ? 'Get Quote' : currentLang === 'cn' ? '获取报价' : 'Báo giá'}
+                </button></li>
               </ul>
             </div>
 

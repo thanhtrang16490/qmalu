@@ -839,6 +839,9 @@ const productsJson = JSON.stringify(products.map(p => ({
   if (footerButton) footerButton.addEventListener('click', openModal)
   if (productButton) productButton.addEventListener('click', openModal)
 
+  // Listen for custom event from header/footer buttons
+  window.addEventListener('openGeneralQuoteModal', openModal)
+
   if (closeButton) closeButton.addEventListener('click', closeModal)
   if (cancelButton) cancelButton.addEventListener('click', closeModal)
   if (backdrop) backdrop.addEventListener('click', closeModal)
