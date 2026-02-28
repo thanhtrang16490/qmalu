@@ -419,8 +419,8 @@ const productsJson = JSON.stringify(products.map(p => ({
 <div id="preview-modal" class="fixed inset-0 z-[60] hidden items-center justify-center p-0 sm:p-4">
   <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="preview-backdrop"></div>
   
-  <div class="relative bg-white rounded-none sm:rounded-2xl shadow-2xl max-w-4xl w-full h-full sm:h-auto sm:max-h-[90vh] overflow-hidden flex flex-col">
-    <div class="sticky top-0 z-10 bg-white border-b border-gray-200 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between safe-area-inset-top">
+  <div class="relative bg-white rounded-none sm:rounded-2xl shadow-2xl max-w-4xl w-full h-full sm:h-auto sm:max-h-[90vh] overflow-hidden flex flex-col z-[61]">
+    <div class="sticky top-0 z-[62] bg-white border-b border-gray-200 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between safe-area-inset-top">
       <h2 class="text-lg sm:text-xl font-semibold text-gray-900">{t.previewQuote}</h2>
       <button id="close-preview-modal" class="p-2 hover:bg-gray-100 rounded-lg transition-colors touch-manipulation" aria-label="Close preview">
         <svg class="w-6 h-6 sm:w-5 sm:h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -429,11 +429,11 @@ const productsJson = JSON.stringify(products.map(p => ({
       </button>
     </div>
 
-    <div id="preview-content" class="flex-1 overflow-y-auto overscroll-contain p-0 sm:p-6 bg-gray-50 -webkit-overflow-scrolling-touch">
+    <div id="preview-content" class="flex-1 overflow-y-auto overscroll-contain p-0 sm:p-6 bg-gray-50 -webkit-overflow-scrolling-touch relative z-[61]">
       <!-- Preview content will be inserted here -->
     </div>
 
-    <div class="sticky bottom-0 border-t border-gray-200 px-4 sm:px-6 py-3 sm:py-4 bg-white flex flex-col sm:flex-row gap-2 sm:gap-3 justify-end safe-area-inset-bottom shadow-lg sm:shadow-none">
+    <div class="sticky bottom-0 z-[62] border-t border-gray-200 px-4 sm:px-6 py-3 sm:py-4 bg-white flex flex-col sm:flex-row gap-2 sm:gap-3 justify-end safe-area-inset-bottom shadow-lg sm:shadow-none">
       <button id="close-preview-button" class="w-full sm:w-auto px-4 py-3 sm:py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 active:scale-98 transition-all text-sm font-medium touch-manipulation">
         {t.cancel}
       </button>
