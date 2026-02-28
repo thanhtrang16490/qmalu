@@ -1,0 +1,281 @@
+---
+interface Props {
+  productName: string
+  productCode?: string
+  lang?: 'vi' | 'en' | 'cn'
+}
+
+const { productName, productCode, lang = 'vi' } = Astro.props
+
+const translations = {
+  vi: {
+    title: 'Nhận báo giá',
+    subtitle: 'Vui lòng điền thông tin để nhận báo giá chi tiết',
+    product: 'Sản phẩm',
+    name: 'Họ và tên',
+    namePlaceholder: 'Nguyễn Văn A',
+    phone: 'Số điện thoại',
+    phonePlaceholder: '0912 345 678',
+    email: 'Email',
+    emailPlaceholder: 'email@example.com',
+    company: 'Công ty',
+    companyPlaceholder: 'Tên công ty (không bắt buộc)',
+    quantity: 'Số lượng dự kiến',
+    quantityPlaceholder: 'VD: 100 thanh, 500 bộ',
+    message: 'Ghi chú',
+    messagePlaceholder: 'Yêu cầu đặc biệt hoặc câu hỏi...',
+    submit: 'Gửi yêu cầu báo giá',
+    cancel: 'Hủy',
+    required: 'Bắt buộc'
+  },
+  en: {
+    title: 'Request Quote',
+    subtitle: 'Please fill in the information to receive a detailed quote',
+    product: 'Product',
+    name: 'Full Name',
+    namePlaceholder: 'John Doe',
+    phone: 'Phone Number',
+    phonePlaceholder: '+84 912 345 678',
+    email: 'Email',
+    emailPlaceholder: 'email@example.com',
+    company: 'Company',
+    companyPlaceholder: 'Company name (optional)',
+    quantity: 'Expected Quantity',
+    quantityPlaceholder: 'E.g: 100 pieces, 500 sets',
+    message: 'Notes',
+    messagePlaceholder: 'Special requirements or questions...',
+    submit: 'Send Quote Request',
+    cancel: 'Cancel',
+    required: 'Required'
+  },
+  cn: {
+    title: '获取报价',
+    subtitle: '请填写信息以获取详细报价',
+    product: '产品',
+    name: '姓名',
+    namePlaceholder: '张三',
+    phone: '电话号码',
+    phonePlaceholder: '+84 912 345 678',
+    email: '电子邮件',
+    emailPlaceholder: 'email@example.com',
+    company: '公司',
+    companyPlaceholder: '公司名称（可选）',
+    quantity: '预计数量',
+    quantityPlaceholder: '例如：100根，500套',
+    message: '备注',
+    messagePlaceholder: '特殊要求或问题...',
+    submit: '发送报价请求',
+    cancel: '取消',
+    required: '必填'
+  }
+}
+
+const t = translations[lang]
+---
+
+<!-- Modal Backdrop and Container -->
+<div id="quote-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" id="modal-backdrop"></div>
+  
+  <!-- Modal -->
+  <div class="relative bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
+    <!-- Header -->
+    <div class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 rounded-t-2xl">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-xl font-semibold text-gray-900">{t.title}</h2>
+          <p class="text-sm text-gray-600 mt-1">{t.subtitle}</p>
+        </div>
+        <button
+          id="close-modal"
+          class="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+          aria-label="Close"
+        >
+          <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <form id="quote-form" class="p-6 space-y-4">
+      <!-- Product Info -->
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        <div class="text-xs font-medium text-blue-900 mb-1">{t.product}</div>
+        <div class="text-sm font-semibold text-blue-900">{productName}</div>
+        {productCode && (
+          <div class="text-xs text-blue-700 mt-1">Mã: {productCode}</div>
+        )}
+      </div>
+
+      <!-- Name -->
+      <div>
+        <label class="block text-sm font-medium text-gray-900 mb-1">
+          {t.name} <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          name="name"
+          required
+          placeholder={t.namePlaceholder}
+          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+        />
+      </div>
+
+      <!-- Phone -->
+      <div>
+        <label class="block text-sm font-medium text-gray-900 mb-1">
+          {t.phone} <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="tel"
+          name="phone"
+          required
+          placeholder={t.phonePlaceholder}
+          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+        />
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block text-sm font-medium text-gray-900 mb-1">
+          {t.email} <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder={t.emailPlaceholder}
+          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+        />
+      </div>
+
+      <!-- Company -->
+      <div>
+        <label class="block text-sm font-medium text-gray-900 mb-1">
+          {t.company}
+        </label>
+        <input
+          type="text"
+          name="company"
+          placeholder={t.companyPlaceholder}
+          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+        />
+      </div>
+
+      <!-- Quantity -->
+      <div>
+        <label class="block text-sm font-medium text-gray-900 mb-1">
+          {t.quantity}
+        </label>
+        <input
+          type="text"
+          name="quantity"
+          placeholder={t.quantityPlaceholder}
+          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+        />
+      </div>
+
+      <!-- Message -->
+      <div>
+        <label class="block text-sm font-medium text-gray-900 mb-1">
+          {t.message}
+        </label>
+        <textarea
+          name="message"
+          placeholder={t.messagePlaceholder}
+          rows="3"
+          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm resize-none"
+        ></textarea>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex gap-3 pt-2">
+        <button
+          type="button"
+          id="cancel-button"
+          class="flex-1 px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
+        >
+          {t.cancel}
+        </button>
+        <button
+          type="submit"
+          class="flex-1 px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+        >
+          {t.submit}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Modal functionality
+  const modal = document.getElementById('quote-modal')
+  const quoteButton = document.getElementById('quote-button')
+  const closeButton = document.getElementById('close-modal')
+  const cancelButton = document.getElementById('cancel-button')
+  const backdrop = document.getElementById('modal-backdrop')
+  const form = document.getElementById('quote-form')
+
+  function openModal() {
+    if (modal) {
+      modal.classList.remove('hidden')
+      modal.classList.add('flex')
+      document.body.style.overflow = 'hidden'
+    }
+  }
+
+  function closeModal() {
+    if (modal) {
+      modal.classList.add('hidden')
+      modal.classList.remove('flex')
+      document.body.style.overflow = ''
+    }
+  }
+
+  // Open modal
+  if (quoteButton) {
+    quoteButton.addEventListener('click', openModal)
+  }
+
+  // Close modal
+  if (closeButton) {
+    closeButton.addEventListener('click', closeModal)
+  }
+
+  if (cancelButton) {
+    cancelButton.addEventListener('click', closeModal)
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closeModal)
+  }
+
+  // Close on ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+      closeModal()
+    }
+  })
+
+  // Form submission
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      
+      const formData = new FormData(form as HTMLFormElement)
+      const data = Object.fromEntries(formData.entries())
+      
+      console.log('Quote request:', data)
+      
+      // Here you would send to your backend
+      // For now, just show success and close
+      alert('Cảm ơn! Chúng tôi sẽ liên hệ với bạn sớm.')
+      closeModal()
+      form.reset()
+    })
+  }
+</script>

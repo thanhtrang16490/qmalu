@@ -1,0 +1,1172 @@
+---
+interface Product {
+  id: string
+  name: string
+  price: number | null
+  unit: string
+}
+
+interface Props {
+  lang?: 'vi' | 'en' | 'cn'
+  products: Product[]
+}
+
+const { lang = 'vi', products = [] } = Astro.props
+
+const translations = {
+  vi: {
+    title: 'Nhận báo giá',
+    step1: 'Bước 1: Chọn sản phẩm',
+    step2: 'Bước 2: Thông tin liên hệ',
+    subtitle: 'Vui lòng điền thông tin để nhận báo giá chi tiết',
+    name: 'Họ và tên',
+    namePlaceholder: 'Nguyễn Văn A',
+    phone: 'Số điện thoại',
+    phonePlaceholder: '0912 345 678',
+    email: 'Email',
+    emailPlaceholder: 'email@example.com',
+    company: 'Công ty',
+    companyPlaceholder: 'Tên công ty (không bắt buộc)',
+    message: 'Ghi chú',
+    messagePlaceholder: 'Yêu cầu đặc biệt...',
+    next: 'Tiếp theo',
+    back: 'Quay lại',
+    submit: 'Gửi yêu cầu báo giá',
+    cancel: 'Hủy',
+    required: 'Bắt buộc',
+    search: 'Tìm sản phẩm...',
+    noProducts: 'Chưa chọn sản phẩm',
+    total: 'Tổng cộng',
+    vat: 'VAT (10%)',
+    grandTotal: 'Tổng thanh toán',
+    tabCustom: 'Báo giá tùy chỉnh',
+    tabCapacity: 'Báo giá theo công suất',
+    systemCapacity: 'Công suất hệ thống',
+    capacityPlaceholder: 'Nhập công suất (kW)',
+    panelType: 'Loại tấm pin',
+    panelCount: 'Số tấm pin',
+    autoCalculate: 'Tự động tính toán',
+    capacityNote: 'Hệ thống sẽ tự động tính số lượng vật tư dựa trên công suất',
+    downloadPDF: 'Tải PDF báo giá',
+    downloadPNG: 'Tải PNG báo giá',
+    previewQuote: 'Xem trước báo giá'
+  },
+  en: {
+    title: 'Request Quote',
+    step1: 'Step 1: Select Products',
+    step2: 'Step 2: Contact Information',
+    subtitle: 'Please fill in the information to receive a detailed quote',
+    name: 'Full Name',
+    namePlaceholder: 'John Doe',
+    phone: 'Phone Number',
+    phonePlaceholder: '+84 912 345 678',
+    email: 'Email',
+    emailPlaceholder: 'email@example.com',
+    company: 'Company',
+    companyPlaceholder: 'Company name (optional)',
+    message: 'Notes',
+    messagePlaceholder: 'Special requirements...',
+    next: 'Next',
+    back: 'Back',
+    submit: 'Send Quote Request',
+    cancel: 'Cancel',
+    required: 'Required',
+    search: 'Search products...',
+    noProducts: 'No products selected',
+    total: 'Subtotal',
+    vat: 'VAT (10%)',
+    grandTotal: 'Total',
+    tabCustom: 'Custom Quote',
+    tabCapacity: 'Quote by Capacity',
+    systemCapacity: 'System Capacity',
+    capacityPlaceholder: 'Enter capacity (kW)',
+    panelType: 'Panel Type',
+    panelCount: 'Panel Count',
+    autoCalculate: 'Auto Calculate',
+    capacityNote: 'System will automatically calculate materials based on capacity',
+    downloadPDF: 'Download PDF Quote',
+    downloadPNG: 'Download PNG Quote',
+    previewQuote: 'Preview Quote'
+  },
+  cn: {
+    title: '获取报价',
+    step1: '步骤1：选择产品',
+    step2: '步骤2：联系信息',
+    subtitle: '请填写信息以获取详细报价',
+    name: '姓名',
+    namePlaceholder: '张三',
+    phone: '电话号码',
+    phonePlaceholder: '+84 912 345 678',
+    email: '电子邮件',
+    emailPlaceholder: 'email@example.com',
+    company: '公司',
+    companyPlaceholder: '公司名称（可选）',
+    message: '备注',
+    messagePlaceholder: '特殊要求...',
+    next: '下一步',
+    back: '返回',
+    submit: '发送报价请求',
+    cancel: '取消',
+    required: '必填',
+    search: '搜索产品...',
+    noProducts: '未选择产品',
+    total: '小计',
+    vat: '增值税 (10%)',
+    grandTotal: '总计',
+    tabCustom: '自定义报价',
+    tabCapacity: '按容量报价',
+    systemCapacity: '系统容量',
+    capacityPlaceholder: '输入容量 (kW)',
+    panelType: '面板类型',
+    panelCount: '面板数量',
+    autoCalculate: '自动计算',
+    capacityNote: '系统将根据容量自动计算材料',
+    downloadPDF: '下载PDF报价',
+    downloadPNG: '下载PNG报价',
+    previewQuote: '预览报价'
+  }
+}
+
+const t = translations[lang]
+const productsJson = JSON.stringify(products.map(p => ({ 
+  id: p.id, 
+  name: p.name, 
+  price: p.price || 0, 
+  unit: p.unit,
+  specifications: p.specifications || '',
+  image_url: p.image_url || ''
+})))
+---
+
+<!-- General Quote Modal -->
+<div id="general-quote-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+  <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" id="general-modal-backdrop"></div>
+  
+  <div class="relative bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+    <div class="bg-white border-b border-gray-200 px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-xl font-semibold text-gray-900">{t.title}</h2>
+          <p class="text-sm text-gray-600 mt-1" id="step-subtitle">{t.step1}</p>
+        </div>
+        <button id="close-general-modal" class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+          <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Progress -->
+      <div class="flex items-center gap-2 mt-4">
+        <div class="flex items-center gap-2 flex-1">
+          <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-medium" id="step1-ind">1</div>
+          <div class="text-sm font-medium text-gray-900">{t.step1}</div>
+        </div>
+        <div class="w-12 h-0.5 bg-gray-200" id="progress-line"></div>
+        <div class="flex items-center gap-2 flex-1">
+          <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center text-sm font-medium" id="step2-ind">2</div>
+          <div class="text-sm font-medium text-gray-500">{t.step2}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-1 overflow-y-auto">
+      <!-- Step 1: Products -->
+      <div id="step1-content" class="p-6" style="display:block">
+        <!-- Tabs -->
+        <div class="flex gap-2 mb-4 border-b border-gray-200">
+          <button id="tab-custom" class="px-4 py-2 text-sm font-medium border-b-2 border-blue-600 text-blue-600 transition-colors">
+            {t.tabCustom}
+          </button>
+          <button id="tab-capacity" class="px-4 py-2 text-sm font-medium border-b-2 border-transparent text-gray-600 hover:text-gray-900 transition-colors">
+            {t.tabCapacity}
+          </button>
+        </div>
+
+        <!-- Custom Quote Tab Content -->
+        <div id="custom-content" style="display:block">
+          <input type="text" id="product-search" placeholder={t.search} class="w-full px-4 py-2.5 border border-gray-300 rounded-lg mb-4 text-sm" />
+          <div id="product-list" class="space-y-2 mb-4 max-h-64 overflow-y-auto"></div>
+        </div>
+
+        <!-- Capacity Quote Tab Content -->
+        <div id="capacity-content" style="display:none">
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+            <p class="text-sm text-blue-800">{t.capacityNote}</p>
+          </div>
+
+          <!-- Quick capacity buttons -->
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-900 mb-2">{t.systemCapacity}</label>
+            <div class="grid grid-cols-3 md:grid-cols-5 gap-2 mb-2">
+              <button type="button" class="capacity-btn px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-blue-600 hover:bg-blue-50 transition-colors text-sm font-medium" data-capacity="5">5 kW</button>
+              <button type="button" class="capacity-btn px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-blue-600 hover:bg-blue-50 transition-colors text-sm font-medium" data-capacity="10">10 kW</button>
+              <button type="button" class="capacity-btn px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-blue-600 hover:bg-blue-50 transition-colors text-sm font-medium" data-capacity="20">20 kW</button>
+              <button type="button" class="capacity-btn px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-blue-600 hover:bg-blue-50 transition-colors text-sm font-medium" data-capacity="30">30 kW</button>
+              <button type="button" class="capacity-btn px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-blue-600 hover:bg-blue-50 transition-colors text-sm font-medium" data-capacity="50">50 kW</button>
+            </div>
+            <div class="grid grid-cols-3 md:grid-cols-5 gap-2">
+              <button type="button" class="capacity-btn px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-blue-600 hover:bg-blue-50 transition-colors text-sm font-medium" data-capacity="100">100 kW</button>
+              <button type="button" class="capacity-btn px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-blue-600 hover:bg-blue-50 transition-colors text-sm font-medium" data-capacity="200">200 kW</button>
+              <button type="button" class="capacity-btn px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-blue-600 hover:bg-blue-50 transition-colors text-sm font-medium" data-capacity="500">500 kW</button>
+              <button type="button" class="capacity-btn px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-blue-600 hover:bg-blue-50 transition-colors text-sm font-medium" data-capacity="1000">1 MW</button>
+              <button type="button" class="capacity-btn px-4 py-2 border-2 border-gray-300 rounded-lg hover:border-blue-600 hover:bg-blue-50 transition-colors text-sm font-medium" data-capacity="custom">
+                {lang === 'vi' ? 'Khác' : lang === 'en' ? 'Custom' : '自定义'}
+              </button>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-900 mb-2">{t.systemCapacity} (kW)</label>
+              <input 
+                type="number" 
+                id="system-capacity" 
+                placeholder={t.capacityPlaceholder}
+                min="1"
+                step="0.1"
+                class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-900 mb-2">{t.panelType}</label>
+              <select 
+                id="panel-type" 
+                class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm"
+              >
+                <option value="550">550W</option>
+                <option value="600">600W</option>
+                <option value="650">650W</option>
+                <option value="700">700W</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4">
+            <div class="flex justify-between items-center text-sm">
+              <span class="text-blue-800">{t.panelCount}:</span>
+              <span id="calculated-panels" class="font-semibold text-blue-900">0 tấm</span>
+            </div>
+          </div>
+
+          <button id="calculate-capacity" class="w-full px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium mb-4">
+            {t.autoCalculate}
+          </button>
+
+          <div id="capacity-result" class="space-y-2 max-h-64 overflow-y-auto"></div>
+        </div>
+
+        <!-- Summary (shared) -->
+        <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+          <div id="selected-products" class="space-y-1 mb-2 text-sm max-h-32 overflow-y-auto">
+            <p class="text-gray-500 text-center py-2">{t.noProducts}</p>
+          </div>
+          <div class="border-t border-gray-300 pt-2 space-y-1 text-sm">
+            <div class="flex justify-between"><span>{t.total}:</span><span id="subtotal">0đ</span></div>
+            <div class="flex justify-between"><span>{t.vat}:</span><span id="vat">0đ</span></div>
+            <div class="flex justify-between font-semibold"><span>{t.grandTotal}:</span><span class="text-blue-600" id="grand-total">0đ</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Contact Info -->
+      <form id="general-quote-form" class="p-6 space-y-4" style="display:none" data-step="2">
+      <div>
+        <label class="block text-sm font-medium text-gray-900 mb-1">
+          {t.name} <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          name="name"
+          required
+          placeholder={t.namePlaceholder}
+          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-900 mb-1">
+          {t.phone} <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="tel"
+          name="phone"
+          required
+          placeholder={t.phonePlaceholder}
+          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-900 mb-1">
+          {t.email} <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder={t.emailPlaceholder}
+          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-900 mb-1">
+          {t.company}
+        </label>
+        <input type="text" name="company" placeholder={t.companyPlaceholder} class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-900 mb-1">{t.message}</label>
+        <textarea name="message" placeholder={t.messagePlaceholder} rows="3" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm resize-none"></textarea>
+      </div>
+      </form>
+    </div>
+
+    <div class="border-t border-gray-200 px-6 py-4 bg-gray-50">
+      <div class="flex gap-3">
+        <button type="button" id="cancel-general-button" class="px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium">{t.cancel}</button>
+        <button type="button" id="preview-quote-button" class="px-4 py-2.5 border border-gray-600 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+          {t.previewQuote}
+        </button>
+        <button type="button" id="download-pdf-button" class="px-4 py-2.5 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors text-sm font-medium flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          {t.downloadPDF}
+        </button>
+        <button type="button" id="download-png-button" class="px-4 py-2.5 border border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition-colors text-sm font-medium flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          {t.downloadPNG}
+        </button>
+        <button type="button" id="back-button" class="hidden px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium">{t.back}</button>
+        <div class="flex-1"></div>
+        <button type="button" id="next-button" class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium">{t.next}</button>
+        <button type="submit" id="submit-button" form="general-quote-form" class="hidden px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium">{t.submit}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Preview Modal -->
+<div id="preview-modal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4">
+  <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" id="preview-backdrop"></div>
+  
+  <div class="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+    <div class="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+      <h2 class="text-xl font-semibold text-gray-900">{t.previewQuote}</h2>
+      <button id="close-preview-modal" class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="preview-content" class="flex-1 overflow-y-auto p-6 bg-gray-50">
+      <!-- Preview content will be inserted here -->
+    </div>
+
+    <div class="border-t border-gray-200 px-6 py-4 bg-white flex gap-3 justify-end">
+      <button id="close-preview-button" class="px-4 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium">
+        {t.cancel}
+      </button>
+      <button id="download-png-from-preview" class="px-4 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm font-medium flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        {t.downloadPNG}
+      </button>
+      <button id="download-from-preview" class="px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        {t.downloadPDF}
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Load jsPDF and html2canvas from CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script define:vars={{ productsJson, t }}>
+  const products = JSON.parse(productsJson)
+  const lang = t.title.includes('获取') ? 'cn' : t.title.includes('Request') ? 'en' : 'vi'
+  let currentStep = 1
+  let selectedProducts = {}
+  let contactInfo = {}
+  let currentTab = 'custom'
+
+  const modal = document.getElementById('general-quote-modal')
+  const closeButton = document.getElementById('close-general-modal')
+  const cancelButton = document.getElementById('cancel-general-button')
+  const backdrop = document.getElementById('general-modal-backdrop')
+  const form = document.getElementById('general-quote-form')
+  const nextButton = document.getElementById('next-button')
+  const backButton = document.getElementById('back-button')
+  const submitButton = document.getElementById('submit-button')
+  const downloadPDFButton = document.getElementById('download-pdf-button')
+  const downloadPNGButton = document.getElementById('download-png-button')
+  const previewButton = document.getElementById('preview-quote-button')
+
+  // Preview modal elements
+  const previewModal = document.getElementById('preview-modal')
+  const previewBackdrop = document.getElementById('preview-backdrop')
+  const closePreviewModal = document.getElementById('close-preview-modal')
+  const closePreviewButton = document.getElementById('close-preview-button')
+  const downloadFromPreview = document.getElementById('download-from-preview')
+  const downloadPNGFromPreview = document.getElementById('download-png-from-preview')
+  const previewContent = document.getElementById('preview-content')
+
+  const headerButton = document.getElementById('header-quote-button')
+  const mobileButton = document.getElementById('mobile-quote-button')
+  const footerButton = document.getElementById('footer-quote-button')
+  const productButton = document.getElementById('quote-button')
+
+  // Tab elements
+  const tabCustom = document.getElementById('tab-custom')
+  const tabCapacity = document.getElementById('tab-capacity')
+  const customContent = document.getElementById('custom-content')
+  const capacityContent = document.getElementById('capacity-content')
+  const calculateBtn = document.getElementById('calculate-capacity')
+
+  // Solar system calculation constants
+  // Giả định: cần ~2 thanh ray, 4 kẹp giữa, 4 kẹp biên, 2 chân L per panel
+  const MATERIALS_PER_PANEL = {
+    '1': 2,    // Thanh Ray 26x45mm - 2 thanh/tấm
+    '6': 4,    // Kẹp Giữa - 4 cái/tấm
+    '7': 4,    // Kẹp Biên - 4 cái/tấm
+    '9': 2,    // Chân L - 2 cái/tấm
+    '4': 0.5,  // Thanh Nối Rail - 0.5 bộ/tấm
+    '12': 1,   // Kẹp Tiếp Địa - 1 bộ/tấm
+    '14': 2    // Lá Tiếp Địa - 2 cái/tấm
+  }
+
+  function openModal() {
+    if (modal) {
+      modal.classList.remove('hidden')
+      modal.classList.add('flex')
+      document.body.style.overflow = 'hidden'
+      currentStep = 1
+      currentTab = 'custom'
+      showStep(1)
+      switchTab('custom')
+      renderProducts()
+    }
+  }
+
+  function closeModal() {
+    if (modal) {
+      modal.classList.add('hidden')
+      modal.classList.remove('flex')
+      document.body.style.overflow = ''
+      selectedProducts = {}
+      if (form) form.reset()
+      document.getElementById('system-capacity').value = ''
+      document.getElementById('panel-type').value = '550'
+      document.getElementById('calculated-panels').textContent = '0 tấm'
+      document.getElementById('capacity-result').innerHTML = ''
+    }
+  }
+
+  function switchTab(tab) {
+    currentTab = tab
+    if (tab === 'custom') {
+      tabCustom.classList.add('border-blue-600', 'text-blue-600')
+      tabCustom.classList.remove('border-transparent', 'text-gray-600')
+      tabCapacity.classList.remove('border-blue-600', 'text-blue-600')
+      tabCapacity.classList.add('border-transparent', 'text-gray-600')
+      customContent.style.display = 'block'
+      capacityContent.style.display = 'none'
+    } else {
+      tabCapacity.classList.add('border-blue-600', 'text-blue-600')
+      tabCapacity.classList.remove('border-transparent', 'text-gray-600')
+      tabCustom.classList.remove('border-blue-600', 'text-blue-600')
+      tabCustom.classList.add('border-transparent', 'text-gray-600')
+      customContent.style.display = 'none'
+      capacityContent.style.display = 'block'
+    }
+  }
+
+  function calculateByCapacity() {
+    const capacityInput = document.getElementById('system-capacity')
+    const panelTypeSelect = document.getElementById('panel-type')
+    const calculatedPanelsEl = document.getElementById('calculated-panels')
+    const resultDiv = document.getElementById('capacity-result')
+    
+    const capacity = parseFloat(capacityInput.value) || 0
+    const panelWatt = parseInt(panelTypeSelect.value) || 550
+
+    if (capacity === 0) {
+      alert(lang === 'vi' ? 'Vui lòng nhập công suất hệ thống' : lang === 'en' ? 'Please enter system capacity' : '请输入系统容量')
+      return
+    }
+
+    // Calculate panel count from capacity and panel type
+    const panelCount = Math.ceil((capacity * 1000) / panelWatt)
+    
+    // Display calculated panel count
+    const panelText = lang === 'vi' ? 'tấm' : lang === 'en' ? 'panels' : '块'
+    calculatedPanelsEl.textContent = `${panelCount} ${panelText}`
+
+    // Calculate materials
+    selectedProducts = {}
+    Object.entries(MATERIALS_PER_PANEL).forEach(([productId, qtyPerPanel]) => {
+      const totalQty = Math.ceil(panelCount * qtyPerPanel)
+      if (totalQty > 0) {
+        selectedProducts[productId] = totalQty
+      }
+    })
+
+    // Display result with editable quantities
+    const items = Object.entries(selectedProducts).map(([id, qty]) => {
+      const p = products.find(x => x.id === id)
+      return p ? { ...p, quantity: qty } : null
+    }).filter(Boolean)
+
+    resultDiv.innerHTML = items.map(i => `
+      <div class="flex items-center gap-2 p-2 bg-white border rounded hover:border-blue-300">
+        <div class="flex-1">
+          <div class="text-sm font-medium">${i.name}</div>
+          <div class="text-xs text-gray-500">${i.price.toLocaleString('vi-VN')}đ/${i.unit}</div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="text-xs text-gray-500 w-12 text-center">${i.unit}</div>
+          <input 
+            type="number" 
+            min="0" 
+            value="${i.quantity}" 
+            data-id="${i.id}" 
+            class="w-20 px-2 py-1 border rounded text-sm text-center capacity-qty-input" 
+          />
+          <div class="text-sm font-medium text-blue-600 w-28 text-right capacity-item-total" data-id="${i.id}">
+            ${(i.price * i.quantity).toLocaleString('vi-VN')}đ
+          </div>
+        </div>
+      </div>
+    `).join('')
+
+    // Add event listeners to editable inputs
+    document.querySelectorAll('.capacity-qty-input').forEach(input => {
+      input.addEventListener('input', (e) => {
+        const id = e.target.dataset.id
+        const qty = parseInt(e.target.value) || 0
+        if (qty > 0) {
+          selectedProducts[id] = qty
+        } else {
+          delete selectedProducts[id]
+        }
+        updateCapacityItemTotal(id, qty)
+        updateSummary()
+      })
+    })
+
+    updateSummary()
+  }
+
+  function updateCapacityItemTotal(productId, quantity) {
+    const product = products.find(p => p.id === productId)
+    const totalEl = document.querySelector(`.capacity-item-total[data-id="${productId}"]`)
+    if (product && totalEl) {
+      const total = product.price * quantity
+      totalEl.textContent = quantity > 0 ? total.toLocaleString('vi-VN') + 'đ' : '0đ'
+    }
+  }
+
+  function showStep(step) {
+    const step1 = document.getElementById('step1-content')
+    const step2 = document.querySelector('[data-step="2"]')
+    const step1Ind = document.getElementById('step1-ind')
+    const step2Ind = document.getElementById('step2-ind')
+    const progressLine = document.getElementById('progress-line')
+    const subtitle = document.getElementById('step-subtitle')
+
+    if (step === 1) {
+      if (step1) step1.style.display = 'block'
+      if (step2) step2.style.display = 'none'
+      if (step1Ind) { step1Ind.classList.add('bg-blue-600', 'text-white'); step1Ind.classList.remove('bg-gray-200', 'text-gray-500') }
+      if (step2Ind) { step2Ind.classList.add('bg-gray-200', 'text-gray-500'); step2Ind.classList.remove('bg-blue-600', 'text-white') }
+      if (progressLine) { progressLine.classList.remove('bg-blue-600'); progressLine.classList.add('bg-gray-200') }
+      if (nextButton) nextButton.classList.remove('hidden')
+      if (submitButton) submitButton.classList.add('hidden')
+      if (backButton) backButton.classList.add('hidden')
+      if (subtitle) subtitle.textContent = t.step1
+    } else {
+      if (step1) step1.style.display = 'none'
+      if (step2) step2.style.display = 'block'
+      if (step2Ind) { step2Ind.classList.add('bg-blue-600', 'text-white'); step2Ind.classList.remove('bg-gray-200', 'text-gray-500') }
+      if (progressLine) { progressLine.classList.add('bg-blue-600'); progressLine.classList.remove('bg-gray-200') }
+      if (nextButton) nextButton.classList.add('hidden')
+      if (submitButton) submitButton.classList.remove('hidden')
+      if (backButton) backButton.classList.remove('hidden')
+      if (subtitle) subtitle.textContent = t.step2
+    }
+  }
+
+  function renderProducts() {
+    const list = document.getElementById('product-list')
+    if (!list) return
+    list.innerHTML = products.map(p => `
+      <div class="flex items-center gap-2 p-2 border rounded hover:border-blue-300 product-item">
+        <div class="flex-1">
+          <div class="text-sm font-medium">${p.name}</div>
+          <div class="text-xs text-gray-500">${p.price.toLocaleString('vi-VN')}đ/${p.unit}</div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="text-xs text-gray-500 w-12 text-center">${p.unit}</div>
+          <input type="number" min="0" value="${selectedProducts[p.id] || 0}" data-id="${p.id}" class="w-20 px-2 py-1 border rounded text-sm text-center qty-input" />
+          <div class="text-sm font-medium text-blue-600 w-28 text-right item-total" data-id="${p.id}">0đ</div>
+        </div>
+      </div>
+    `).join('')
+
+    document.querySelectorAll('.qty-input').forEach(input => {
+      input.addEventListener('input', (e) => {
+        const id = e.target.dataset.id
+        const qty = parseInt(e.target.value) || 0
+        if (qty > 0) selectedProducts[id] = qty
+        else delete selectedProducts[id]
+        updateItemTotal(id, qty)
+        updateSummary()
+      })
+    })
+    
+    // Update initial totals
+    Object.entries(selectedProducts).forEach(([id, qty]) => {
+      updateItemTotal(id, qty)
+    })
+  }
+
+  function updateItemTotal(productId, quantity) {
+    const product = products.find(p => p.id === productId)
+    const totalEl = document.querySelector(`.item-total[data-id="${productId}"]`)
+    if (product && totalEl) {
+      const total = product.price * quantity
+      totalEl.textContent = quantity > 0 ? total.toLocaleString('vi-VN') + 'đ' : '0đ'
+    }
+  }
+
+  function updateSummary() {
+    const div = document.getElementById('selected-products')
+    const subtotalEl = document.getElementById('subtotal')
+    const vatEl = document.getElementById('vat')
+    const grandTotalEl = document.getElementById('grand-total')
+    if (!div) return
+
+    const items = Object.entries(selectedProducts).map(([id, qty]) => {
+      const p = products.find(x => x.id === id)
+      return p ? { ...p, quantity: qty } : null
+    }).filter(Boolean)
+
+    if (items.length === 0) {
+      div.innerHTML = `<p class="text-gray-500 text-center py-2">${t.noProducts}</p>`
+      if (subtotalEl) subtotalEl.textContent = '0đ'
+      if (vatEl) vatEl.textContent = '0đ'
+      if (grandTotalEl) grandTotalEl.textContent = '0đ'
+      return
+    }
+
+    div.innerHTML = items.map(i => `<div class="flex justify-between"><span>${i.name} x${i.quantity}</span><span>${(i.price * i.quantity).toLocaleString('vi-VN')}đ</span></div>`).join('')
+
+    const subtotal = items.reduce((sum, i) => sum + (i.price * i.quantity), 0)
+    const vat = subtotal * 0.1
+    const grandTotal = subtotal + vat
+
+    if (subtotalEl) subtotalEl.textContent = subtotal.toLocaleString('vi-VN') + 'đ'
+    if (vatEl) vatEl.textContent = vat.toLocaleString('vi-VN') + 'đ'
+    if (grandTotalEl) grandTotalEl.textContent = grandTotal.toLocaleString('vi-VN') + 'đ'
+  }
+
+  if (headerButton) headerButton.addEventListener('click', openModal)
+  if (mobileButton) mobileButton.addEventListener('click', openModal)
+  if (footerButton) footerButton.addEventListener('click', openModal)
+  if (productButton) productButton.addEventListener('click', openModal)
+
+  if (closeButton) closeButton.addEventListener('click', closeModal)
+  if (cancelButton) cancelButton.addEventListener('click', closeModal)
+  if (backdrop) backdrop.addEventListener('click', closeModal)
+
+  if (tabCustom) tabCustom.addEventListener('click', () => switchTab('custom'))
+  if (tabCapacity) tabCapacity.addEventListener('click', () => switchTab('capacity'))
+  if (calculateBtn) calculateBtn.addEventListener('click', calculateByCapacity)
+  if (downloadPDFButton) downloadPDFButton.addEventListener('click', downloadPDF)
+  if (downloadPNGButton) downloadPNGButton.addEventListener('click', downloadPNG)
+  if (previewButton) previewButton.addEventListener('click', showPreview)
+  if (closePreviewModal) closePreviewModal.addEventListener('click', closePreview)
+  if (closePreviewButton) closePreviewButton.addEventListener('click', closePreview)
+  if (previewBackdrop) previewBackdrop.addEventListener('click', closePreview)
+  if (downloadFromPreview) downloadFromPreview.addEventListener('click', () => {
+    downloadPDF()
+    closePreview()
+  })
+  if (downloadPNGFromPreview) downloadPNGFromPreview.addEventListener('click', () => {
+    downloadPNG()
+    closePreview()
+  })
+
+  // Quick capacity buttons
+  document.querySelectorAll('.capacity-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const capacity = e.target.dataset.capacity
+      const capacityInput = document.getElementById('system-capacity')
+      
+      if (capacity === 'custom') {
+        // Focus on input for custom entry
+        if (capacityInput) {
+          capacityInput.focus()
+        }
+      } else {
+        if (capacityInput) {
+          capacityInput.value = capacity
+        }
+        // Auto calculate
+        calculateByCapacity()
+      }
+      
+      // Remove active state from all buttons
+      document.querySelectorAll('.capacity-btn').forEach(b => {
+        b.classList.remove('border-blue-600', 'bg-blue-50', 'text-blue-700')
+        b.classList.add('border-gray-300')
+      })
+      
+      // Add active state to clicked button
+      e.target.classList.remove('border-gray-300')
+      e.target.classList.add('border-blue-600', 'bg-blue-50', 'text-blue-700')
+    })
+  })
+
+  if (nextButton) {
+    nextButton.addEventListener('click', () => {
+      // Check if at least one product is selected
+      if (Object.keys(selectedProducts).length === 0) {
+        alert(lang === 'vi' ? 'Vui lòng chọn ít nhất một sản phẩm' : lang === 'en' ? 'Please select at least one product' : '请至少选择一个产品')
+        return
+      }
+      currentStep = 2
+      showStep(2)
+    })
+  }
+
+  if (backButton) {
+    backButton.addEventListener('click', () => {
+      currentStep = 1
+      showStep(1)
+    })
+  }
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
+      contactInfo = Object.fromEntries(new FormData(form).entries())
+      console.log('Quote:', { contact: contactInfo, products: selectedProducts })
+      alert('Cảm ơn! Chúng tôi sẽ gửi báo giá chi tiết qua email trong vòng 24h.')
+      closeModal()
+    })
+  }
+
+  const searchInput = document.getElementById('product-search')
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase()
+      document.querySelectorAll('.product-item').forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(query) ? 'flex' : 'none'
+      })
+    })
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) closeModal()
+    if (e.key === 'Escape' && previewModal && !previewModal.classList.contains('hidden')) closePreview()
+  })
+
+  function closePreview() {
+    if (previewModal) {
+      previewModal.classList.add('hidden')
+      previewModal.classList.remove('flex')
+    }
+  }
+
+  function showPreview() {
+    if (Object.keys(selectedProducts).length === 0) {
+      alert(lang === 'vi' ? 'Vui lòng chọn sản phẩm trước' : lang === 'en' ? 'Please select products first' : '请先选择产品')
+      return
+    }
+
+    const items = Object.entries(selectedProducts).map(([id, qty]) => {
+      const p = products.find(x => x.id === id)
+      return p ? { ...p, quantity: qty } : null
+    }).filter(Boolean)
+
+    const subtotal = items.reduce((sum, i) => sum + (i.price * i.quantity), 0)
+    const vat = subtotal * 0.1
+    const grandTotal = subtotal + vat
+
+    const today = new Date().toLocaleDateString('vi-VN')
+
+    // Professional quotation template - continuous view for preview
+    const html = `
+      <div class="bg-white mx-auto shadow-lg" style="font-family: 'Times New Roman', Times, serif; max-width: 210mm; padding: 20px;">
+        <!-- Letterhead with company logo area -->
+        <div class="border-b-4 border-cyan-600 pb-3 mb-4">
+          <div class="flex justify-between items-center gap-4">
+            <!-- Left: Logo -->
+            <div style="flex: 0 0 auto; width: 100px;">
+              <img src="/appejv-logo.png" alt="Quang Minh Logo" style="width: 100%; height: auto; max-width: 100px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+              <div style="display: none; width: 100px; height: 70px; background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%); border-radius: 8px; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 16px; font-family: 'Times New Roman', Times, serif;">QM</div>
+            </div>
+            
+            <!-- Right: Company Info -->
+            <div style="flex: 1; text-align: right;">
+              <div style="font-family: 'Times New Roman', Times, serif; line-height: 1.5;">
+                <p style="font-size: 13px; font-weight: bold; color: #0891b2; margin-bottom: 6px;">CÔNG TY CỔ PHẦN KỸ THUẬT CÔNG NGHỆ QUANG MINH</p>
+                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-bottom: 4px;">
+                  <div style="display: flex; align-items: center; gap: 4px; font-size: 10px; color: #374151; font-family: 'Times New Roman', Times, serif;">
+                    <svg style="width: 12px; height: 12px; fill: #0891b2;" viewBox="0 0 20 20">
+                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                    </svg>
+                    <span>info@qmalu.com</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 4px; font-size: 10px; color: #374151; font-family: 'Times New Roman', Times, serif;">
+                    <svg style="width: 12px; height: 12px; fill: #0891b2;" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>qmalu.com</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 4px; font-size: 10px; color: #374151; font-family: 'Times New Roman', Times, serif;">
+                    <svg style="width: 14px; height: 14px; fill: #0891b2;" viewBox="0 0 20 20">
+                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                    </svg>
+                    <span>0947776662</span>
+                  </div>
+                </div>
+                <p style="font-size: 10px; color: #374151; margin-top: 4px;">Lô CN09 KCN Nguyên Khê - Đông Anh - Hà Nội</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <!-- Document title -->
+          <div class="text-center mb-4 py-3 bg-gradient-to-r from-cyan-50 to-cyan-100 rounded-lg border border-cyan-200">
+            <h2 class="text-xl font-bold text-cyan-700 mb-1 uppercase" style="font-family: 'Times New Roman', Times, serif; letter-spacing: 2px;">
+              ${lang === 'vi' ? 'Bảng Báo Giá' : lang === 'en' ? 'Price Quotation' : '报价单'}
+            </h2>
+            <p class="text-xs text-gray-600 font-semibold" style="font-family: 'Times New Roman', Times, serif;">
+              ${lang === 'vi' ? 'PHỤ KIỆN HỆ THỐNG ĐIỆN MẶT TRỜI' : lang === 'en' ? 'SOLAR SYSTEM ACCESSORIES' : '太阳能系统配件'}
+            </p>
+            <div class="mt-2 pt-2 border-t border-cyan-300">
+              <p class="text-xs text-gray-600" style="font-family: 'Times New Roman', Times, serif; font-size: 10px;">
+                <strong>${lang === 'vi' ? 'Số:' : lang === 'en' ? 'No:' : '编号:'}</strong> QM-${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}${String(new Date().getDate()).padStart(2, '0')}-${Math.floor(Math.random() * 1000).toString().padStart(3, '0')}
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <strong>${lang === 'vi' ? 'Ngày:' : lang === 'en' ? 'Date:' : '日期:'}</strong> ${today}
+              </p>
+            </div>
+          </div>
+
+          <!-- Customer information -->
+          <div class="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
+            <p class="text-xs mb-1" style="font-family: 'Times New Roman', Times, serif; font-size: 11px;">
+              <strong class="text-cyan-700">${lang === 'vi' ? 'Kính gửi:' : lang === 'en' ? 'To:' : '致:'}</strong> 
+              <span class="font-semibold text-sm">${contactInfo.company || (lang === 'vi' ? 'QUÝ KHÁCH HÀNG' : lang === 'en' ? 'VALUED CUSTOMER' : '尊贵的客户')}</span>
+            </p>
+            <div class="text-xs leading-relaxed text-gray-700 text-justify" style="font-family: 'Times New Roman', Times, serif; line-height: 1.6; font-size: 10px;">
+              ${lang === 'vi' 
+                ? 'Công ty Cổ phần Kỹ thuật và Công nghệ Quang Minh xin trân trọng gửi tới Quý khách hàng lời chào trân trọng nhất và lời cảm ơn chân thành về sự quan tâm, ủng hộ sản phẩm của chúng tôi. Căn cứ vào yêu cầu của Quý khách hàng, chúng tôi xin gửi tới Quý khách hàng bảng báo giá chi tiết như sau:'
+                : lang === 'en'
+                ? 'Quang Minh Technology Joint Stock Company would like to send our most sincere greetings and thanks for your interest and support of our products. Based on your requirements, we are pleased to present the following detailed quotation:'
+                : 'Quang Minh技术股份公司向您致以最诚挚的问候，感谢您对我们产品的关注和支持。根据您的要求，我们很高兴向您提供以下详细报价：'
+              }
+            </div>
+          </div>
+
+          <!-- Product table -->
+          <div class="mb-4">
+            <table class="w-full border-collapse" style="font-family: 'Times New Roman', Times, serif; border: 2px solid #0891b2; font-size: 10px;">
+          <thead>
+            <tr class="bg-cyan-600 text-white">
+              <th class="border border-cyan-500 py-3 px-2 text-sm font-bold text-center align-middle" style="width: 4%; font-family: 'Times New Roman', Times, serif;">STT</th>
+              <th class="border border-cyan-500 py-3 px-2 text-sm font-bold text-center align-middle" style="width: 33%; font-family: 'Times New Roman', Times, serif;">${lang === 'vi' ? 'THÔNG TIN SẢN PHẨM' : lang === 'en' ? 'PRODUCT INFO' : '产品信息'}</th>
+              <th class="border border-cyan-500 py-3 px-2 text-sm font-bold text-center align-middle" style="width: 16%; font-family: 'Times New Roman', Times, serif;">${lang === 'vi' ? 'HÌNH ẢNH' : lang === 'en' ? 'IMAGE' : '图片'}</th>
+              <th class="border border-cyan-500 py-3 px-2 text-sm font-bold text-center align-middle" style="width: 8%; font-family: 'Times New Roman', Times, serif;">${lang === 'vi' ? 'ĐVT' : lang === 'en' ? 'UNIT' : '单位'}</th>
+              <th class="border border-cyan-500 py-3 px-2 text-sm font-bold text-center align-middle" style="width: 13%; font-family: 'Times New Roman', Times, serif;">${lang === 'vi' ? 'SỐ LƯỢNG' : lang === 'en' ? 'QTY' : '数量'}</th>
+              <th class="border border-cyan-500 py-3 px-2 text-sm font-bold text-center align-middle" style="width: 11%; font-family: 'Times New Roman', Times, serif;">${lang === 'vi' ? 'ĐƠN GIÁ' : lang === 'en' ? 'UNIT PRICE' : '单价'}</th>
+              <th class="border border-blue-500 py-3 px-2 text-sm font-bold text-center align-middle" style="width: 15%; font-family: 'Times New Roman', Times, serif;">${lang === 'vi' ? 'THÀNH TIỀN' : lang === 'en' ? 'AMOUNT' : '金额'}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${items.map((item, index) => `
+              <tr class="${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}">
+                <td class="border border-gray-300 py-3 px-2 text-sm text-center align-middle" style="font-family: 'Times New Roman', Times, serif;">${index + 1}</td>
+                <td class="border border-gray-300 py-3 px-2 align-middle" style="font-family: 'Times New Roman', Times, serif;">
+                  <div style="font-size: 13px; font-weight: bold; margin-bottom: 4px; line-height: 1.4;">${item.name}</div>
+                  ${item.specifications ? `<div style="font-size: 10px; color: #6b7280; line-height: 1.5; white-space: pre-line;">${item.specifications}</div>` : ''}
+                </td>
+                <td class="border border-gray-300 py-3 px-2 text-center align-middle" style="font-family: 'Times New Roman', Times, serif;">
+                  ${item.image_url || item.image || item.imageUrl ? `<img src="${item.image_url || item.image || item.imageUrl}" alt="${item.name}" style="width: 90px; height: 90px; object-fit: cover; margin: 0 auto; border-radius: 6px; border: 1px solid #e5e7eb;" />` : '<div style="width: 90px; height: 90px; background: #e5e7eb; margin: 0 auto; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #9ca3af; border: 1px solid #d1d5db;">No image</div>'}
+                </td>
+                <td class="border border-gray-300 py-3 px-2 text-sm text-center align-middle" style="font-family: 'Times New Roman', Times, serif;">${item.unit}</td>
+                <td class="border border-gray-300 py-3 px-2 text-sm text-center font-semibold align-middle" style="font-family: 'Times New Roman', Times, serif;">${item.quantity}</td>
+                <td class="border border-gray-300 py-3 px-2 text-sm text-right align-middle" style="font-family: 'Times New Roman', Times, serif;">${item.price.toLocaleString('vi-VN')}đ</td>
+                <td class="border border-gray-300 py-3 px-2 text-sm text-right font-semibold align-middle" style="font-family: 'Times New Roman', Times, serif;">${(item.price * item.quantity).toLocaleString('vi-VN')}đ</td>
+              </tr>
+            `).join('')}
+            <!-- Summary rows -->
+            <tr class="bg-blue-50">
+              <td colspan="6" class="border border-gray-300 py-2 px-2 text-sm text-right font-bold" style="font-family: 'Times New Roman', Times, serif;">${lang === 'vi' ? 'TỔNG CỘNG:' : lang === 'en' ? 'SUBTOTAL:' : '小计:'}</td>
+              <td class="border border-gray-300 py-2 px-2 text-sm text-right font-bold" style="font-family: 'Times New Roman', Times, serif;">${subtotal.toLocaleString('vi-VN')}đ</td>
+            </tr>
+            <tr class="bg-blue-50">
+              <td colspan="6" class="border border-gray-300 py-2 px-2 text-sm text-right font-bold" style="font-family: 'Times New Roman', Times, serif;">VAT (10%):</td>
+              <td class="border border-gray-300 py-2 px-2 text-sm text-right font-bold" style="font-family: 'Times New Roman', Times, serif;">${vat.toLocaleString('vi-VN')}đ</td>
+            </tr>
+            <tr class="bg-blue-600 text-white">
+              <td colspan="6" class="border border-blue-500 py-3 px-2 text-base text-right font-bold" style="font-family: 'Times New Roman', Times, serif;">${lang === 'vi' ? 'TỔNG THANH TOÁN:' : lang === 'en' ? 'GRAND TOTAL:' : '总计:'}</td>
+              <td class="border border-blue-500 py-3 px-2 text-lg text-right font-bold" style="font-family: 'Times New Roman', Times, serif;">${grandTotal.toLocaleString('vi-VN')}đ</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Notes -->
+        <div class="mb-6 p-4 bg-yellow-50 border-l-4 border-yellow-400">
+          <p class="text-sm font-semibold mb-2" style="font-family: 'Times New Roman', Times, serif;">${lang === 'vi' ? 'GHI CHÚ:' : lang === 'en' ? 'NOTES:' : '备注:'}</p>
+          <ul class="text-sm space-y-1 list-disc list-inside" style="font-family: 'Times New Roman', Times, serif;">
+            <li>${lang === 'vi' ? 'Đơn hàng trên chưa bao gồm thuế VAT 10%' : lang === 'en' ? 'Order does not include 10% VAT' : '订单不含10%增值税'}</li>
+            <li>${lang === 'vi' ? 'Đơn hàng trên chưa bao gồm chi phí vận chuyển' : lang === 'en' ? 'Order does not include shipping costs' : '订单不含运费'}</li>
+            <li>${lang === 'vi' ? 'Thời gian giao hàng: 7-10 ngày kể từ ngày xác nhận báo giá' : lang === 'en' ? 'Delivery time: 7-10 days from quote confirmation' : '交货时间：确认报价后7-10天'}</li>
+            <li>${lang === 'vi' ? 'Hàng mới chưa qua sử dụng' : lang === 'en' ? 'Brand new, unused goods' : '全新未使用商品'}</li>
+            <li>${lang === 'vi' ? 'Điều kiện thanh toán: Đặt cọc 30% giá trị đơn hàng ngay sau khi xác nhận đơn hàng. Số còn lại thanh toán 100% đơn hàng trước hoặc khi nhận hàng' : lang === 'en' ? 'Payment terms: 30% deposit after order confirmation. Remaining 100% before or upon delivery' : '付款条件：确认订单后支付30%定金。剩余100%在交货前或交货时支付'}</li>
+            <li>${lang === 'vi' ? 'Báo giá có hiệu lực 5 ngày, kể từ ngày báo giá' : lang === 'en' ? 'Quote valid for 5 days from quotation date' : '报价自报价之日起5天内有效'}</li>
+          </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="border-t-2 border-blue-600 pt-4">
+          <div class="grid grid-cols-2 gap-8">
+            <div class="text-center">
+              <p class="text-sm font-semibold mb-8" style="font-family: 'Times New Roman', Times, serif;">${lang === 'vi' ? 'NGƯỜI LẬP BẢNG GIÁ' : lang === 'en' ? 'PREPARED BY' : '制表人'}</p>
+              <p class="text-sm" style="font-family: 'Times New Roman', Times, serif;">_____________________</p>
+            </div>
+            <div class="text-center">
+              <p class="text-sm font-semibold mb-8" style="font-family: 'Times New Roman', Times, serif;">${lang === 'vi' ? 'GIÁM ĐỐC' : lang === 'en' ? 'DIRECTOR' : '总监'}</p>
+              <p class="text-sm" style="font-family: 'Times New Roman', Times, serif;">_____________________</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Company info footer -->
+        <div class="mt-6 text-center text-xs text-gray-600 border-t pt-4">
+          <p class="font-semibold" style="font-family: 'Times New Roman', Times, serif;">CÔNG TY CỔ PHẦN KỸ THUẬT CÔNG NGHỆ QUANG MINH</p>
+          <p style="font-family: 'Times New Roman', Times, serif;">Nhà Máy: Lô CN09 KCN Nguyên Khê - Đông Anh - Hà Nội</p>
+          <p style="font-family: 'Times New Roman', Times, serif;">MST: 0106124982 | Email: info@qmalu.com | Hotline: 0947776662</p>
+        </div>
+      </div>
+    `
+
+    if (previewContent) {
+      previewContent.innerHTML = html
+    }
+
+    if (previewModal) {
+      previewModal.classList.remove('hidden')
+      previewModal.classList.add('flex')
+    }
+  }
+
+  async function downloadPDF() {
+    if (Object.keys(selectedProducts).length === 0) {
+      alert(lang === 'vi' ? 'Vui lòng chọn sản phẩm trước khi tải PDF' : lang === 'en' ? 'Please select products before downloading PDF' : '请在下载PDF之前选择产品')
+      return
+    }
+
+    // Check if libraries are loaded
+    if (typeof window.jspdf === 'undefined' || typeof window.html2canvas === 'undefined') {
+      alert('PDF library is loading, please try again in a moment')
+      return
+    }
+
+    try {
+      // Show loading message
+      const loadingMsg = lang === 'vi' ? 'Đang tạo PDF...' : lang === 'en' ? 'Generating PDF...' : '正在生成PDF...'
+      const originalText = downloadPDFButton.textContent
+      downloadPDFButton.textContent = loadingMsg
+      downloadPDFButton.disabled = true
+
+      // Get preview content
+      const previewContentEl = document.getElementById('preview-content')
+      if (!previewContentEl || !previewContentEl.firstElementChild) {
+        showPreview()
+        await new Promise(resolve => setTimeout(resolve, 100))
+      }
+
+      // Create a temporary container outside viewport for full rendering
+      const tempContainer = document.createElement('div')
+      tempContainer.style.position = 'absolute'
+      tempContainer.style.left = '-9999px'
+      tempContainer.style.top = '0'
+      tempContainer.style.width = 'auto'
+      tempContainer.style.height = 'auto'
+      tempContainer.style.overflow = 'visible'
+      
+      // Clone the content
+      const contentToClone = previewContentEl.firstElementChild
+      const clonedContent = contentToClone.cloneNode(true)
+      tempContainer.appendChild(clonedContent)
+      document.body.appendChild(tempContainer)
+
+      // Wait for fonts and images to load
+      await new Promise(resolve => setTimeout(resolve, 200))
+
+      // Convert HTML to canvas with full content
+      const canvas = await html2canvas(tempContainer, {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#ffffff',
+        windowWidth: tempContainer.scrollWidth,
+        windowHeight: tempContainer.scrollHeight
+      })
+
+      // Remove temporary container
+      document.body.removeChild(tempContainer)
+
+      // Create PDF with proper pagination
+      const { jsPDF } = window.jspdf
+      const imgData = canvas.toDataURL('image/png', 1.0)
+      
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
+      })
+
+      const pageWidth = 210
+      const pageHeight = 297
+      const imgWidth = pageWidth
+      const imgHeight = (canvas.height * pageWidth) / canvas.width
+      
+      let position = 0
+      
+      // First page
+      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight)
+      
+      let heightLeft = imgHeight - pageHeight
+      
+      // Add additional pages if content is longer
+      while (heightLeft > 0) {
+        position = -pageHeight * (Math.ceil((imgHeight - heightLeft) / pageHeight))
+        pdf.addPage()
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight)
+        heightLeft -= pageHeight
+      }
+
+      // Save PDF
+      const filename = `BaoGia_QuangMinh_${new Date().getTime()}.pdf`
+      pdf.save(filename)
+
+      // Restore button
+      downloadPDFButton.textContent = originalText
+      downloadPDFButton.disabled = false
+
+    } catch (error) {
+      console.error('Error generating PDF:', error)
+      alert(lang === 'vi' ? 'Có lỗi khi tạo PDF. Vui lòng thử lại.' : lang === 'en' ? 'Error generating PDF. Please try again.' : '生成PDF时出错。请重试。')
+      downloadPDFButton.textContent = t.downloadPDF
+      downloadPDFButton.disabled = false
+    }
+  }
+
+  async function downloadPNG() {
+    if (Object.keys(selectedProducts).length === 0) {
+      alert(lang === 'vi' ? 'Vui lòng chọn sản phẩm trước khi tải PNG' : lang === 'en' ? 'Please select products before downloading PNG' : '请在下载PNG之前选择产品')
+      return
+    }
+
+    // Check if html2canvas is loaded
+    if (typeof window.html2canvas === 'undefined') {
+      alert('PNG library is loading, please try again in a moment')
+      return
+    }
+
+    try {
+      // Show loading message
+      const loadingMsg = lang === 'vi' ? 'Đang tạo PNG...' : lang === 'en' ? 'Generating PNG...' : '正在生成PNG...'
+      const originalText = downloadPNGButton ? downloadPNGButton.textContent : ''
+      if (downloadPNGButton) {
+        downloadPNGButton.textContent = loadingMsg
+        downloadPNGButton.disabled = true
+      }
+
+      // Get preview content
+      const previewContentEl = document.getElementById('preview-content')
+      if (!previewContentEl || !previewContentEl.firstElementChild) {
+        showPreview()
+        await new Promise(resolve => setTimeout(resolve, 100))
+      }
+
+      // Create a temporary container outside viewport for full rendering
+      const tempContainer = document.createElement('div')
+      tempContainer.style.position = 'absolute'
+      tempContainer.style.left = '-9999px'
+      tempContainer.style.top = '0'
+      tempContainer.style.width = 'auto'
+      tempContainer.style.height = 'auto'
+      tempContainer.style.overflow = 'visible'
+      
+      // Clone the content
+      const contentToClone = previewContentEl.firstElementChild
+      const clonedContent = contentToClone.cloneNode(true)
+      tempContainer.appendChild(clonedContent)
+      document.body.appendChild(tempContainer)
+
+      // Wait for fonts and images to load
+      await new Promise(resolve => setTimeout(resolve, 200))
+
+      // Convert HTML to canvas with full content
+      const canvas = await html2canvas(tempContainer, {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#ffffff',
+        windowWidth: tempContainer.scrollWidth,
+        windowHeight: tempContainer.scrollHeight
+      })
+
+      // Remove temporary container
+      document.body.removeChild(tempContainer)
+
+      // Convert canvas to PNG and download
+      canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob)
+        const link = document.createElement('a')
+        link.href = url
+        link.download = `BaoGia_QuangMinh_${new Date().getTime()}.png`
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+        URL.revokeObjectURL(url)
+
+        // Restore button
+        if (downloadPNGButton) {
+          downloadPNGButton.textContent = originalText
+          downloadPNGButton.disabled = false
+        }
+      }, 'image/png', 1.0)
+
+    } catch (error) {
+      console.error('Error generating PNG:', error)
+      alert(lang === 'vi' ? 'Có lỗi khi tạo PNG. Vui lòng thử lại.' : lang === 'en' ? 'Error generating PNG. Please try again.' : '生成PNG时出错。请重试。')
+      if (downloadPNGButton) {
+        downloadPNGButton.textContent = t.downloadPNG
+        downloadPNGButton.disabled = false
+      }
+    }
+  }
+</script>
