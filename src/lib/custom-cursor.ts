@@ -139,7 +139,7 @@ function createCursorElement() {
       position: fixed;
       width: 20px;
       height: 20px;
-      border: 2px solid #175ead;
+      border: 2px solid #e6282b;
       border-radius: 50%;
       pointer-events: none;
       z-index: 99999;
@@ -156,7 +156,7 @@ function createCursorElement() {
     }
 
     .custom-cursor.cursor-button {
-      border-color: #175ead;
+      border-color: #e6282b;
       background: rgba(23, 94, 173, 0.1);
     }
 

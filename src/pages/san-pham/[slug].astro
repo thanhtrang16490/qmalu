@@ -62,7 +62,7 @@ const productSchema = {
   "@context": "https://schema.org/",
   "@type": "Product",
   "name": product.name,
-  "image": product.image_url || `${Astro.url.origin}/appejv-logo.png`,
+  "image": product.image_url || `${Astro.url.origin}/quang-minh-logo.svg`,
   "description": product.description || `${product.name} - Sản phẩm chất lượng cao từ Quang Minh`,
   "sku": product.code || product.slug,
   "brand": {
@@ -124,7 +124,7 @@ const breadcrumbSchema = {
   description={seoDescription}
   keywords={generateKeywords()}
   canonical={`/san-pham/${product.slug}`}
-  ogImage={product.image_url || '/appejv-logo.png'}
+  ogImage={product.image_url || '/quang-minh-logo.svg'}
 >
   <!-- Structured Data -->
   <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
@@ -173,7 +173,7 @@ const breadcrumbSchema = {
         <!-- Product Info -->
         <div class="order-2">
           {productCategory && (
-            <div class="text-[13px] font-medium text-[#175ead] mb-2 uppercase tracking-wide" itemprop="category">
+            <div class="text-[13px] font-medium text-[#e6282b] mb-2 uppercase tracking-wide" itemprop="category">
               {productCategory.name}
             </div>
           )}
@@ -216,7 +216,7 @@ const breadcrumbSchema = {
             ) : (
               <>
                 <div class="mb-2">
-                  <span class="text-3xl font-semibold text-blue-600">
+                  <span class="text-3xl font-semibold text-primary">
                     Liên hệ để báo giá
                   </span>
                 </div>
@@ -263,7 +263,7 @@ const breadcrumbSchema = {
           <div class="flex flex-col sm:flex-row gap-3">
             <button 
               id="quote-button"
-              class="flex-1 inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-[15px] font-medium transition-all"
+              class="flex-1 inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-xl text-[15px] font-medium transition-all"
             >
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -314,7 +314,7 @@ const breadcrumbSchema = {
                   )}
                 </div>
                 <div class="p-4">
-                  <h3 class="text-[15px] font-semibold text-gray-900 mb-1 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                  <h3 class="text-[15px] font-semibold text-gray-900 mb-1 line-clamp-2 group-hover:text-primary transition-colors">
                     {relatedProduct.name}
                   </h3>
                   <div class="flex items-baseline gap-2">
@@ -330,7 +330,7 @@ const breadcrumbSchema = {
                         )}
                       </>
                     ) : (
-                      <span class="text-[15px] font-medium text-blue-600">
+                      <span class="text-[15px] font-medium text-primary">
                         Liên hệ
                       </span>
                     )}

@@ -77,17 +77,17 @@ export default {
       // Color System
       colors: {
         primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#175ead',
-          700: '#145a9d',
-          800: '#1e40af',
-          900: '#1e3a8a',
-          DEFAULT: '#175ead',
+          50: '#fef2f2',
+          100: '#fee2e2',
+          200: '#fecaca',
+          300: '#fca5a5',
+          400: '#f87171',
+          500: '#ef4444',
+          600: '#e6282b',
+          700: '#c41f22',
+          800: '#991b1d',
+          900: '#7f1d1d',
+          DEFAULT: '#e6282b',
         },
         gray: {
           50: '#f9fafb',

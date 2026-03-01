@@ -198,7 +198,7 @@ export default function QuoteRequestModal({
             {/* Form */}
             <form onSubmit={handleSubmit} className="p-6 space-y-4">
               {/* Product Info */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="bg-red-50 border border-blue-200 rounded-lg p-4">
                 <div className="text-xs font-medium text-blue-900 mb-1">{text.product}</div>
                 <div className="text-sm font-semibold text-blue-900">{productName}</div>
                 {productCode && (
@@ -217,7 +217,7 @@ export default function QuoteRequestModal({
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder={text.namePlaceholder}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm"
                 />
               </div>
 
@@ -232,7 +232,7 @@ export default function QuoteRequestModal({
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   placeholder={text.phonePlaceholder}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm"
                 />
               </div>
 
@@ -247,7 +247,7 @@ export default function QuoteRequestModal({
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder={text.emailPlaceholder}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm"
                 />
               </div>
 
@@ -261,7 +261,7 @@ export default function QuoteRequestModal({
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   placeholder={text.companyPlaceholder}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm"
                 />
               </div>
 
@@ -275,7 +275,7 @@ export default function QuoteRequestModal({
                   value={formData.quantity}
                   onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
                   placeholder={text.quantityPlaceholder}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm"
                 />
               </div>
 
@@ -289,7 +289,7 @@ export default function QuoteRequestModal({
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder={text.messagePlaceholder}
                   rows={3}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm resize-none"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm resize-none"
                 />
               </div>
 
@@ -305,7 +305,7 @@ export default function QuoteRequestModal({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex-1 px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 px-4 py-2.5 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? text.submitting : text.submit}
                 </button>
@@ -333,7 +333,7 @@ export default function QuoteRequestModal({
             <p className="text-sm text-gray-600 mb-4">{text.errorMessage}</p>
             <button
               onClick={() => setSubmitStatus('idle')}
-              className="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+              className="px-6 py-2.5 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors text-sm font-medium"
             >
               {text.close}
             </button>

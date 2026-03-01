@@ -77,7 +77,7 @@ export default function ROICalculator() {
                 onClick={() => setAnimalType(key)}
                 className={`p-4 rounded-xl border-2 transition-all ${
                   animalType === key
-                    ? 'border-blue-600 bg-blue-50 shadow-md'
+                    ? 'border-primary bg-red-50 shadow-md'
                     : 'border-gray-200 hover:border-gray-300'
                 }`}
               >
@@ -122,7 +122,7 @@ export default function ROICalculator() {
         <button
           onClick={calculateROI}
           disabled={!quantity || !currentPrice}
-          className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-4 rounded-xl transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02]"
+          className="w-full bg-gradient-to-r from-primary to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-4 rounded-xl transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02]"
         >
           Tính toán ngay
         </button>
@@ -150,7 +150,7 @@ export default function ROICalculator() {
 
               <div className="flex justify-between items-center p-3 bg-white rounded-xl">
                 <span className="text-gray-600">Chi phí với APPE/tháng:</span>
-                <span className="font-semibold text-blue-600">
+                <span className="font-semibold text-primary">
                   {formatCurrency(result.newCost)}
                 </span>
               </div>
@@ -183,7 +183,7 @@ export default function ROICalculator() {
             <div className="mt-6 space-y-3">
               <a
                 href="/lien-he"
-                className="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-semibold py-4 rounded-xl transition-all shadow-md hover:shadow-lg"
+                className="block w-full bg-primary hover:bg-primary-dark text-white text-center font-semibold py-4 rounded-xl transition-all shadow-md hover:shadow-lg"
               >
                 Nhận báo giá chi tiết
               </a>

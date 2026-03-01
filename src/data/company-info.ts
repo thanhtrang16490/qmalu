@@ -5,6 +5,8 @@ export const companyInfo = {
   shortNameEn: 'QMTECH.,JSC',
   englishName: 'Quang Minh Technology Joint Stock Company',
   brand: 'QUANG MINH SOLAR',
+  logo: '/quang-minh-logo.svg',
+  logoSvg: '/quang-minh-logo.svg',
   legalRepresentative: 'Đinh Xuân Kiên',
   status: 'Đang hoạt động',
   

@@ -10,7 +10,7 @@ const regions = [
       { name: 'Ninh Bình', dealers: 6, icon: '🏪' },
       { name: 'Hải Phòng', dealers: 9, icon: '⚓' }
     ],
-    color: 'from-blue-500 to-blue-600'
+    color: 'from-blue-500 to-primary'
   },
   {
     name: 'Miền Trung',
@@ -55,7 +55,7 @@ const totalDealers = regions.reduce((sum, region) =>
     <!-- Header -->
     <div class="text-center mb-20 scroll-reveal">
       <div class="inline-block mb-4">
-        <span class="text-sm font-semibold text-blue-600 tracking-wide uppercase bg-blue-50 px-4 py-2 rounded-full">
+        <span class="text-sm font-semibold text-primary tracking-wide uppercase bg-red-50 px-4 py-2 rounded-full">
           Tìm đại lý gần bạn
         </span>
       </div>
@@ -63,7 +63,7 @@ const totalDealers = regions.reduce((sum, region) =>
         Hệ thống đại lý toàn quốc
       </h2>
       <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
-        Hơn <span class="font-semibold text-blue-600">{totalDealers}+ đại lý</span> trên toàn quốc<br class="hidden md:block" />
+        Hơn <span class="font-semibold text-primary">{totalDealers}+ đại lý</span> trên toàn quốc<br class="hidden md:block" />
         sẵn sàng phục vụ và tư vấn cho bạn
       </p>
     </div>
@@ -88,7 +88,7 @@ const totalDealers = regions.reduce((sum, region) =>
             {region.provinces.map(province => (
               <div class={`flex items-center justify-between p-3 rounded-xl transition-all ${
                 province.highlight 
-                  ? 'bg-blue-50 border-2 border-blue-200' 
+                  ? 'bg-red-50 border-2 border-blue-200' 
                   : 'hover:bg-gray-50'
               }`}>
                 <div class="flex items-center gap-3">
@@ -97,7 +97,7 @@ const totalDealers = regions.reduce((sum, region) =>
                     <div class="font-semibold text-gray-900 flex items-center gap-2">
                       {province.name}
                       {province.highlight && (
-                        <span class="text-xs bg-blue-600 text-white px-2 py-0.5 rounded-full">
+                        <span class="text-xs bg-primary text-white px-2 py-0.5 rounded-full">
                           Nhà máy
                         </span>
                       )}
@@ -130,7 +130,7 @@ const totalDealers = regions.reduce((sum, region) =>
             <div class="w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center mx-auto mb-4">
               <span class="text-4xl">🔍</span>
             </div>
-            <div class="text-6xl font-bold text-blue-600 mb-2">1</div>
+            <div class="text-6xl font-bold text-primary mb-2">1</div>
             <h4 class="text-xl font-semibold text-gray-900 mb-2">
               Tìm đại lý gần bạn
             </h4>
@@ -175,7 +175,7 @@ const totalDealers = regions.reduce((sum, region) =>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a 
           href="/lien-he"
-          class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+          class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />

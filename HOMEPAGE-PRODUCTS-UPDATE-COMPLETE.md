@@ -1,124 +1,94 @@
-# Cập Nhật Sản Phẩm Trang Chủ - Hoàn Thành
+# Homepage Products Section Update - Complete
 
-## Tổng Quan
-Đã cập nhật thành công sản phẩm trong Product3DCarousel tại trang chủ (cả 3 ngôn ngữ) theo các sản phẩm thực tế từ báo giá Quang Minh.
+## Summary
+Successfully updated the homepage products section across all three language versions (Vietnamese, English, Chinese) to focus on solar energy aluminum accessories instead of general aluminum products.
 
-## Các Thay Đổi
+## Changes Made
 
-### 1. Cập Nhật Sản Phẩm Trang Chủ (Vietnamese)
-**File:** `src/data/homepage-content.ts`
+### 1. Fixed Syntax Error (Vietnamese Homepage)
+- **File:** `src/pages/index.astro`
+- **Issue:** Duplicate product array entries causing syntax error around line 145-165
+- **Fix:** Removed orphaned code from old product array that was left after incomplete replacement
+- **Result:** Build now succeeds without errors
 
-Đã thay thế 6 sản phẩm cũ (nhôm định hình 6063, 6061, 6005, nhôm cách nhiệt, vách kính, công nghiệp) bằng 6 sản phẩm thực tế:
+### 2. Updated Products Array (All Languages)
 
-1. **Thanh Ray Nhôm 26x45mm** (QM-001)
-   - Vật liệu: A6005-T6
-   - Kích thước: 26x45mm, dài 4.2m
-   - Tỉ trọng: 0.52kg/m (±5%)
-   - Bề mặt: Anod 10-12µm
+#### Vietnamese (`src/pages/index.astro`)
+Changed from 4 general aluminum products to 4 solar-focused products:
+1. **Thanh ray nhôm** (Solar Rails) - Red (#e6282b)
+   - A6005-T6 aluminum rails for solar panel mounting
+   - 10-year warranty
+   
+2. **Kẹp giữa & kẹp biên** (Solar Clamps) - Green (#4fb348)
+   - Mid and end clamps for panel fixing
+   - Rust-resistant, super durable
+   
+3. **Chân L nhôm** (L-Feet) - Orange (#f59e0b)
+   - Aluminum L-feet for pitched roof systems
+   - Flexible adjustment, suitable for all roof types
+   
+4. **Phụ kiện tiếp địa** (Accessories) - Blue (#3b82f6)
+   - Complete accessories: rail connectors, screws, rubber pads, grounding wires
+   - EPDM rubber pads, stainless steel screws
 
-2. **Kẹp Giữa 40x50mm** (QM-016)
-   - Vật liệu: A6005-T6
-   - Kích thước: 40x50x15mm
-   - Độ dày: 4mm, chịu lực tốt
-   - Bao gồm: Bulong inox 304 + con chạy
+#### English (`src/pages/en/index.astro`)
+- Translated all 4 products to English
+- Updated section title: "Our Products" → "Solar aluminum accessories"
+- Updated subtitle: "High-quality A6005 industrial aluminum and solar energy equipment" → "Complete solution for solar power systems - Rails, clamps, feet and high-quality accessories"
 
-3. **Kẹp Biên Z30/35/40** (QM-020)
-   - Vật liệu: A6005-T6
-   - Kích thước: 30/35/40x50mm
-   - Độ dày: 2.5-4mm
-   - Bao gồm: Bulong inox 304 + con chạy
+#### Chinese (`src/pages/cn/index.astro`)
+- Translated all 4 products to Chinese
+- Updated section title: "我们的产品" → "太阳能铝配件"
+- Updated subtitle: "高质量A6005工业铝和太阳能设备" → "太阳能系统的完整解决方案 - 导轨、夹具、支脚和高质量配件"
 
-4. **Chân L 85x50x6mm** (QM-011)
-   - Vật liệu: A6005-T6
-   - Kích thước: 85x50x6mm
-   - Bao gồm: Vít tôn + đệm cao su
-   - Ứng dụng: Lắp trên mái tôn
+### 3. Fixed GeneralQuoteModal Integration
+- **File:** `src/pages/index.astro`
+- **Added:** Import of `getProducts` from supabase
+- **Added:** Fetch all products for quote modal: `const allProducts = await getProducts()`
+- **Updated:** Modal component usage: `<GeneralQuoteModal products={allProducts} lang="vi" />`
+- **Result:** Quote modal now has access to product data
 
-5. **Thanh Nối Rail 150mm** (QM-008)
-   - Vật liệu: A6005-T6
-   - Kích thước: 150x21.5mm
-   - Độ dày: 8mm, chịu lực tốt
-   - Bao gồm: 2 bulong inox 304
+## Product Focus Shift
 
-6. **Kẹp Seamlook/Kliplock 55mm** (QM-SEAMLOOK)
-   - Vật liệu: A6005-T6
-   - Chiều dài: 55mm
-   - Bao gồm: Bulong + ecu + đệm cao su
-   - Ứng dụng: Mái tôn seamlook, kliplock
+### Before:
+- General aluminum products (A6005, extrusion, custom manufacturing)
+- Mixed focus between industrial aluminum and solar energy
+- Generic product descriptions
 
-### 2. Cập Nhật Sản Phẩm Trang Chủ (English)
-**File:** `src/data/homepage-content-en.ts`
+### After:
+- 100% solar energy accessories focus
+- Specific product categories for solar installations:
+  - Rails (mounting structure)
+  - Clamps (panel fixing)
+  - L-Feet (roof mounting)
+  - Accessories (complete system components)
+- Technical specifications for solar applications
+- Emphasis on durability, weather resistance, and system safety
 
-Đã dịch và cập nhật 6 sản phẩm tương ứng sang tiếng Anh:
-- Aluminum Rail 26x45mm
-- Mid Clamp 40x50mm
-- End Clamp Z30/35/40
-- L-Bracket 85x50x6mm
-- Rail Connector 150mm
-- Seamlook/Kliplock Clamp 55mm
+## Brand Alignment
+All products now use the brand color scheme:
+- Primary Red (#e6282b) - Rails
+- Secondary Green (#4fb348) - Clamps
+- Orange (#f59e0b) - L-Feet
+- Blue (#3b82f6) - Accessories
 
-### 3. Cập Nhật Sản Phẩm Trang Chủ (Chinese)
-**File:** `src/data/homepage-content-cn.ts`
-
-Đã dịch và cập nhật 6 sản phẩm tương ứng sang tiếng Trung:
-- 铝导轨26x45mm
-- 中间夹40x50mm
-- 端夹Z30/35/40
-- L型支架85x50x6mm
-- 导轨连接器150mm
-- Seamlook/Kliplock夹55mm
-
-### 4. Cập Nhật Subtitle
-Đã thay đổi subtitle của Product3DCarousel để phản ánh đúng sản phẩm:
-- **Vietnamese:** "Khám phá dòng sản phẩm nhôm A6005-T6 chất lượng cao cho năng lượng mặt trời"
-- **English:** "Explore our high-quality A6005-T6 aluminum products for solar energy"
-- **Chinese:** "探索我们的高质量A6005-T6铝产品用于太阳能"
-
-### 5. Sửa Lỗi Cú Pháp
-Đã sửa các lỗi trong quá trình cập nhật:
-- Xóa dữ liệu cũ còn sót lại
-- Thêm `autoRotateInterval: 5000` cho product3DCarousel
-- Xóa phần trùng lặp trong comparisonSlider
-- Sửa trend từ "stable" thành "up" (không hợp lệ)
-
-## Kết Quả
-
-### Build Status
-✅ Build thành công - không có lỗi
-
-### Validation
+## Build Status
+✅ All files compile successfully
+✅ No syntax errors
+✅ 148 pages built in 5.58s
 ✅ Homepage content validation passed
 
-### Pages Built
-- 148 trang được build thành công
-- Thời gian build: 5.29s
+## Files Modified
+1. `src/pages/index.astro` (Vietnamese)
+2. `src/pages/en/index.astro` (English)
+3. `src/pages/cn/index.astro` (Chinese)
 
-## Tác Động
-
-### Trang Chủ
-- Product3DCarousel giờ hiển thị 6 sản phẩm thực tế từ catalog Quang Minh
-- Thông tin sản phẩm chính xác với mã sản phẩm, vật liệu, kích thước
-- Nhất quán trên cả 3 ngôn ngữ (Vietnamese, English, Chinese)
-
-### Trải Nghiệm Người Dùng
-- Khách hàng thấy sản phẩm thực tế thay vì sản phẩm giả định
-- Thông tin kỹ thuật chính xác giúp khách hàng đưa ra quyết định
-- Link đến trang sản phẩm chi tiết với giá cả và thông tin đầy đủ
-
-## Files Đã Thay Đổi
-
-1. `src/data/homepage-content.ts` - Sản phẩm tiếng Việt
-2. `src/data/homepage-content-en.ts` - Sản phẩm tiếng Anh
-3. `src/data/homepage-content-cn.ts` - Sản phẩm tiếng Trung
-
-## Ghi Chú
-
-- Tất cả sản phẩm đều sử dụng vật liệu A6005-T6 theo tiêu chuẩn của Quang Minh
-- Hình ảnh sản phẩm sử dụng đường dẫn `/products/` (cần chuẩn bị hình ảnh thực tế)
-- Thông tin kỹ thuật dựa trên báo giá và catalog thực tế
-- Giá sản phẩm hiển thị trên trang `/san-pham` với xử lý "Liên hệ để báo giá" cho sản phẩm không có giá
+## Next Steps (If Needed)
+- Update product images to match new solar-focused categories
+- Add more detailed technical specifications for each product category
+- Create dedicated landing pages for each product category
+- Update SEO keywords to focus on solar accessories
 
 ---
-
-**Ngày hoàn thành:** 2025-02-27
-**Trạng thái:** ✅ Hoàn thành và đã build thành công
+**Date:** March 1, 2026
+**Status:** ✅ Complete

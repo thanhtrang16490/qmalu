@@ -102,7 +102,7 @@ const t = translations[lang]
     <!-- Form -->
     <form id="quote-form" class="p-6 space-y-4">
       <!-- Product Info -->
-      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+      <div class="bg-red-50 border border-blue-200 rounded-lg p-4">
         <div class="text-xs font-medium text-blue-900 mb-1">{t.product}</div>
         <div class="text-sm font-semibold text-blue-900">{productName}</div>
         {productCode && (
@@ -120,7 +120,7 @@ const t = translations[lang]
           name="name"
           required
           placeholder={t.namePlaceholder}
-          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm"
         />
       </div>
 
@@ -134,7 +134,7 @@ const t = translations[lang]
           name="phone"
           required
           placeholder={t.phonePlaceholder}
-          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm"
         />
       </div>
 
@@ -148,7 +148,7 @@ const t = translations[lang]
           name="email"
           required
           placeholder={t.emailPlaceholder}
-          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm"
         />
       </div>
 
@@ -161,7 +161,7 @@ const t = translations[lang]
           type="text"
           name="company"
           placeholder={t.companyPlaceholder}
-          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm"
         />
       </div>
 
@@ -174,7 +174,7 @@ const t = translations[lang]
           type="text"
           name="quantity"
           placeholder={t.quantityPlaceholder}
-          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm"
+          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm"
         />
       </div>
 
@@ -187,7 +187,7 @@ const t = translations[lang]
           name="message"
           placeholder={t.messagePlaceholder}
           rows="3"
-          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-sm resize-none"
+          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm resize-none"
         ></textarea>
       </div>
 
@@ -202,7 +202,7 @@ const t = translations[lang]
         </button>
         <button
           type="submit"
-          class="flex-1 px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+          class="flex-1 px-4 py-2.5 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors text-sm font-medium"
         >
           {t.submit}
         </button>

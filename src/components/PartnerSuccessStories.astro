@@ -59,7 +59,7 @@ const stories = [
     <!-- Header -->
     <div class="text-center mb-20 scroll-reveal">
       <div class="inline-block mb-4">
-        <span class="text-sm font-semibold text-blue-600 tracking-wide uppercase bg-blue-50 px-4 py-2 rounded-full">
+        <span class="text-sm font-semibold text-primary tracking-wide uppercase bg-red-50 px-4 py-2 rounded-full">
           Câu chuyện thành công
         </span>
       </div>
@@ -80,7 +80,7 @@ const stories = [
           style={`animation-delay: ${index * 0.15}s`}
         >
           <!-- Header Card -->
-          <div class="bg-gradient-to-br from-blue-600 to-blue-700 p-8 text-white relative overflow-hidden">
+          <div class="bg-gradient-to-br from-primary to-blue-700 p-8 text-white relative overflow-hidden">
             <!-- Background Pattern -->
             <div class="absolute inset-0 opacity-10">
               <div class="absolute top-0 right-0 text-9xl transform translate-x-1/4 -translate-y-1/4">
@@ -121,7 +121,7 @@ const stories = [
             <div class="grid grid-cols-3 gap-4">
               {story.stats.map(stat => (
                 <div class="text-center">
-                  <div class="text-2xl font-bold text-blue-600 mb-1">
+                  <div class="text-2xl font-bold text-primary mb-1">
                     {stat.value}
                   </div>
                   <div class="text-xs text-gray-600">
@@ -161,7 +161,7 @@ const stories = [
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a 
             href="/lien-he"
-            class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+            class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             Đăng ký trở thành đại lý
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

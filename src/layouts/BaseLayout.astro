@@ -56,7 +56,7 @@ const organizationSchema = {
   "name": "Nhôm Quang Minh",
   "alternateName": "Công ty Cổ phần Nhôm Quang Minh",
   "url": SITE_URL,
-  "logo": `${SITE_URL}/appejv-logo.png`,
+  "logo": `${SITE_URL}/quang-minh-logo.svg`,
   "description": description,
   "foundingDate": "2008",
   "address": {
@@ -91,7 +91,7 @@ const websiteSchema = {
     "name": "Nhôm Quang Minh",
     "logo": {
       "@type": "ImageObject",
-      "url": `${SITE_URL}/appejv-logo.png`
+      "url": `${SITE_URL}/quang-minh-logo.svg`
     }
   }
 }
@@ -200,14 +200,14 @@ const websiteSchema = {
     <meta name="yandex-verification" content="YOUR_YANDEX_VERIFICATION_CODE" />
     
     <!-- Theme & Mobile -->
-    <meta name="theme-color" content="#175ead" />
+    <meta name="theme-color" content="#e6282b" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Quang Minh" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="Quang Minh" />
-    <meta name="msapplication-TileColor" content="#175ead" />
-    <meta name="msapplication-TileImage" content="/appejv-logo.png" />
+    <meta name="msapplication-TileColor" content="#e6282b" />
+    <meta name="msapplication-TileImage" content="/quang-minh-square-logo.svg" />
     
     <!-- Format Detection -->
     <meta name="format-detection" content="telephone=yes" />
@@ -217,14 +217,14 @@ const websiteSchema = {
     <title>{title}</title>
     
     <!-- Favicons -->
-    <link rel="icon" type="image/png" href="/appejv-logo.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/appejv-logo.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/appejv-logo.png" />
-    <link rel="apple-touch-icon" href="/appejv-logo.png" sizes="180x180" />
-    <link rel="apple-touch-icon-precomposed" href="/appejv-logo.png" />
-    <link rel="mask-icon" href="/appejv-logo.png" color="#175ead" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/appejv-logo.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/appejv-logo.png" />
+    <link rel="icon" type="image/svg+xml" href="/quang-minh-square-logo.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/quang-minh-square-logo.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/quang-minh-square-logo.svg" />
+    <link rel="apple-touch-icon" href="/quang-minh-square-logo.svg" sizes="180x180" />
+    <link rel="apple-touch-icon-precomposed" href="/quang-minh-square-logo.svg" />
+    <link rel="mask-icon" href="/quang-minh-square-logo.svg" color="#e6282b" />
+    <link rel="icon" type="image/svg+xml" sizes="192x192" href="/quang-minh-square-logo.svg" />
+    <link rel="icon" type="image/svg+xml" sizes="512x512" href="/quang-minh-square-logo.svg" />
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json" />
@@ -283,27 +283,24 @@ const websiteSchema = {
   </head>
 <body class="bg-white min-h-screen">
     <!-- Skip Links for Accessibility -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
       {currentLang === 'en' ? 'Skip to main content' : currentLang === 'cn' ? '跳转到主要内容' : 'Chuyển đến nội dung chính'}
     </a>
-    <a href="#main-nav" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-40 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
+    <a href="#main-nav" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-40 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
       {currentLang === 'en' ? 'Skip to navigation' : currentLang === 'cn' ? '跳转到导航' : 'Chuyển đến điều hướng'}
     </a>
 
     <!-- Header - Apple Style -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-2xl border-b border-gray-200/80 transition-all duration-300">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-11">
+        <div class="flex items-center justify-between h-14">
           <!-- Logo -->
-          <a href="/" class="flex items-center gap-2 group -ml-2">
+          <a href="/" class="flex items-center group -ml-2">
             <img 
-              src="/appejv-logo.png" 
+              src="/quang-minh-logo.svg" 
               alt="Quang Minh Logo" 
-              class="w-7 h-7 object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-200"
+              class="h-10 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-200"
             />
-            <span class="text-[17px] font-semibold text-[#175ead] tracking-tight leading-none">
-              Quang Minh
-            </span>
           </a>
 
           <!-- Desktop Navigation -->
@@ -356,14 +353,13 @@ const websiteSchema = {
     >
       <div class="max-w-[980px] mx-auto px-4 sm:px-6">
         <!-- Mobile Menu Header -->
-        <div class="flex items-center justify-between h-11 border-b border-gray-200/50">
-          <div class="flex items-center gap-2">
+        <div class="flex items-center justify-between h-12 border-b border-gray-200/50">
+          <div class="flex items-center">
             <img 
-              src="/appejv-logo.png" 
+              src="/quang-minh-logo.svg" 
               alt="Quang Minh Logo" 
-              class="w-7 h-7 object-contain opacity-90"
+              class="h-9 w-auto object-contain opacity-90"
             />
-            <span class="text-[17px] font-semibold text-[#175ead] tracking-tight">Quang Minh</span>
           </div>
           <button
             id="mobile-menu-close"
@@ -545,16 +541,12 @@ if (menuButton && menuClose && menu && overlay) {
 
             <!-- Right: Company Info -->
             <div>
-              <div class="flex items-center gap-3 mb-4">
+              <div class="flex items-center mb-4">
                 <img 
-                  src="/appejv-logo.png" 
+                  src="/quang-minh-logo.svg" 
                   alt="Quang Minh Logo" 
-                  class="w-12 h-12 object-contain"
+                  class="h-16 w-auto object-contain"
                 />
-                <div>
-                  <div class="text-2xl font-semibold tracking-tight">Quang Minh</div>
-                  <div class="text-xs text-gray-500">A Group</div>
-                </div>
               </div>
               <p class="text-gray-600 text-sm leading-relaxed mb-4 font-light">
                 {currentLang === 'en' 

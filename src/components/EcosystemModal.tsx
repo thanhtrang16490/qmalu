@@ -172,7 +172,7 @@ export default function EcosystemModal({ brands }: EcosystemModalProps) {
         </button>
 
         {/* Header */}
-        <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-8 text-white">
+        <div className="bg-gradient-to-br from-primary to-blue-700 p-8 text-white">
           <div className="flex items-center gap-6">
             <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
               <img 
@@ -203,7 +203,7 @@ export default function EcosystemModal({ brands }: EcosystemModalProps) {
               <div className="grid gap-3">
                 {details.services.map((service, index) => (
                   <div key={index} className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl">
-                    <svg className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <span className="text-gray-700">{service}</span>
@@ -219,8 +219,8 @@ export default function EcosystemModal({ brands }: EcosystemModalProps) {
               <h4 className="text-xl font-semibold text-gray-900 mb-4">Điểm nổi bật</h4>
               <div className="grid md:grid-cols-2 gap-4">
                 {details.highlights.map((highlight, index) => (
-                  <div key={index} className="flex items-center gap-3 p-4 bg-blue-50 rounded-xl border border-blue-100">
-                    <svg className="w-5 h-5 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <div key={index} className="flex items-center gap-3 p-4 bg-red-50 rounded-xl border border-blue-100">
+                    <svg className="w-5 h-5 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                     <span className="text-gray-700 font-medium">{highlight}</span>
@@ -237,7 +237,7 @@ export default function EcosystemModal({ brands }: EcosystemModalProps) {
                 href={details.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold transition-all shadow-md hover:shadow-lg"
+                className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-full font-semibold transition-all shadow-md hover:shadow-lg"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
@@ -250,7 +250,7 @@ export default function EcosystemModal({ brands }: EcosystemModalProps) {
           {/* Contact */}
           <div className="mt-6 p-4 bg-gray-50 rounded-xl">
             <p className="text-sm text-gray-600 text-center">
-              Liên hệ: <a href="tel:+84351359520" className="text-blue-600 font-semibold hover:underline">035 135 9520</a>
+              Liên hệ: <a href="tel:+84351359520" className="text-primary font-semibold hover:underline">035 135 9520</a>
             </p>
           </div>
         </div>

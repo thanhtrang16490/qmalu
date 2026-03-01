@@ -107,7 +107,7 @@ export const PRODUCT_CATEGORIES = [
     slugEn: 'fish-feed',
     slugCn: 'fish-feed-cn',
     icon: '🐟',
-    color: '#175ead',
+    color: '#e6282b',
   },
 ] as const
 

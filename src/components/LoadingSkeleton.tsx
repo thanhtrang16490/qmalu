@@ -19,7 +19,7 @@ export default function LoadingSkeleton({ height = '400px', className = '' }: Lo
       {/* Optional: Add skeleton content */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
+          <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
           <span className="text-sm text-gray-500 font-medium">Đang tải...</span>
         </div>
       </div>

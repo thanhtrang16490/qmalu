@@ -27,21 +27,24 @@ const searchQuery = url.searchParams.get('search') || ''
 const allProducts = await getProducts()
 const apiCategories = await getCategories()
 
+// Filter out products without price (null, 0, or undefined)
+const productsWithPrice = allProducts.filter(p => p.price != null && p.price > 0)
+
 const categories = [
   { id: 'all', name: 'Tất cả', icon: '🏭' },
   ...apiCategories
 ]
 
-// Count products per category
+// Count products per category (only products with price)
 const categoriesWithCount = categories.map(cat => {
   const count = cat.id === 'all' 
-    ? allProducts.length 
-    : allProducts.filter(p => p.category_id === cat.id).length
+    ? productsWithPrice.length 
+    : productsWithPrice.filter(p => p.category_id === cat.id).length
   return { ...cat, count }
 }).filter(cat => cat.count > 0)
 
 // Filter products
-let filteredProducts = allProducts
+let filteredProducts = productsWithPrice
 
 if (categoryFilter !== 'all') {
   filteredProducts = filteredProducts.filter(p => p.category_id === categoryFilter)
@@ -138,26 +141,20 @@ function formatPrice(price: number): string {
         </svg>
         <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Không tìm thấy sản phẩm</h3>
         <p id="no-results-message" class="text-[14px] sm:text-[15px] text-gray-600 mb-6 px-4">Thử tìm kiếm với từ khóa khác hoặc chọn danh mục khác</p>
-        <a href="/san-pham" class="inline-block px-6 py-3 bg-blue-600 text-white rounded-xl text-[14px] sm:text-[15px] font-medium hover:bg-blue-700 active:bg-blue-800 transition-all min-h-[44px] flex items-center justify-center">
+        <a href="/san-pham" class="inline-block px-6 py-3 bg-primary text-white rounded-xl text-[14px] sm:text-[15px] font-medium hover:bg-primary-dark active:bg-blue-800 transition-all min-h-[44px] flex items-center justify-center">
           Xem tất cả sản phẩm
         </a>
       </div>
 
       <!-- Products Grid - Optimized Responsive -->
       <div id="products-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4 md:gap-5 lg:gap-6" style={filteredProducts.length === 0 ? 'display: none;' : ''}>
-        {allProducts.map((product) => (
+        {filteredProducts.map((product) => (
           <a 
             href={`/san-pham/${product.slug}`}
             class="product-card group bg-white rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-lg active:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100"
             data-product-name={product.name.toLowerCase()}
             data-product-description={(product.description || '').toLowerCase()}
             data-category-id={product.category_id}
-            style={
-              (categoryFilter !== 'all' && product.category_id !== categoryFilter) ||
-              (searchQuery && !product.name.toLowerCase().includes(searchQuery.toLowerCase()))
-                ? 'display: none;'
-                : ''
-            }
             aria-label={`Xem chi tiết ${product.name}`}
           >
             <!-- Product Image with Loading State -->
@@ -181,7 +178,7 @@ function formatPrice(price: number): string {
 
             <!-- Product Info - Optimized Spacing -->
             <div class="p-3 sm:p-4">
-              <h3 class="text-[14px] sm:text-[15px] font-semibold text-gray-900 mb-1 line-clamp-2 group-hover:text-blue-600 transition-colors leading-snug">
+              <h3 class="text-[14px] sm:text-[15px] font-semibold text-gray-900 mb-1 line-clamp-2 group-hover:text-primary transition-colors leading-snug">
                 {product.name}
               </h3>
               
@@ -204,7 +201,7 @@ function formatPrice(price: number): string {
                     )}
                   </>
                 ) : (
-                  <span class="text-[13px] sm:text-[15px] font-medium text-blue-600">
+                  <span class="text-[13px] sm:text-[15px] font-medium text-primary">
                     Liên hệ để báo giá
                   </span>
                 )}
@@ -228,7 +225,7 @@ function formatPrice(price: number): string {
       <div class="flex flex-col sm:flex-row gap-3 justify-center px-4">
         <a 
           href="tel:+84947776662"
-          class="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-xl text-[14px] sm:text-[15px] font-medium transition-all min-h-[44px]"
+          class="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 bg-primary hover:bg-primary-dark active:bg-blue-800 text-white rounded-xl text-[14px] sm:text-[15px] font-medium transition-all min-h-[44px]"
           aria-label="Gọi điện thoại 0947 776 662"
         >
           <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

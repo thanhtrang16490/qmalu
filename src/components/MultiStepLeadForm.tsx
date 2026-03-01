@@ -101,7 +101,7 @@ export default function MultiStepLeadForm() {
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all ${
                   s <= step
-                    ? 'bg-blue-600 text-white shadow-lg'
+                    ? 'bg-primary text-white shadow-lg'
                     : 'bg-gray-200 text-gray-500'
                 }`}
               >
@@ -110,7 +110,7 @@ export default function MultiStepLeadForm() {
               {s < 3 && (
                 <div
                   className={`flex-1 h-1 mx-2 transition-all ${
-                    s < step ? 'bg-blue-600' : 'bg-gray-200'
+                    s < step ? 'bg-primary' : 'bg-gray-200'
                   }`}
                 />
               )}
@@ -140,7 +140,7 @@ export default function MultiStepLeadForm() {
                 onClick={() => setFormData({ ...formData, animalType: type.value })}
                 className={`p-6 rounded-2xl border-2 transition-all ${
                   formData.animalType === type.value
-                    ? 'border-blue-600 bg-blue-50 shadow-lg scale-105'
+                    ? 'border-primary bg-red-50 shadow-lg scale-105'
                     : 'border-gray-200 hover:border-gray-300 hover:shadow-md'
                 }`}
               >
@@ -170,7 +170,7 @@ export default function MultiStepLeadForm() {
                 onClick={() => setFormData({ ...formData, farmSize: size.value })}
                 className={`w-full p-5 rounded-xl border-2 transition-all flex items-center gap-4 ${
                   formData.farmSize === size.value
-                    ? 'border-blue-600 bg-blue-50 shadow-lg'
+                    ? 'border-primary bg-red-50 shadow-lg'
                     : 'border-gray-200 hover:border-gray-300 hover:shadow-md'
                 }`}
               >
@@ -180,7 +180,7 @@ export default function MultiStepLeadForm() {
                   <div className="text-sm text-gray-600">{size.desc}</div>
                 </div>
                 {formData.farmSize === size.value && (
-                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                   </svg>
                 )}
@@ -270,7 +270,7 @@ export default function MultiStepLeadForm() {
           <button
             onClick={nextStep}
             disabled={!canProceed()}
-            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-xl transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Tiếp tục →
           </button>
@@ -278,7 +278,7 @@ export default function MultiStepLeadForm() {
           <button
             onClick={handleSubmit}
             disabled={!canProceed() || isSubmitting}
-            className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 rounded-xl transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="flex-1 bg-gradient-to-r from-primary to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 rounded-xl transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {isSubmitting ? (
               <>
