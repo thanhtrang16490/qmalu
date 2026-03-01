@@ -4,7 +4,6 @@ import Hero3DBackground from '../components/Hero3DBackground'
 import DNA3DHelix from '../components/DNA3DHelix'
 import ParticleWave3D from '../components/ParticleWave3D'
 import AnimatedSphere3D from '../components/AnimatedSphere3D'
-import ExitIntentPopup from '../components/ExitIntentPopup'
 import ProcessTimeline from '../components/ProcessTimeline'
 import AnimatedCounter from '../components/AnimatedCounter'
 import Product3DCarousel from '../components/Product3DCarousel'
@@ -12,11 +11,15 @@ import ComparisonSlider from '../components/ComparisonSlider'
 import LiveMetricsDashboard from '../components/LiveMetricsDashboard'
 import TrustBadgesCarousel from '../components/TrustBadgesCarousel'
 import VideoTestimonials from '../components/VideoTestimonials'
+import CaseStudies from '../components/CaseStudies'
 import InteractiveMap from '../components/InteractiveMap'
 import ScrollProgress from '../components/ScrollProgress.astro'
 import GeneralQuoteModal from '../components/GeneralQuoteModal.astro'
+import BottomNav from '../components/BottomNav'
+import MobileQuoteFAB from '../components/MobileQuoteFAB'
 import { companyInfo } from '../data/company-info'
 import { homepageContent } from '../data/homepage-content'
+import { caseStudies } from '../data/case-studies'
 import { getProducts } from '../lib/supabase'
 
 // Fetch products for quote modal
@@ -222,9 +225,9 @@ const whyChooseUs = [
   <ScrollProgress />
   <div class="min-h-screen bg-white">
   <!-- Hero Section - Apple Style -->
-  <section class="min-h-screen flex items-center justify-center px-4 pt-24 pb-20 relative overflow-hidden" id="hero-section">
-    <!-- 3D Enhanced Background - client:only for SSR compatibility -->
-    <div class="absolute inset-0 opacity-20" data-parallax="0.3">
+  <section class="min-h-screen md:min-h-screen flex items-center justify-center px-4 pt-24 pb-20 relative overflow-hidden" id="hero-section" style="min-height: 80vh;">
+    <!-- 3D Enhanced Background - client:only for SSR compatibility - Desktop only -->
+    <div class="absolute inset-0 opacity-20 desktop-only" data-parallax="0.3">
       <Hero3DBackground client:only="react" />
     </div>
     
@@ -801,6 +804,9 @@ const whyChooseUs = [
     </div>
   </section>
 
+  <!-- Case Studies Section - NEW -->
+  <CaseStudies caseStudies={caseStudies} client:visible />
+
   <!-- Video Testimonials Section - MOVED UP from position #14 -->
   <VideoTestimonials section={homepageContent.videoTestimonials} client:visible />
 
@@ -986,14 +992,12 @@ const whyChooseUs = [
 
   </div>
 
-  <!-- Exit Intent Popup -->
-  <ExitIntentPopup client:load />
-
   <!-- Scroll Animations -->
   <script>
     import { initScrollAnimations } from '../lib/scroll-animations';
     import { initScrollParallax, initMouseParallax } from '../lib/parallax';
     import { initMagneticButtons } from '../lib/magnetic-buttons';
+    import { initMobileFeatures } from '../lib/mobile-features';
     // import { initCustomCursor } from '../lib/custom-cursor'; // Temporarily disabled
     import { startPerformanceMonitoring } from '../lib/performance-monitor';
     
@@ -1003,6 +1007,9 @@ const whyChooseUs = [
     
     // Start performance monitoring
     startPerformanceMonitoring();
+    
+    // Initialize mobile features (Phase 4)
+    initMobileFeatures();
     
     // Initialize magnetic buttons after DOM is loaded
     if (document.readyState === 'loading') {
@@ -1538,6 +1545,28 @@ const whyChooseUs = [
 
   <!-- General Quote Modal -->
   <GeneralQuoteModal products={allProducts} lang="vi" />
+
+  <!-- Mobile Bottom Navigation -->
+  <BottomNav currentPath="/" client:load />
+
+  <!-- Mobile Quote FAB -->
+  <MobileQuoteFAB client:load />
+
+  <!-- Script to handle quote modal opening -->
+  <script>
+    // Handle quote modal opening from bottom nav and FAB
+    function openQuoteModalFromMobile() {
+      const modal = document.getElementById('general-quote-modal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    
+    // Make function globally available
+    (window as any).openQuoteModalFromMobile = openQuoteModalFromMobile;
+  </script>
 
   <!-- Script to open quote modal -->
   <script>

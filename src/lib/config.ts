@@ -120,11 +120,15 @@ export const STATS_CONFIG = {
 } as const
 
 // Feature Flags
+import { shouldDisableAnimations, shouldEnableParallax, shouldEnableMagneticButtons } from './mobile-detect';
+
 export const FEATURE_FLAGS = {
-  enable3DAnimations: true,
-  enableExitIntentPopup: true,
+  enable3DAnimations: typeof window !== 'undefined' ? !shouldDisableAnimations() : true,
+  enableExitIntentPopup: false, // Disabled - annoying UX
   enableStickyCTA: true,
-  enableParallax: true,
+  enableParallax: typeof window !== 'undefined' ? shouldEnableParallax() : true,
+  enableMagneticButtons: typeof window !== 'undefined' ? shouldEnableMagneticButtons() : true,
+  enableCustomCursor: typeof window !== 'undefined' ? shouldEnableMagneticButtons() : false, // Same as magnetic buttons
   enableCountUpAnimations: true,
 } as const
 
