@@ -22,28 +22,29 @@ import { getProducts } from '../lib/supabase'
 // Fetch products for quote modal
 const allProducts = await getProducts()
 
-const seoTitle = "Quang Minh - Sản xuất nhôm công nghiệp và năng lượng mặt trời"
-const seoDescription = "Quang Minh chuyên sản xuất, gia công vật tư thiết bị phụ kiện điện năng lượng mặt trời và nhôm công nghiệp A6005. Sản phẩm siêu bền, chống cháy, dễ vệ sinh. Nhà máy 3,000m² tại KCN Nguyên Khê, Xã Phúc Thịnh, Hà Nội."
+const seoTitle = "Giá Đỡ Năng Lượng Mặt Trời Nhôm A6005-T6 | Quang Minh Solar"
+const seoDescription = "Chuyên cung cấp giá đỡ, thanh ray, kẹp nhôm A6005-T6 cho hệ thống điện mặt trời. Bảo hành 10 năm, lắp đặt nhanh 50%, tiết kiệm 30% chi phí. 5,000+ dự án hoàn thành. Nhà máy 3,000m² tại KCN Nguyên Khê, Hà Nội."
 const seoKeywords = [
-  "nhôm công nghiệp",
-  "nhôm A6005",
-  "năng lượng mặt trời",
-  "Quang Minh Solar",
-  "nhôm định hình",
-  "phụ kiện điện mặt trời",
-  "aluminum A6005",
-  "solar energy equipment",
-  "KCN Nguyên Khê",
-  "Phúc Thịnh Hà Nội",
-  "sản xuất nhôm",
-  "gia công nhôm"
+  "giá đỡ năng lượng mặt trời",
+  "thanh ray nhôm solar",
+  "kẹp pin mặt trời",
+  "mounting structure solar",
+  "giá đỡ tấm pin",
+  "nhôm A6005-T6 solar",
+  "solar mounting system",
+  "phụ kiện lắp đặt điện mặt trời",
+  "chân đế pin mặt trời",
+  "rail mounting solar",
+  "giá đỡ mái nghiêng",
+  "giá đỡ mái bằng",
+  "hệ thống giá đỡ solar"
 ]
 
 const stats = [
-  { number: "24", label: "Giao hàng trong 24h", countUp: false, suffix: "h", icon: "🚚" },
-  { number: "5", label: "Bảo hành lên đến", countUp: false, suffix: " năm", icon: "🛡️" },
-  { number: "100", label: "Đổi trả miễn phí", countUp: false, suffix: "%", icon: "↩️" },
-  { number: "0", label: "Phí tư vấn", countUp: false, suffix: "đ", icon: "💬" }
+  { number: "5000", label: "Dự án hoàn thành", countUp: true, suffix: "+", icon: "⚡" },
+  { number: "10", label: "Bảo hành kết cấu", countUp: false, suffix: " năm", icon: "🛡️" },
+  { number: "500", label: "MW công suất lắp đặt", countUp: true, suffix: "+", icon: "☀️" },
+  { number: "24", label: "Giao hàng nhanh", countUp: false, suffix: "h", icon: "🚚" }
 ]
 
 const testimonials = [
@@ -51,47 +52,50 @@ const testimonials = [
     name: "Anh Nguyễn Văn Thành",
     role: "Giám đốc Công ty Năng lượng Mặt trời Hà Nội",
     company: "Solar Energy HN",
+    project: "Dự án 5MW tại Bắc Ninh",
     avatar: "👨‍💼",
     rating: 5,
-    quote: "Sử dụng sản phẩm Quang Minh được 2 năm, tiết kiệm 30% chi phí so với nhà cung cấp trước. Chất lượng ổn định, siêu bền dưới mọi thời tiết.",
-    result: "Tiết kiệm 30% chi phí"
+    quote: "Giá đỡ nhôm A6005-T6 của Quang Minh giúp chúng tôi tiết kiệm 30% chi phí lắp đặt và rút ngắn thời gian thi công từ 3 tháng xuống 2 tháng. Sau 2 năm vận hành, hệ thống vẫn ổn định tuyệt đối, không có bất kỳ vấn đề nào về kết cấu.",
+    result: "Tiết kiệm 30% chi phí • Nhanh hơn 33%"
   },
   {
     name: "Chị Trần Thị Mai",
     role: "Chủ đầu tư Dự án Khu đô thị Bắc Ninh",
     company: "Mai Construction",
+    project: "Hệ thống mái 2MW",
     avatar: "👩‍💼",
     rating: 5,
-    quote: "Nhôm A6005 của Quang Minh chất lượng cao, độ bền tốt. Giao hàng đúng hẹn, giúp dự án hoàn thành sớm 2 tuần.",
-    result: "Hoàn thành sớm 2 tuần"
+    quote: "Hệ thống giá đỡ mái nghiêng của Quang Minh rất dễ lắp đặt, tiết kiệm nhân công. Chất lượng nhôm A6005-T6 cao cấp, chịu được mưa bão tốt. Giao hàng đúng hẹn, hỗ trợ kỹ thuật nhiệt tình.",
+    result: "Hoàn thành sớm 2 tuần • Chất lượng cao"
   },
   {
     name: "Anh Phạm Đức Long",
     role: "Trưởng phòng Kỹ thuật Công ty Điện lực",
     company: "Điện lực Hải Phòng",
+    project: "Dự án 10MW mái bằng",
     avatar: "🧑‍💼",
     rating: 5,
-    quote: "Phụ kiện điện năng lượng mặt trời của Quang Minh tăng 40% hiệu suất so với sản phẩm cũ. Chống cháy tốt, an toàn tuyệt đối.",
-    result: "Tăng 40% hiệu suất"
+    quote: "Giá đỡ mái bằng của Quang Minh thiết kế thông minh, chịu tải tốt, lắp đặt nhanh gấp đôi so với hệ thống cũ. Đội ngũ kỹ thuật hỗ trợ tính toán chi tiết, đảm bảo an toàn tuyệt đối cho công trình.",
+    result: "Lắp đặt nhanh gấp đôi • An toàn cao"
   }
 ]
 
 const faqs = [
   {
-    question: "Giá nhôm A6005 bao nhiêu?",
-    answer: "Giá nhôm A6005 từ 85,000đ/kg tùy theo khối lượng đặt hàng. Liên hệ 0947 776 662 để nhận báo giá chi tiết và ưu đãi đặc biệt."
+    question: "Giá giá đỡ năng lượng mặt trời bao nhiêu?",
+    answer: "Giá giá đỡ hoàn chỉnh từ 2,500đ/W tùy theo loại mái (mái nghiêng, mái bằng, mái tôn). Bao gồm: thanh ray nhôm A6005-T6, kẹp giữa/biên, chân đế, ốc vít inox, dây tiếp địa. Liên hệ 0947 776 662 để nhận báo giá chi tiết theo dự án."
   },
   {
-    question: "Thời gian giao hàng bao lâu?",
-    answer: "Giao hàng trong vòng 24h tại Hà Nội và các tỉnh lân cận. Các tỉnh xa hơn từ 2-3 ngày. Miễn phí vận chuyển cho đơn hàng trên 20 triệu."
+    question: "Giá đỡ có chịu được bão không?",
+    answer: "Giá đỡ nhôm A6005-T6 của chúng tôi được thiết kế chịu tải trọng gió cấp 12 (150km/h) và tải trọng tuyết 1.5kN/m². Đã qua kiểm định kỹ thuật và thử nghiệm thực tế tại hơn 5,000 dự án trên toàn quốc."
   },
   {
-    question: "Có chính sách bảo hành không?",
-    answer: "Bảo hành 5 năm cho sản phẩm nhôm A6005 và thiết bị năng lượng mặt trời. Đổi trả miễn phí trong 30 ngày nếu có lỗi từ nhà sản xuất."
+    question: "Thời gian lắp đặt mất bao lâu?",
+    answer: "Hệ thống giá đỡ của chúng tôi được thiết kế lắp ráp nhanh, tiết kiệm 50% thời gian so với phương pháp truyền thống. Dự án 100kW mất khoảng 3-5 ngày lắp đặt hoàn chỉnh. Chúng tôi cung cấp hướng dẫn kỹ thuật chi tiết và hỗ trợ hiện trường nếu cần."
   },
   {
-    question: "Thanh toán như thế nào?",
-    answer: "Hỗ trợ thanh toán linh hoạt: Chuyển khoản, tiền mặt, trả góp 0% cho đơn hàng trên 50 triệu. Đặt cọc 30%, thanh toán 70% khi nhận hàng."
+    question: "Có bảo hành bao lâu?",
+    answer: "Bảo hành 10 năm cho kết cấu nhôm và 5 năm cho phụ kiện (ốc vít, kẹp). Cam kết thay thế miễn phí nếu có lỗi từ nhà sản xuất. Tuổi thọ thiết kế 25+ năm, phù hợp với tuổi thọ của tấm pin mặt trời."
   }
 ]
 
@@ -182,27 +186,27 @@ const pricePreview = [
 
 const whyChooseUs = [
   {
-    title: "Giá cả",
-    us: "Từ 85,000đ/kg",
-    competitor: "Từ 110,000đ/kg",
-    better: true
-  },
-  {
-    title: "Giao hàng",
-    us: "24 giờ",
-    competitor: "3-5 ngày",
+    title: "Giá hệ thống",
+    us: "2,500đ/W",
+    competitor: "3,200đ/W",
     better: true
   },
   {
     title: "Bảo hành",
-    us: "5 năm",
-    competitor: "1-2 năm",
+    us: "10 năm kết cấu",
+    competitor: "3-5 năm",
     better: true
   },
   {
-    title: "Đổi trả",
-    us: "30 ngày miễn phí",
-    competitor: "Không hỗ trợ",
+    title: "Kinh nghiệm",
+    us: "5,000+ dự án",
+    competitor: "500-1,000 dự án",
+    better: true
+  },
+  {
+    title: "Thời gian lắp đặt",
+    us: "Nhanh hơn 50%",
+    competitor: "Phương pháp truyền thống",
     better: true
   }
 ]
@@ -245,19 +249,19 @@ const whyChooseUs = [
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
           </svg>
-          <span>Thương hiệu uy tín 16+ năm • KCN Nguyên Khê</span>
+          <span>Chuyên gia giá đỡ Solar 10+ năm • 5,000+ dự án • 500MW+ công suất</span>
         </div>
       </div>
       
       <!-- Main Heading - Value Proposition -->
       <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 leading-[1.1] opacity-0 hero-fade-in tracking-tight" style="animation-delay: 0.3s" data-depth="0.3">
-        Nhôm <span class="text-primary">A6005</span><br />
-        Siêu Bền - Chống Cháy
+        Giá Đỡ Năng Lượng Mặt Trời<br />
+        Nhôm <span class="text-primary">A6005-T6</span> Cao Cấp
       </h1>
       
       <!-- Subheading - Clear Benefits -->
       <p class="text-xl md:text-2xl lg:text-3xl text-gray-700 mb-4 max-w-4xl mx-auto leading-relaxed opacity-0 hero-fade-in font-medium" style="animation-delay: 0.5s" data-depth="0.2">
-        Giải pháp nhôm công nghiệp và năng lượng mặt trời
+        Hệ thống lắp đặt hoàn chỉnh - Bền vững 25+ năm - Tiết kiệm 30% chi phí
       </p>
       
       <div class="flex flex-col md:flex-row md:flex-wrap md:justify-center gap-3 md:gap-0 text-base md:text-lg lg:text-xl text-gray-600 mb-10 max-w-3xl mx-auto opacity-0 hero-fade-in font-light" style="animation-delay: 0.6s">
@@ -265,19 +269,19 @@ const whyChooseUs = [
           <svg class="w-5 h-5 flex-shrink-0 text-green-600" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
-          <span>Siêu bền mọi thời tiết</span>
+          <span>Chịu tải 25+ năm</span>
         </span>
         <span class="flex items-center gap-2 md:mx-2">
           <svg class="w-5 h-5 flex-shrink-0 text-green-600" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
-          <span>Chống cháy an toàn</span>
+          <span>Lắp đặt nhanh 50%</span>
         </span>
         <span class="flex items-center gap-2 md:mx-2">
           <svg class="w-5 h-5 flex-shrink-0 text-green-600" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
           </svg>
-          <span>Dễ vệ sinh bảo trì</span>
+          <span>Tiết kiệm 30% chi phí</span>
         </span>
       </div>
       
@@ -378,18 +382,18 @@ const whyChooseUs = [
       <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-white text-center">
         <div class="flex items-center gap-2">
           <svg class="w-6 h-6 animate-bounce" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd" />
+            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
           </svg>
-          <span class="text-lg md:text-xl font-bold">🔥 Ưu đãi đặc biệt tháng 3</span>
+          <span class="text-lg md:text-xl font-bold">⚡ Ưu đãi dự án Q1/2026</span>
         </div>
         <div class="text-base md:text-lg font-semibold">
-          Giảm <span class="text-2xl md:text-3xl font-bold">15%</span> cho đơn hàng trên 10 triệu
+          <span class="text-2xl md:text-3xl font-bold">Miễn phí</span> thiết kế & tính toán kỹ thuật cho dự án từ 50kW
         </div>
         <div class="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
-          <span class="font-bold">Còn 5 ngày</span>
+          <span class="font-bold">Đến 31/3/2026</span>
         </div>
       </div>
     </div>
