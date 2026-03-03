@@ -3,13 +3,13 @@ import type { HomepageContent } from './homepage-content';
 export const homepageContentEn: HomepageContent = {
   // 1. Process Timeline Section (6 steps)
   processTimeline: {
-    title: 'Professional Work Process',
-    subtitle: 'From consultation to delivery, we accompany you every step of the way',
+    title: 'Professional Solar Installation Systems Process',
+    subtitle: 'From solar mounting systems consultation to delivery, we accompany you every step of the way',
     steps: [
       {
         number: 1,
         title: 'Consultation & Quote',
-        description: 'Expert team provides optimal solutions and detailed quotes within 24 hours',
+        description: 'Expert team provides optimal solar mounting systems solutions and detailed quotes within 24 hours',
         icon: '💬'
       },
       {
@@ -27,7 +27,7 @@ export const homepageContentEn: HomepageContent = {
       {
         number: 4,
         title: 'Production',
-        description: 'Manufacturing with modern production lines, strict quality control at every stage',
+        description: 'Manufacturing solar aluminum accessories with modern production lines, strict quality control at every stage',
         icon: '⚙️'
       },
       {
@@ -48,7 +48,7 @@ export const homepageContentEn: HomepageContent = {
   // 2. Animated Number Counter (4+ metrics)
   animatedCounter: {
     title: 'Impressive Numbers',
-    subtitle: 'Our proud achievements',
+    subtitle: 'Our proud achievements in solar mounting systems manufacturing',
     metrics: [
       {
         value: 15,
@@ -90,16 +90,16 @@ export const homepageContentEn: HomepageContent = {
 
   // Continue with other sections using English translations
   product3DCarousel: {
-    title: 'Featured Products',
-    subtitle: 'Explore our high-quality A6005-T6 aluminum products for solar energy',
+    title: 'Featured Solar Mounting Systems',
+    subtitle: 'Explore our high-quality A6005-T6 aluminum mounting and solar aluminum rails for solar installation systems',
     products: [
       {
         id: 'thanh-ray-nhom-26x45mm',
-        name: 'Aluminum Rail 26x45mm',
+        name: 'Solar Aluminum Rail 26x45mm',
         image: '/products/rail-26x45.jpg',
-        description: 'A6005-T6 aluminum rail 4.2m long, anodized 10-12µm, sturdy and load-bearing',
+        description: 'A6005-T6 aluminum mounting rail 4.2m long, anodized 10-12µm, sturdy and load-bearing for solar installation systems',
         features: [
-          'Material: A6005-T6',
+          'Material: A6005-T6 aluminum mounting',
           'Size: 26x45mm, 4.2m long',
           'Weight: 0.52kg/m (±5%)',
           'Surface: Anodized 10-12µm'
@@ -107,9 +107,9 @@ export const homepageContentEn: HomepageContent = {
       },
       {
         id: 'kep-giua-40x50mm',
-        name: 'Mid Clamp 40x50mm',
+        name: 'Solar Mid Clamp 40x50mm',
         image: '/products/mid-clamp.jpg',
-        description: 'A6005-T6 aluminum mid clamp, 4mm thick, high load capacity, includes bolt and T-nut',
+        description: 'A6005-T6 aluminum mounting mid clamp for solar aluminum accessories, 4mm thick, high load capacity, includes bolt and T-nut',
         features: [
           'Material: A6005-T6',
           'Size: 40x50x15mm',
@@ -119,9 +119,9 @@ export const homepageContentEn: HomepageContent = {
       },
       {
         id: 'kep-bien-z30-35-40',
-        name: 'End Clamp Z30/35/40',
+        name: 'Solar End Clamp Z30/35/40',
         image: '/products/end-clamp.jpg',
-        description: 'A6005-T6 aluminum end clamp, 2.5-4mm thick, includes M8x25 bolt and T-nut',
+        description: 'A6005-T6 aluminum mounting end clamp for solar mounting systems, 2.5-4mm thick, includes M8x25 bolt and T-nut',
         features: [
           'Material: A6005-T6',
           'Size: 30/35/40x50mm',
@@ -131,9 +131,9 @@ export const homepageContentEn: HomepageContent = {
       },
       {
         id: 'chan-l-85x50x6mm-co-vit-ton',
-        name: 'L-Bracket 85x50x6mm',
+        name: 'Solar L-Bracket 85x50x6mm',
         image: '/products/l-bracket-with-screw.jpg',
-        description: 'A6005-T6 aluminum L-bracket, includes bolt, T-nut, self-drilling screw and rubber pad',
+        description: 'A6005-T6 aluminum mounting L-bracket for solar installation systems, includes bolt, T-nut, self-drilling screw and rubber pad',
         features: [
           'Material: A6005-T6',
           'Size: 85x50x6mm',
@@ -143,9 +143,9 @@ export const homepageContentEn: HomepageContent = {
       },
       {
         id: 'thanh-noi-rail-150mm',
-        name: 'Rail Connector 150mm',
+        name: 'Solar Rail Connector 150mm',
         image: '/products/rail-connector-150.jpg',
-        description: 'A6005-T6 rail connector, includes 2 M8x20 bolts and stainless steel 304 washers',
+        description: 'A6005-T6 aluminum mounting rail connector for solar aluminum rails, includes 2 M8x20 bolts and stainless steel 304 washers',
         features: [
           'Material: A6005-T6',
           'Size: 150x21.5mm',
@@ -155,9 +155,9 @@ export const homepageContentEn: HomepageContent = {
       },
       {
         id: 'kep-seamlook-kliplock-55mm',
-        name: 'Seamlook/Kliplock Clamp 55mm',
+        name: 'Solar Seamlook/Kliplock Clamp 55mm',
         image: '/products/seamlook-clamp.jpg',
-        description: 'Seamlook clamp for corrugated roof, includes 2 M8x25 bolts, nuts and rubber pad',
+        description: 'Solar aluminum accessories seamlook clamp for corrugated roof mounting, includes 2 M8x25 bolts, nuts and rubber pad',
         features: [
           'Material: A6005-T6',
           'Length: 55mm',
@@ -180,8 +180,8 @@ export const homepageContentEn: HomepageContent = {
   },
 
   liveMetrics: {
-    title: 'Production Activities',
-    subtitle: 'Track production metrics in real-time',
+    title: 'Solar Aluminum Accessories Production',
+    subtitle: 'Track solar mounting systems production metrics in real-time',
     metrics: [
       {
         id: 'production-today',
@@ -225,7 +225,7 @@ export const homepageContentEn: HomepageContent = {
 
   trustBadges: {
     title: 'Partners & Certifications',
-    subtitle: 'Trusted by reputable organizations',
+    subtitle: 'Trusted by reputable organizations in solar installation systems industry',
     badges: [
       {
         id: 'iso-9001',
@@ -293,7 +293,7 @@ export const homepageContentEn: HomepageContent = {
 
   videoTestimonials: {
     title: 'What Customers Say About Us',
-    subtitle: 'Genuine feedback from customers who have used our products',
+    subtitle: 'Genuine feedback from customers who have used our A6005-T6 aluminum mounting products',
     testimonials: [
       {
         id: 'testimonial-1',
@@ -326,8 +326,8 @@ export const homepageContentEn: HomepageContent = {
   },
 
   comparisonCalculator: {
-    title: 'Cost Comparison Calculator',
-    subtitle: 'Calculate your savings',
+    title: 'Solar Mounting Systems Cost Calculator',
+    subtitle: 'Compare costs for solar aluminum rails and accessories',
     inputs: [
       {
         id: 'length',

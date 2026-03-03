@@ -258,12 +258,12 @@ export const homepageContent: HomepageContent = {
   // 1. Process Timeline Section (6 steps)
   processTimeline: {
     title: 'Quy trình làm việc chuyên nghiệp',
-    subtitle: 'Từ tư vấn đến giao hàng, chúng tôi đồng hành cùng bạn trong mọi bước',
+    subtitle: 'Từ tư vấn hệ thống lắp đặt điện mặt trời đến giao hàng, chúng tôi đồng hành cùng bạn trong mọi bước',
     steps: [
       {
         number: 1,
         title: 'Tư vấn & Báo giá',
-        description: 'Đội ngũ chuyên gia tư vấn giải pháp tối ưu và báo giá chi tiết trong 24h',
+        description: 'Đội ngũ chuyên gia tư vấn giải pháp giá đỡ năng lượng mặt trời tối ưu và báo giá chi tiết trong 24h',
         icon: '💬'
       },
       {
@@ -281,7 +281,7 @@ export const homepageContent: HomepageContent = {
       {
         number: 4,
         title: 'Sản xuất',
-        description: 'Sản xuất với dây chuyền hiện đại, kiểm soát chất lượng nghiêm ngặt từng công đoạn',
+        description: 'Sản xuất phụ kiện nhôm solar với dây chuyền hiện đại, kiểm soát chất lượng nghiêm ngặt từng công đoạn',
         icon: '⚙️'
       },
       {
@@ -302,7 +302,7 @@ export const homepageContent: HomepageContent = {
   // 2. Animated Number Counter (4+ metrics)
   animatedCounter: {
     title: 'Con số ấn tượng',
-    subtitle: 'Những thành tựu đáng tự hào của chúng tôi',
+    subtitle: 'Những thành tựu đáng tự hào trong sản xuất giá đỡ năng lượng mặt trời',
     metrics: [
       {
         value: 15,
@@ -346,13 +346,13 @@ export const homepageContent: HomepageContent = {
   // 3. Product 3D Carousel (5+ products)
   product3DCarousel: {
     title: 'Sản phẩm nổi bật',
-    subtitle: 'Khám phá dòng sản phẩm nhôm A6005-T6 chất lượng cao cho năng lượng mặt trời',
+    subtitle: 'Khám phá dòng sản phẩm giá đỡ nhôm A6005-T6 chất lượng cao cho năng lượng mặt trời',
     products: [
       {
         id: 'thanh-ray-nhom-26x45mm',
         name: 'Thanh Ray Nhôm 26x45mm',
         image: '/products/rail-26x45.jpg',
-        description: 'Thanh ray nhôm A6005-T6 dài 4.2m, anod 10-12µm, cứng vững và chịu tải tốt',
+        description: 'Thanh ray năng lượng mặt trời A6005-T6 dài 4.2m, anod 10-12µm, cứng vững và chịu tải tốt cho hệ thống lắp đặt điện mặt trời',
         features: [
           'Vật liệu: A6005-T6',
           'Kích thước: 26x45mm, dài 4.2m',
@@ -364,7 +364,7 @@ export const homepageContent: HomepageContent = {
         id: 'kep-giua-40x50mm',
         name: 'Kẹp Giữa 40x50mm',
         image: '/products/mid-clamp.jpg',
-        description: 'Kẹp giữa nhôm A6005-T6, dày 4mm, chịu lực tốt, bao gồm bulong và con chạy',
+        description: 'Kẹp giữa phụ kiện nhôm solar A6005-T6, dày 4mm, chịu lực tốt, bao gồm bulong và con chạy',
         features: [
           'Vật liệu: A6005-T6',
           'Kích thước: 40x50x15mm',
@@ -376,7 +376,7 @@ export const homepageContent: HomepageContent = {
         id: 'kep-bien-z30-35-40',
         name: 'Kẹp Biên Z30/35/40',
         image: '/products/end-clamp.jpg',
-        description: 'Kẹp biên nhôm A6005-T6, dày 2.5-4mm, bao gồm bulong M8x25 và con chạy',
+        description: 'Kẹp biên giá đỡ năng lượng mặt trời A6005-T6, dày 2.5-4mm, bao gồm bulong M8x25 và con chạy',
         features: [
           'Vật liệu: A6005-T6',
           'Kích thước: 30/35/40x50mm',
@@ -388,7 +388,7 @@ export const homepageContent: HomepageContent = {
         id: 'chan-l-85x50x6mm-co-vit-ton',
         name: 'Chân L 85x50x6mm',
         image: '/products/l-bracket-with-screw.jpg',
-        description: 'Chân L nhôm A6005-T6, bao gồm bulong, con chạy, vít bắn tôn và đệm cao su',
+        description: 'Chân L giá đỡ nhôm A6005-T6, bao gồm bulong, con chạy, vít bắn tôn và đệm cao su',
         features: [
           'Vật liệu: A6005-T6',
           'Kích thước: 85x50x6mm',
@@ -400,7 +400,7 @@ export const homepageContent: HomepageContent = {
         id: 'thanh-noi-rail-150mm',
         name: 'Thanh Nối Rail 150mm',
         image: '/products/rail-connector-150.jpg',
-        description: 'Thanh nối rail A6005-T6, bao gồm 2 bulong M8x20 và đệm vênh inox 304',
+        description: 'Thanh nối rail hệ thống lắp đặt điện mặt trời A6005-T6, bao gồm 2 bulong M8x20 và đệm vênh inox 304',
         features: [
           'Vật liệu: A6005-T6',
           'Kích thước: 150x21.5mm',
@@ -437,7 +437,7 @@ export const homepageContent: HomepageContent = {
   // 5. Live Metrics Dashboard (4+ metrics)
   liveMetrics: {
     title: 'Hoạt động sản xuất',
-    subtitle: 'Theo dõi các chỉ số sản xuất trong thời gian thực',
+    subtitle: 'Theo dõi các chỉ số sản xuất phụ kiện nhôm solar trong thời gian thực',
     metrics: [
       {
         id: 'production-today',
@@ -482,7 +482,7 @@ export const homepageContent: HomepageContent = {
   // 6. Trust Badges Carousel (8+ badges)
   trustBadges: {
     title: 'Đối tác & Chứng nhận',
-    subtitle: 'Được tin tưởng bởi các tổ chức uy tín',
+    subtitle: 'Được tin tưởng bởi các tổ chức uy tín trong lĩnh vực hệ thống lắp đặt điện mặt trời',
     badges: [
       {
         id: 'iso-9001',
@@ -551,7 +551,7 @@ export const homepageContent: HomepageContent = {
   // 7. Video Testimonials (3 videos)
   videoTestimonials: {
     title: 'Khách hàng nói gì về chúng tôi',
-    subtitle: 'Những chia sẻ chân thực từ khách hàng đã sử dụng sản phẩm',
+    subtitle: 'Những chia sẻ chân thực từ khách hàng đã sử dụng giá đỡ nhôm A6005-T6 của chúng tôi',
     testimonials: [
       {
         id: 'testimonial-1',
@@ -602,7 +602,7 @@ export const homepageContent: HomepageContent = {
   // 9. Comparison Calculator
   comparisonCalculator: {
     title: 'Tính toán chi phí',
-    subtitle: 'So sánh giá thành giữa các loại nhôm định hình',
+    subtitle: 'So sánh giá thành giữa các loại thanh ray năng lượng mặt trời và phụ kiện nhôm solar',
     inputs: [
       {
         id: 'length',

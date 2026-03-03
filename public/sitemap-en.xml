@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://qmalu.com/en</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/about</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/products</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/news</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/contact</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/faq</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/downloads</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/partners</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/app</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/privacy-policy</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/terms-of-service</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/cookie-policy</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/thanh-ray-nhom-26x45mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/rail-26x45.jpg</image:loc>
+      <image:title>Thanh Ray Nhôm 26x45mm</image:title>
+      <image:caption>Thanh ray nhôm A6005-T6 dài 4.2m, anod 10-12µm, cứng vững và chịu tải tốt</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/thanh-ray-nhom-26x52mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/rail-26x52.jpg</image:loc>
+      <image:title>Thanh Ray Nhôm 26x52mm</image:title>
+      <image:caption>Thanh ray nhôm A6005-T6 dài 4.2m, tỉ trọng 0.65kg/m, chịu tải cao</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/thanh-ray-nhom-26x50mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/rail-26x50.jpg</image:loc>
+      <image:title>Thanh Ray Nhôm 26x50mm</image:title>
+      <image:caption>Thanh ray nhôm A6005-T5 dài 4.2m, phổ biến nhất cho dự án solar</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/thanh-noi-rail-150mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/rail-connector-150.jpg</image:loc>
+      <image:title>Thanh Nối Rail 150mm</image:title>
+      <image:caption>Thanh nối rail A6005-T6, bao gồm 2 bulong M8x20 và đệm vênh inox 304</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/thanh-noi-rail-140mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/rail-connector-140.jpg</image:loc>
+      <image:title>Thanh Nối Rail 140mm</image:title>
+      <image:caption>Thanh nối rail 140mm, bao gồm 2 bulong M8x20 và đệm vênh</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/kep-giua-40x50mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/mid-clamp.jpg</image:loc>
+      <image:title>Kẹp Giữa 40x50mm</image:title>
+      <image:caption>Kẹp giữa nhôm A6005-T6, dày 4mm, chịu lực tốt, bao gồm bulong và con chạy</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/kep-bien-z30-35-40</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/end-clamp.jpg</image:loc>
+      <image:title>Kẹp Biên Z30/35/40</image:title>
+      <image:caption>Kẹp biên nhôm A6005-T6, dày 2.5-4mm, bao gồm bulong M8x25 và con chạy</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/kep-seamlook-kliplock-55mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/seamlook-clamp.jpg</image:loc>
+      <image:title>Kẹp Seamlook/Kliplock 55mm</image:title>
+      <image:caption>Kẹp seamlook theo sóng tôn, bao gồm 2 bulong M8x25, ecu và đệm cao su inox 304</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/chan-l-85x50x6mm-co-vit-ton</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/l-bracket-with-screw.jpg</image:loc>
+      <image:title>Chân L 85x50x6mm (Có vít tôn)</image:title>
+      <image:caption>Chân L nhôm A6005-T6, bao gồm bulong, con chạy, vít bắn tôn và đệm cao su</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/chan-l-85x50x6mm-khong-vit-ton</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/l-bracket-no-screw.jpg</image:loc>
+      <image:title>Chân L 85x50x6mm (Không vít tôn)</image:title>
+      <image:caption>Chân L nhôm A6005-T6, không bao gồm vít tôn và đệm cao su</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/chan-l-85x40x6mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/l-bracket-85x40.jpg</image:loc>
+      <image:title>Chân L 85x40x6mm</image:title>
+      <image:caption>Chân L nhôm dày 6mm, bao gồm bulong M8x25, con chạy và vít bắn tôn</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/kep-tiep-dia-thanh-rail</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/grounding-clamp-rail.jpg</image:loc>
+      <image:title>Kẹp Tiếp Địa Thanh Rail</image:title>
+      <image:caption>Kẹp tiếp địa cho thanh rail, bao gồm bulong và mảnh tiếp địa mini</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/kep-tiep-dia-20mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/grounding-clamp-20.jpg</image:loc>
+      <image:title>Kẹp Tiếp Địa 20mm</image:title>
+      <image:caption>Kẹp tiếp địa 20mm, bao gồm bulong inox 304, đệm vênh và bích tiếp địa</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/la-tiep-dia</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/grounding-plate.jpg</image:loc>
+      <image:title>Lá Tiếp Địa</image:title>
+      <image:caption>Lá tiếp địa inox 304, chất lượng cao, chống ăn mòn</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/kep-day-dc</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/dc-cable-clamp.jpg</image:loc>
+      <image:title>Kẹp Dây DC</image:title>
+      <image:caption>Kẹp dây DC inox 304, cố định dây điện an toàn</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/pat-chu-z-200x100x2mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/z-bracket.jpg</image:loc>
+      <image:title>Pat Chữ Z 200x100x2mm</image:title>
+      <image:caption>Pat chữ Z nhôm, kích thước 200x100x2mm, dùng cho kết cấu đặc biệt</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/chan-chu-l-40x80x6mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/l-bracket-40x80.jpg</image:loc>
+      <image:title>Chân Chữ L 40x80x6mm</image:title>
+      <image:caption>Chân L nhôm 40x80x6mm, chịu lực tốt</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/bo-chan-chu-l1-40x80x6mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/l-bracket-set-1.jpg</image:loc>
+      <image:title>Bộ Chân Chữ L1 40x80x6mm</image:title>
+      <image:caption>Bộ chân L1 hoàn chỉnh với phụ kiện</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/bo-chan-chu-l2-40x125x6mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/l-bracket-set-2.jpg</image:loc>
+      <image:title>Bộ Chân Chữ L2 40x125x6mm</image:title>
+      <image:caption>Bộ chân L2 kích thước lớn 40x125x6mm</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/con-truot-can-21mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/sliding-nut-21.jpg</image:loc>
+      <image:title>Con Trượt Cân 21mm</image:title>
+      <image:caption>Con trượt cân 21mm, phụ kiện lắp đặt</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/con-truot-bulong-inox-304</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/sliding-nut-bolt.jpg</image:loc>
+      <image:title>Con Trượt + Bulong Inox 304</image:title>
+      <image:caption>Bộ con trượt kèm bulong inox 304</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/kep-u-30x60mm-ma-kem</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/u-clamp-galvanized.jpg</image:loc>
+      <image:title>Kẹp U 30x60mm Mạ Kẽm</image:title>
+      <image:caption>Kẹp U mạ kẽm 30x60mm, chống gỉ</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/kep-giua-35-40-chim</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/mid-clamp-flush.jpg</image:loc>
+      <image:title>Kẹp Giữa 35/40 Chìm</image:title>
+      <image:caption>Kẹp giữa 35/40mm kiểu chìm, thẩm mỹ cao</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/kep-giua-35-40-noi</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/mid-clamp-raised.jpg</image:loc>
+      <image:title>Kẹp Giữa 35/40 Nổi</image:title>
+      <image:caption>Kẹp giữa 35/40mm kiểu nổi</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/kep-tiep-dia-catalog</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/grounding-clamp-catalog.jpg</image:loc>
+      <image:title>Kẹp Tiếp Địa (Catalog)</image:title>
+      <image:caption>Kẹp tiếp địa theo catalog</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/kep-song-ton-vuong</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/square-tile-clamp.jpg</image:loc>
+      <image:title>Kẹp Sóng Tôn Vuông</image:title>
+      <image:caption>Kẹp sóng tôn vuông, lắp trên mái tôn</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/kep-bien-30mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/end-clamp-30.jpg</image:loc>
+      <image:title>Kẹp Biên 30mm</image:title>
+      <image:caption>Kẹp biên 30mm cho tấm pin mỏng</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/kep-bien-35mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/end-clamp-35.jpg</image:loc>
+      <image:title>Kẹp Biên 35mm</image:title>
+      <image:caption>Kẹp biên 35mm, phổ biến nhất</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/kep-bien-40mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/end-clamp-40.jpg</image:loc>
+      <image:title>Kẹp Biên 40mm</image:title>
+      <image:caption>Kẹp biên 40mm cho tấm pin dày</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/vit-ban-ton-5-5x75mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/self-drilling-screw-55.jpg</image:loc>
+      <image:title>Vít Bắn Tôn 5.5x75mm</image:title>
+      <image:caption>Vít bắn tôn 5.5x75mm, inox 304</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/vit-ban-ton-6-3x75mm</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/self-drilling-screw-63.jpg</image:loc>
+      <image:title>Vít Bắn Tôn 6.3x75mm</image:title>
+      <image:caption>Vít bắn tôn 6.3x75mm, inox 304</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/san-pham/bulong-luc-giac-m8</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/products/hex-bolt-m8.jpg</image:loc>
+      <image:title>Bulong Lục Giác M8 (20/25/40/50mm)</image:title>
+      <image:caption>Bulong lục giác M8 inox 304, nhiều chiều dài</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/news/aluminum-a6005-premium-launch</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/blog/aluminum-a6005-premium.jpg</image:loc>
+      <image:title>Launching Aluminum A6005 Premium 2024</image:title>
+      <image:caption>Quang Minh proudly introduces Aluminum A6005 Premium with advanced extrusion technology, superior durability and wide applications in solar energy.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/news/5-reasons-choose-a6005-aluminum-solar</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/blog/solar-installation-tips.jpg</image:loc>
+      <image:title>5 Reasons to Choose A6005 Aluminum for Solar Energy Projects</image:title>
+      <image:caption>Sharing the outstanding advantages of A6005 aluminum in solar energy applications, helping projects be sustainable and highly efficient.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://qmalu.com/en/news/industrial-aluminum-trends-2024</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://qmalu.com/blog/sustainable-manufacturing.jpg</image:loc>
+      <image:title>Industrial Aluminum Application Trends 2024</image:title>
+      <image:caption>Analyzing new trends in the industrial aluminum industry: renewable energy, green construction and Industry 4.0 technology.</image:caption>
+    </image:image>
+  </url>
+</urlset>

@@ -3,13 +3,13 @@ import type { HomepageContent } from './homepage-content';
 export const homepageContentCn: HomepageContent = {
   // 1. Process Timeline Section (6 steps)
   processTimeline: {
-    title: '专业工作流程',
-    subtitle: '从咨询到交付，我们陪伴您每一步',
+    title: '专业太阳能安装系统流程',
+    subtitle: '从太阳能支架系统咨询到交付，我们陪伴您每一步',
     steps: [
       {
         number: 1,
         title: '咨询和报价',
-        description: '专家团队在24小时内提供最佳解决方案和详细报价',
+        description: '专家团队在24小时内提供最佳太阳能支架系统解决方案和详细报价',
         icon: '💬'
       },
       {
@@ -27,7 +27,7 @@ export const homepageContentCn: HomepageContent = {
       {
         number: 4,
         title: '生产',
-        description: '采用现代化生产线制造，每个阶段严格质量控制',
+        description: '采用现代化生产线制造太阳能铝配件，每个阶段严格质量控制',
         icon: '⚙️'
       },
       {
@@ -48,7 +48,7 @@ export const homepageContentCn: HomepageContent = {
   // 2. Animated Number Counter (4+ metrics)
   animatedCounter: {
     title: '令人印象深刻的数字',
-    subtitle: '我们引以为豪的成就',
+    subtitle: '我们在太阳能支架系统制造方面引以为豪的成就',
     metrics: [
       {
         value: 15,
@@ -90,16 +90,16 @@ export const homepageContentCn: HomepageContent = {
 
   // Continue with other sections using Chinese translations
   product3DCarousel: {
-    title: '特色产品',
-    subtitle: '探索我们的高质量A6005-T6铝产品用于太阳能',
+    title: '特色太阳能支架系统',
+    subtitle: '探索我们的高质量A6005-T6铝支架和太阳能铝导轨用于太阳能安装系统',
     products: [
       {
         id: 'thanh-ray-nhom-26x45mm',
-        name: '铝导轨26x45mm',
+        name: '太阳能铝导轨26x45mm',
         image: '/products/rail-26x45.jpg',
-        description: 'A6005-T6铝导轨长4.2米，阳极氧化10-12µm，坚固耐用',
+        description: 'A6005-T6铝支架导轨长4.2米，阳极氧化10-12µm，坚固耐用用于太阳能安装系统',
         features: [
-          '材料：A6005-T6',
+          '材料：A6005-T6铝支架',
           '尺寸：26x45mm，长4.2米',
           '重量：0.52kg/m (±5%)',
           '表面：阳极氧化10-12µm'
@@ -107,9 +107,9 @@ export const homepageContentCn: HomepageContent = {
       },
       {
         id: 'kep-giua-40x50mm',
-        name: '中间夹40x50mm',
+        name: '太阳能中间夹40x50mm',
         image: '/products/mid-clamp.jpg',
-        description: 'A6005-T6铝中间夹，厚4mm，高承载力，包括螺栓和T型螺母',
+        description: 'A6005-T6铝支架中间夹用于太阳能铝配件，厚4mm，高承载力，包括螺栓和T型螺母',
         features: [
           '材料：A6005-T6',
           '尺寸：40x50x15mm',
@@ -119,9 +119,9 @@ export const homepageContentCn: HomepageContent = {
       },
       {
         id: 'kep-bien-z30-35-40',
-        name: '端夹Z30/35/40',
+        name: '太阳能端夹Z30/35/40',
         image: '/products/end-clamp.jpg',
-        description: 'A6005-T6铝端夹，厚2.5-4mm，包括M8x25螺栓和T型螺母',
+        description: 'A6005-T6铝支架端夹用于太阳能支架系统，厚2.5-4mm，包括M8x25螺栓和T型螺母',
         features: [
           '材料：A6005-T6',
           '尺寸：30/35/40x50mm',
@@ -131,9 +131,9 @@ export const homepageContentCn: HomepageContent = {
       },
       {
         id: 'chan-l-85x50x6mm-co-vit-ton',
-        name: 'L型支架85x50x6mm',
+        name: '太阳能L型支架85x50x6mm',
         image: '/products/l-bracket-with-screw.jpg',
-        description: 'A6005-T6铝L型支架，包括螺栓、T型螺母、自攻螺丝和橡胶垫',
+        description: 'A6005-T6铝支架L型支架用于太阳能安装系统，包括螺栓、T型螺母、自攻螺丝和橡胶垫',
         features: [
           '材料：A6005-T6',
           '尺寸：85x50x6mm',
@@ -143,9 +143,9 @@ export const homepageContentCn: HomepageContent = {
       },
       {
         id: 'thanh-noi-rail-150mm',
-        name: '导轨连接器150mm',
+        name: '太阳能导轨连接器150mm',
         image: '/products/rail-connector-150.jpg',
-        description: 'A6005-T6导轨连接器，包括2个M8x20螺栓和不锈钢304垫圈',
+        description: 'A6005-T6铝支架导轨连接器用于太阳能铝导轨，包括2个M8x20螺栓和不锈钢304垫圈',
         features: [
           '材料：A6005-T6',
           '尺寸：150x21.5mm',
@@ -155,9 +155,9 @@ export const homepageContentCn: HomepageContent = {
       },
       {
         id: 'kep-seamlook-kliplock-55mm',
-        name: 'Seamlook/Kliplock夹55mm',
+        name: '太阳能Seamlook/Kliplock夹55mm',
         image: '/products/seamlook-clamp.jpg',
-        description: '波纹屋顶Seamlook夹，包括2个M8x25螺栓、螺母和橡胶垫',
+        description: '太阳能铝配件波纹屋顶Seamlook夹用于屋顶安装，包括2个M8x25螺栓、螺母和橡胶垫',
         features: [
           '材料：A6005-T6',
           '长度：55mm',
@@ -180,8 +180,8 @@ export const homepageContentCn: HomepageContent = {
   },
 
   liveMetrics: {
-    title: '生产活动',
-    subtitle: '实时跟踪生产指标',
+    title: '太阳能铝配件生产',
+    subtitle: '实时跟踪太阳能支架系统生产指标',
     metrics: [
       {
         id: 'production-today',
@@ -225,7 +225,7 @@ export const homepageContentCn: HomepageContent = {
 
   trustBadges: {
     title: '合作伙伴和认证',
-    subtitle: '受到知名组织的信赖',
+    subtitle: '受到太阳能安装系统行业知名组织的信赖',
     badges: [
       {
         id: 'iso-9001',
@@ -293,7 +293,7 @@ export const homepageContentCn: HomepageContent = {
 
   videoTestimonials: {
     title: '客户评价',
-    subtitle: '使用过我们产品的客户的真实反馈',
+    subtitle: '使用过我们A6005-T6铝支架产品的客户的真实反馈',
     testimonials: [
       {
         id: 'testimonial-1',
@@ -326,8 +326,8 @@ export const homepageContentCn: HomepageContent = {
   },
 
   comparisonCalculator: {
-    title: '成本对比计算器',
-    subtitle: '计算您的节省',
+    title: '太阳能支架系统成本计算器',
+    subtitle: '比较太阳能铝导轨和配件的成本',
     inputs: [
       {
         id: 'length',

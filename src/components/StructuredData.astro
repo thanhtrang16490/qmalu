@@ -1,0 +1,26 @@
+---
+/**
+ * StructuredData Component
+ * 
+ * Renders structured data (Schema.org) as JSON-LD script tags in the HTML head.
+ * Accepts an array of schema objects and outputs them as properly formatted JSON-LD.
+ * 
+ * @component
+ * @example
+ * ```astro
+ * <StructuredData schemas={[productSchema, breadcrumbSchema]} />
+ * ```
+ * 
+ * Requirements: 2.7 - Schema markup output in JSON-LD format
+ */
+
+interface Props {
+  schemas: any[];
+}
+
+const { schemas } = Astro.props;
+---
+
+{schemas.map(schema => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

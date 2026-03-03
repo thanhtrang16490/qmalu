@@ -60,7 +60,7 @@ export const SOCIAL_CONFIG = {
 // SEO Configuration
 export const SEO_CONFIG = {
   googleVerification: '', // Add your Google verification code
-  googleAnalyticsId: 'G-RGN1EGREY6',
+  googleAnalyticsId: 'G-KL7B65498K',
   facebookPixelId: '', // Add your Facebook Pixel ID
   facebookDomainVerification: '', // Add your Facebook domain verification
   bingVerification: '', // Add Bing verification code
