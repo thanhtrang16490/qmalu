@@ -92,10 +92,46 @@ const faqs = [
   {
     question: "Chứng nhận và bảo hành như thế nào?",
     answer: "ISO 9001:2015, Test Report đầy đủ. Bảo hành 10 năm kết cấu nhôm, 5 năm phụ kiện. Cam kết thay thế miễn phí nếu lỗi sản xuất. Tuổi thọ thiết kế 25+ năm."
+  },
+  {
+    question: "Thời gian giao hàng cho dự án MWp là bao lâu?",
+    answer: "Dự án dưới 5MWp: 15-20 ngày. Dự án 5-10MWp: 25-30 ngày. Dự án trên 10MWp: trao đổi cụ thể. Có kho vật tư sẵn sàng cho đơn hàng khẩn cấp. Giao hàng theo tiến độ dự án, phân đợt linh hoạt."
+  },
+  {
+    question: "Có hỗ trợ thi công lắp đặt không?",
+    answer: "Có. Cung cấp hướng dẫn thi công chi tiết, bản vẽ lắp đặt, video hướng dẫn. Hỗ trợ kỹ thuật 24/7 qua hotline. Có thể cử kỹ sư đến hiện trường giám sát cho dự án lớn (phí riêng)."
+  },
+  {
+    question: "Quy trình đặt hàng như thế nào?",
+    answer: "5 bước đơn giản: (1) Liên hệ & tư vấn qua hotline/email, (2) Nhận báo giá & bản vẽ thiết kế trong 24h, (3) Ký hợp đồng & đặt cọc 30%, (4) Sản xuất & QC nghiêm ngặt, (5) Giao hàng & thanh toán 70% còn lại."
+  },
+  {
+    question: "Có cung cấp mẫu thử nghiệm không?",
+    answer: "Có. Cung cấp mẫu sản phẩm để khách hàng kiểm tra chất lượng trước khi đặt hàng số lượng lớn. Phí mẫu sẽ được hoàn lại khi đặt đơn hàng chính thức từ 1 tấn trở lên."
+  },
+  {
+    question: "Điều khoản thanh toán và hợp đồng?",
+    answer: "Đặt cọc 30% khi ký hợp đồng, thanh toán 70% trước khi giao hàng. Chấp nhận chuyển khoản, L/C cho đơn xuất khẩu. Hợp đồng rõ ràng về tiến độ, chất lượng, bảo hành. Có thể thương lượng điều khoản cho dự án lớn."
+  },
+  {
+    question: "Có hỗ trợ xuất khẩu không?",
+    answer: "Có. Đã xuất khẩu sang Campuchia, Lào, Myanmar. Hỗ trợ đầy đủ: chứng từ xuất khẩu, CO, C/O, packing list. Tư vấn logistics, vận chuyển quốc tế. Giá FOB, CIF linh hoạt theo yêu cầu."
   }
 ]
 
-
+// FAQ Schema for SEO
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+}
 
 const products = [
   {
@@ -330,7 +366,7 @@ const whyChooseUs = [
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
           </svg>
-          <span>Xem năng lực sản xuất</span>
+          <span>Xem catalog sản phẩm</span>
         </a>
       </div>
       
@@ -528,28 +564,6 @@ const whyChooseUs = [
               </div>
             </div>
           </div>
-
-          <!-- CTA -->
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a 
-              href="/gioi-thieu"
-              class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all"
-            >
-              <span>Tìm hiểu thêm</span>
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-            <a 
-              href="/lien-he"
-              class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg border-2 border-gray-300 hover:border-gray-400 transition-all"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              <span>Liên hệ ngay</span>
-            </a>
-          </div>
         </div>
       </div>
     </div>
@@ -691,7 +705,220 @@ const whyChooseUs = [
     </div>
   </section>
 
-  <!-- Core Capabilities Section - NEW B2B Feature -->
+  <!-- Bảng Giá Tham Khảo Section -->
+  <section class="py-32 px-4 relative overflow-hidden bg-gradient-to-b from-neutral-50 to-white">
+    <div class="container mx-auto max-w-6xl relative z-10">
+      <div class="text-center mb-16 scroll-reveal">
+        <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-bold mb-6">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd" />
+          </svg>
+          <span>Bảng giá tham khảo</span>
+        </div>
+        <h2 class="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 tracking-tight">
+          Giá Cạnh Tranh, Minh Bạch
+        </h2>
+        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
+          Sản xuất trực tiếp, tiết kiệm 30% so với nhập khẩu
+        </p>
+      </div>
+
+      <!-- Pricing Grid -->
+      <div class="grid md:grid-cols-2 gap-8 mb-12 scroll-reveal">
+        <!-- Thanh ray nhôm -->
+        <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
+          <div class="flex items-start justify-between mb-6">
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">Thanh Ray Nhôm</h3>
+              <p class="text-gray-600">A6005-T6, 6061-T6, 6063-T5</p>
+            </div>
+            <div class="w-16 h-16 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </div>
+          </div>
+          <div class="mb-6">
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-bold text-primary">Từ 85,000đ</span>
+              <span class="text-gray-500">/kg</span>
+            </div>
+            <p class="text-sm text-gray-500 mt-2">Áp dụng cho đơn từ 1 tấn</p>
+          </div>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-700">Độ bền ≥260 MPa</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-700">Bảo hành 10 năm</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-700">Giao hàng 15-20 ngày</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Kẹp giữa & kẹp biên -->
+        <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
+          <div class="flex items-start justify-between mb-6">
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">Kẹp Giữa & Kẹp Biên</h3>
+              <p class="text-gray-600">Nhôm đúc + Inox 304</p>
+            </div>
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+          </div>
+          <div class="mb-6">
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-bold text-primary">Từ 12,000đ</span>
+              <span class="text-gray-500">/bộ</span>
+            </div>
+            <p class="text-sm text-gray-500 mt-2">Áp dụng cho đơn từ 1,000 bộ</p>
+          </div>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-700">Chống ăn mòn cao</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-700">Bảo hành 5 năm</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-700">Có sẵn kho</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Chân L & kết cấu -->
+        <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
+          <div class="flex items-start justify-between mb-6">
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">Chân L & Kết Cấu</h3>
+              <p class="text-gray-600">Nhôm đúc chịu lực cao</p>
+            </div>
+            <div class="w-16 h-16 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            </div>
+          </div>
+          <div class="mb-6">
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-bold text-primary">Từ 25,000đ</span>
+              <span class="text-gray-500">/bộ</span>
+            </div>
+            <p class="text-sm text-gray-500 mt-2">Áp dụng cho đơn từ 500 bộ</p>
+          </div>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-700">Chịu tải trọng cao</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-700">Bảo hành 10 năm</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-700">Thiết kế theo yêu cầu</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Phụ kiện tiếp địa -->
+        <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
+          <div class="flex items-start justify-between mb-6">
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">Phụ Kiện Tiếp Địa</h3>
+              <p class="text-gray-600">Inox 304, đồng mạ thiếc</p>
+            </div>
+            <div class="w-16 h-16 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+          </div>
+          <div class="mb-6">
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-bold text-primary">Liên hệ</span>
+            </div>
+            <p class="text-sm text-gray-500 mt-2">Giá tùy theo quy mô dự án</p>
+          </div>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-700">Đầy đủ chứng chỉ</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-700">Bảo hành 5 năm</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-gray-700">Tư vấn miễn phí</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Note & CTA -->
+      <div class="bg-gradient-to-r from-primary/5 to-blue-50 rounded-3xl p-8 md:p-12 scroll-reveal">
+        <div class="max-w-3xl mx-auto text-center">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Giá ưu đãi cho dự án MWp</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Giá trên chỉ mang tính tham khảo. Giá thực tế phụ thuộc vào số lượng, quy mô dự án, và yêu cầu kỹ thuật cụ thể. 
+            Liên hệ ngay để nhận báo giá chi tiết và ưu đãi tốt nhất cho dự án của bạn.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="/lien-he"
+              class="magnetic-button inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white px-10 py-5 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <span>Liên hệ báo giá dự án</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Năng Lực Cốt Lõi Section - MERGED (Core Capabilities + EPC Solutions) -->
   <section class="py-32 px-4 relative overflow-hidden bg-gradient-to-b from-white to-neutral-50">
     <div class="container mx-auto relative z-10">
       <div class="text-center mb-16 scroll-reveal">
@@ -703,16 +930,16 @@ const whyChooseUs = [
           <span>Năng lực cốt lõi</span>
         </div>
         <h2 class="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 tracking-tight">
-          Quy Trình Sản Xuất Chuyên Nghiệp
+          Đối Tác Tin Cậy Cho Dự Án MWp
         </h2>
         <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
-          Từ thiết kế khuôn đến sản phẩm hoàn thiện, mọi công đoạn đều được kiểm soát chặt chẽ
+          Từ sản xuất đến thi công, chúng tôi đồng hành cùng bạn trong mọi giai đoạn dự án
         </p>
       </div>
 
-      <!-- Capabilities Grid - 2 Column Layout for PC -->
-      <div class="max-w-5xl mx-auto space-y-6 scroll-reveal">
-        <!-- Capability 1: Aluminum Alloy -->
+      <!-- Capabilities Grid - 2 Column Layout -->
+      <div class="max-w-5xl mx-auto space-y-6 scroll-reveal mb-16">
+        <!-- 1. Nhôm Hợp Kim Chất Lượng Cao -->
         <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 flex items-start gap-6">
           <div class="w-16 h-16 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl flex items-center justify-center flex-shrink-0">
             <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -720,9 +947,9 @@ const whyChooseUs = [
             </svg>
           </div>
           <div class="flex-1">
-            <h3 class="text-2xl font-bold text-gray-900 mb-3">Nhôm Hợp Kim 6xxx</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Nhôm Hợp Kim Chất Lượng Cao</h3>
             <p class="text-gray-600 leading-relaxed mb-3">
-              Sử dụng nhôm hợp kim 6005-T6, 6061-T6, 6063-T5 đạt tiêu chuẩn quốc tế. Độ bền cao, chống ăn mòn tốt.
+              Sử dụng nhôm hợp kim 6005-T6, 6061-T6, 6063-T5 đạt tiêu chuẩn quốc tế. Độ bền cao, chống ăn mòn tốt, tuổi thọ 25+ năm.
             </p>
             <div class="flex items-center gap-2 text-sm text-primary font-semibold">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -733,7 +960,7 @@ const whyChooseUs = [
           </div>
         </div>
 
-        <!-- Capability 2: Closed Process -->
+        <!-- 2. Quy Trình Sản Xuất Khép Kín -->
         <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 flex items-start gap-6">
           <div class="w-16 h-16 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl flex items-center justify-center flex-shrink-0">
             <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -741,9 +968,9 @@ const whyChooseUs = [
             </svg>
           </div>
           <div class="flex-1">
-            <h3 class="text-2xl font-bold text-gray-900 mb-3">Quy Trình Khép Kín</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Quy Trình Sản Xuất Khép Kín</h3>
             <p class="text-gray-600 leading-relaxed mb-3">
-              Từ thiết kế khuôn, đùn ép, xử lý bề mặt đến gia công CNC và kiểm tra QC. Kiểm soát toàn bộ chất lượng.
+              Từ thiết kế khuôn, đùn ép, xử lý bề mặt đến gia công CNC và kiểm tra QC. Kiểm soát toàn bộ chất lượng, đảm bảo sản phẩm đồng nhất.
             </p>
             <div class="flex items-center gap-2 text-sm text-blue-600 font-semibold">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -754,71 +981,7 @@ const whyChooseUs = [
           </div>
         </div>
 
-        <!-- Capability 3: Modern Equipment -->
-        <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 flex items-start gap-6">
-          <div class="w-16 h-16 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl flex items-center justify-center flex-shrink-0">
-            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-2xl font-bold text-gray-900 mb-3">Thiết Bị Hiện Đại</h3>
-            <p class="text-gray-600 leading-relaxed mb-3">
-              Máy đùn ép công suất lớn, dây chuyền xử lý bề mặt tự động, máy CNC chính xác cao. Công nghệ tiên tiến.
-            </p>
-            <div class="flex items-center gap-2 text-sm text-green-600 font-semibold">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-              </svg>
-              <span>3 dây chuyền sản xuất</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Capability 4: Professional Team -->
-        <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 flex items-start gap-6">
-          <div class="w-16 h-16 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl flex items-center justify-center flex-shrink-0">
-            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-2xl font-bold text-gray-900 mb-3">Đội Ngũ Chuyên Nghiệp</h3>
-            <p class="text-gray-600 leading-relaxed mb-3">
-              10+ kỹ sư thiết kế, 50+ công nhân lành nghề. Kinh nghiệm dự án MWp, hỗ trợ kỹ thuật 24/7.
-            </p>
-            <div class="flex items-center gap-2 text-sm text-purple-600 font-semibold">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-              </svg>
-              <span>60+ nhân sự</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Capability 5: Quality Control -->
-        <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 flex items-start gap-6">
-          <div class="w-16 h-16 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl flex items-center justify-center flex-shrink-0">
-            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-            </svg>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-2xl font-bold text-gray-900 mb-3">Kiểm Soát Chất Lượng</h3>
-            <p class="text-gray-600 leading-relaxed mb-3">
-              QC nghiêm ngặt từng công đoạn. Kiểm tra kích thước, độ bền, lớp phủ. ISO 9001:2015 certified.
-            </p>
-            <div class="flex items-center gap-2 text-sm text-orange-600 font-semibold">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-              </svg>
-              <span>100% kiểm tra</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Capability 6: Supply Capacity -->
+        <!-- 3. Năng Lực Cung Ứng Lớn -->
         <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 flex items-start gap-6">
           <div class="w-16 h-16 bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-2xl flex items-center justify-center flex-shrink-0">
             <svg class="w-8 h-8 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -826,9 +989,9 @@ const whyChooseUs = [
             </svg>
           </div>
           <div class="flex-1">
-            <h3 class="text-2xl font-bold text-gray-900 mb-3">Năng Lực Cung Ứng</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Năng Lực Cung Ứng Lớn</h3>
             <p class="text-gray-600 leading-relaxed mb-3">
-              Đáp ứng dự án 10+ MWp/tháng. Giao hàng đúng tiến độ. Kho vật tư sẵn sàng cho dự án khẩn cấp.
+              Nhà máy 3,000m² với 3 dây chuyền sản xuất, đáp ứng dự án 10+ MWp/tháng. Giao hàng đúng tiến độ, kho vật tư sẵn sàng cho dự án khẩn cấp.
             </p>
             <div class="flex items-center gap-2 text-sm text-cyan-600 font-semibold">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -838,79 +1001,300 @@ const whyChooseUs = [
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- EPC Solutions Section - NEW B2B Feature -->
-  <section class="py-32 px-4 relative overflow-hidden bg-gradient-to-br from-primary/5 via-white to-green-50">
-    <!-- Animated background -->
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-      <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-green-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-    </div>
-
-    <div class="container mx-auto relative z-10">
-      <div class="text-center mb-16 scroll-reveal">
-        <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-bold mb-6">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
-          </svg>
-          <span>Giải pháp EPC chuyên nghiệp</span>
-        </div>
-        <h2 class="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 tracking-tight">
-          Giải Pháp Trọn Gói Cho Dự Án EPC
-        </h2>
-        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
-          Cung cấp đầy đủ hệ giá đỡ pin NLMT từ thiết kế đến thi công
-        </p>
-      </div>
-
-      <!-- EPC Features Grid - 2 columns on mobile -->
-      <div class="grid grid-cols-2 lg:grid-cols-3 gap-8 mb-16 scroll-reveal">
-        {companyInfo.epcSolutions.features.map((feature) => (
-          <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
-            <div class="text-5xl mb-4">{feature.icon}</div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-            <p class="text-gray-600 leading-relaxed">{feature.description}</p>
+        <!-- 4. Thiết Kế Kỹ Thuật Chuyên Nghiệp -->
+        <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 flex items-start gap-6">
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
           </div>
-        ))}
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Thiết Kế Kỹ Thuật Chuyên Nghiệp</h3>
+            <p class="text-gray-600 leading-relaxed mb-3">
+              Đội ngũ kỹ sư 10+ năm kinh nghiệm hỗ trợ thiết kế bản vẽ kết cấu, tính toán tải trọng, tối ưu vật tư cho dự án MWp. Dịch vụ 24/7.
+            </p>
+            <div class="flex items-center gap-2 text-sm text-purple-600 font-semibold">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>Miễn phí thiết kế</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Cung Cấp Trọn Gói -->
+        <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 flex items-start gap-6">
+          <div class="w-16 h-16 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Cung Cấp Trọn Gói</h3>
+            <p class="text-gray-600 leading-relaxed mb-3">
+              Đầy đủ hệ giá đỡ pin NLMT: thanh ray, kẹp, chân đế, phụ kiện tiếp địa. Tất cả từ một nhà cung cấp, tiết kiệm thời gian và chi phí quản lý.
+            </p>
+            <div class="flex items-center gap-2 text-sm text-green-600 font-semibold">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>100% trọn gói</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Hỗ Trợ Thi Công & Bảo Hành -->
+        <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 flex items-start gap-6">
+          <div class="w-16 h-16 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-gray-900 mb-3">Hỗ Trợ Thi Công & Bảo Hành</h3>
+            <p class="text-gray-600 leading-relaxed mb-3">
+              Hướng dẫn thi công chi tiết, hỗ trợ kỹ thuật 24/7 trong suốt dự án. Bảo hành 10 năm kết cấu, 5 năm phụ kiện. Cam kết chất lượng dài hạn.
+            </p>
+            <div class="flex items-center gap-2 text-sm text-orange-600 font-semibold">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>10 năm bảo hành</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- EPC Benefits -->
-      <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl scroll-reveal">
+      <!-- Benefits Section -->
+      <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl scroll-reveal mb-12">
         <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Lợi Ích Khi Hợp Tác</h3>
         <div class="grid md:grid-cols-2 gap-6">
-          {companyInfo.epcSolutions.benefits.map((benefit) => (
-            <div class="flex items-start gap-4">
-              <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <p class="text-gray-700 font-medium">{benefit}</p>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
             </div>
-          ))}
+            <p class="text-gray-700 font-medium">Tiết kiệm 30% chi phí nhờ sản xuất trực tiếp</p>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <p class="text-gray-700 font-medium">Giao hàng đúng tiến độ, cam kết 100%</p>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <p class="text-gray-700 font-medium">Hỗ trợ kỹ thuật 24/7 trong suốt dự án</p>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <p class="text-gray-700 font-medium">Bảo hành 10 năm kết cấu, 5 năm phụ kiện</p>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <p class="text-gray-700 font-medium">Tư vấn thiết kế miễn phí cho dự án MWp</p>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <p class="text-gray-700 font-medium">Đối tác tin cậy của 100+ nhà thầu EPC</p>
+          </div>
         </div>
       </div>
 
       <!-- CTA -->
-      <div class="text-center mt-12 scroll-reveal">
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <div class="text-center scroll-reveal">
+        <a 
+          href="/san-pham"
+          class="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-semibold text-lg px-6 py-3"
+        >
+          <span>Xem catalog sản phẩm</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quy Trình Đặt Hàng Section -->
+  <section class="py-32 px-4 relative overflow-hidden bg-white">
+    <div class="container mx-auto max-w-6xl relative z-10">
+      <div class="text-center mb-16 scroll-reveal">
+        <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-bold mb-6">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+          </svg>
+          <span>Quy trình đặt hàng</span>
+        </div>
+        <h2 class="text-5xl md:text-6xl font-semibold text-gray-900 mb-6 tracking-tight">
+          5 Bước Đơn Giản
+        </h2>
+        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
+          Từ liên hệ đến giao hàng, chúng tôi đồng hành cùng bạn trong mọi giai đoạn
+        </p>
+      </div>
+
+      <!-- Process Steps -->
+      <div class="relative">
+        <!-- Connecting Line -->
+        <div class="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20 -translate-y-1/2 z-0"></div>
+
+        <!-- Steps Grid -->
+        <div class="grid md:grid-cols-5 gap-8 relative z-10">
+          <!-- Step 1 -->
+          <div class="scroll-reveal">
+            <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-primary/20 hover:border-primary relative">
+              <!-- Step Number -->
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
+                1
+              </div>
+              
+              <!-- Icon -->
+              <div class="w-16 h-16 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl flex items-center justify-center mx-auto mb-6 mt-4">
+                <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+
+              <!-- Content -->
+              <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">Liên Hệ & Tư Vấn</h3>
+              <p class="text-gray-600 text-center leading-relaxed text-sm">
+                Gọi hotline hoặc gửi email. Tư vấn miễn phí về sản phẩm, giá cả, và giải pháp kỹ thuật.
+              </p>
+              <div class="mt-4 text-center">
+                <span class="text-xs font-semibold text-primary">Miễn phí 100%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="scroll-reveal">
+            <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-primary/20 hover:border-primary relative">
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
+                2
+              </div>
+              
+              <div class="w-16 h-16 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6 mt-4">
+                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">Báo Giá & Thiết Kế</h3>
+              <p class="text-gray-600 text-center leading-relaxed text-sm">
+                Nhận báo giá chi tiết trong 24h. Bản vẽ kỹ thuật, tính toán tải trọng miễn phí.
+              </p>
+              <div class="mt-4 text-center">
+                <span class="text-xs font-semibold text-blue-600">Trong 24 giờ</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="scroll-reveal">
+            <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-primary/20 hover:border-primary relative">
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
+                3
+              </div>
+              
+              <div class="w-16 h-16 bg-gradient-to-br from-green-50 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 mt-4">
+                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">Ký Hợp Đồng</h3>
+              <p class="text-gray-600 text-center leading-relaxed text-sm">
+                Ký hợp đồng rõ ràng về tiến độ, chất lượng, bảo hành. Đặt cọc 30%.
+              </p>
+              <div class="mt-4 text-center">
+                <span class="text-xs font-semibold text-green-600">Đặt cọc 30%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="scroll-reveal">
+            <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-primary/20 hover:border-primary relative">
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
+                4
+              </div>
+              
+              <div class="w-16 h-16 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6 mt-4">
+                <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">Sản Xuất & QC</h3>
+              <p class="text-gray-600 text-center leading-relaxed text-sm">
+                Sản xuất theo tiến độ cam kết. QC nghiêm ngặt từng công đoạn. Cập nhật tiến độ định kỳ.
+              </p>
+              <div class="mt-4 text-center">
+                <span class="text-xs font-semibold text-purple-600">15-30 ngày</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="scroll-reveal">
+            <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-primary/20 hover:border-primary relative">
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
+                5
+              </div>
+              
+              <div class="w-16 h-16 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-6 mt-4">
+                <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                </svg>
+              </div>
+
+              <h3 class="text-xl font-bold text-gray-900 mb-3 text-center">Giao Hàng</h3>
+              <p class="text-gray-600 text-center leading-relaxed text-sm">
+                Giao hàng đúng tiến độ. Nghiệm thu chất lượng. Thanh toán 70% còn lại. Bảo hành 10 năm.
+              </p>
+              <div class="mt-4 text-center">
+                <span class="text-xs font-semibold text-orange-600">Thanh toán 70%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Note -->
+      <div class="mt-16 text-center scroll-reveal">
+        <div class="bg-gradient-to-r from-primary/5 to-blue-50 rounded-3xl p-8 max-w-3xl mx-auto">
+          <p class="text-gray-700 leading-relaxed mb-4">
+            <span class="font-bold text-gray-900">Lưu ý:</span> Thời gian sản xuất có thể thay đổi tùy theo quy mô dự án và số lượng đặt hàng. 
+            Chúng tôi cam kết cập nhật tiến độ định kỳ và hỗ trợ kỹ thuật 24/7 trong suốt quá trình.
+          </p>
           <a 
             href="/lien-he"
-            class="magnetic-button inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white px-10 py-5 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all"
+            class="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-semibold"
           >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <span>Liên hệ báo giá dự án</span>
-          </a>
-          <a 
-            href="/san-pham"
-            class="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-semibold text-lg px-6 py-3"
-          >
-            <span>Xem catalog sản phẩm</span>
+            <span>Bắt đầu đặt hàng ngay</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
@@ -1032,24 +1416,6 @@ const whyChooseUs = [
         </div>
       </div>
 
-      <!-- CTA -->
-      <div class="text-center mt-16 scroll-reveal">
-        <a 
-          href="/lien-he"
-          class="magnetic-button inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white px-10 py-5 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all"
-        >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-          </svg>
-          <span>Tư vấn miễn phí ngay</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-        <p class="mt-4 text-sm text-gray-500">
-          Liên hệ: 0947 776 662 • Email: info@qmalu.com
-        </p>
-      </div>
     </div>
   </section>
 
@@ -1132,7 +1498,7 @@ const whyChooseUs = [
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-              <span>Yêu cầu báo giá dự án</span>
+              <span>Liên hệ báo giá dự án</span>
             </button>
             
             <a 
@@ -1143,28 +1509,6 @@ const whyChooseUs = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
               <span>Gọi ngay: 0947 776 662</span>
-            </a>
-          </div>
-
-          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center text-sm text-gray-600">
-            <a 
-              href="/san-pham"
-              class="inline-flex items-center gap-2 hover:text-primary transition-colors"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              <span>Tải catalog sản phẩm</span>
-            </a>
-            <span class="hidden sm:inline text-gray-400">•</span>
-            <a 
-              href="/gioi-thieu"
-              class="inline-flex items-center gap-2 hover:text-primary transition-colors"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-              </svg>
-              <span>Xem năng lực nhà máy</span>
             </a>
           </div>
         </div>
@@ -1874,4 +2218,7 @@ const whyChooseUs = [
       }
     });
   </script>
+
+  <!-- FAQ Schema for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </BaseLayout>

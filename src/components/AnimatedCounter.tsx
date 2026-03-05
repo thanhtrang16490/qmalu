@@ -160,8 +160,8 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ section }) => {
           </p>
         </div>
 
-        {/* Metrics Grid - 6 columns on PC, 2 columns on mobile */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 md:gap-8">
+        {/* Metrics Grid - 4 columns on desktop, 2 columns on mobile */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
           {section.metrics.map((metric, index) => (
             <div
               key={index}

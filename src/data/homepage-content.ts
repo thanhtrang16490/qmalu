@@ -299,50 +299,37 @@ export const homepageContent: HomepageContent = {
     ]
   },
 
-  // 2. Animated Number Counter (6 metrics) - B2B Focus
+  // 2. Animated Number Counter (4 metrics) - B2B Focus - OPTIMIZED
   animatedCounter: {
     title: 'Năng Lực Sản Xuất',
     subtitle: 'Đối tác tin cậy cho các dự án điện mặt trời quy mô lớn',
     metrics: [
       {
-        value: 16,
-        label: 'Năm kinh nghiệm',
-        suffix: '+',
-        icon: '📅',
-        trend: 'up'
-      },
-      {
-        value: 3000,
-        label: 'm² nhà máy',
-        icon: '🏭',
-        trend: 'up'
-      },
-      {
-        value: 1000,
-        label: 'Khách hàng B2B',
-        suffix: '+',
-        icon: '🤝',
-        trend: 'up'
-      },
-      {
         value: 500,
-        label: 'Dự án hoàn thành',
+        label: 'Dự án MWp hoàn thành',
         suffix: '+',
-        icon: '✨',
+        icon: '⚡',
         trend: 'up'
       },
       {
         value: 10,
-        label: 'MWp/tháng',
-        suffix: '+',
-        icon: '☀️',
-        trend: 'up'
+        label: 'Bảo hành kết cấu',
+        suffix: ' năm',
+        icon: '🛡️',
+        trend: 'neutral'
       },
       {
         value: 100,
         label: 'Đối tác EPC',
         suffix: '+',
-        icon: '🔗',
+        icon: '🤝',
+        trend: 'up'
+      },
+      {
+        value: 10,
+        label: 'MWp/tháng năng lực',
+        suffix: '+',
+        icon: '🏭',
         trend: 'up'
       }
     ],
