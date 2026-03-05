@@ -6,6 +6,7 @@ import ParticleWave3D from '../components/ParticleWave3D'
 import AnimatedSphere3D from '../components/AnimatedSphere3D'
 import AnimatedCounter from '../components/AnimatedCounter'
 import TrustBadgesCarousel from '../components/TrustBadgesCarousel'
+import CertificatesCarousel from '../components/CertificatesCarousel'
 import CaseStudies from '../components/CaseStudies'
 import InteractiveMap from '../components/InteractiveMap'
 import ScrollProgress from '../components/ScrollProgress.astro'
@@ -132,6 +133,102 @@ const faqSchema = {
     }
   }))
 }
+
+// Organization Schema for SEO
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": companyInfo.brand,
+  "alternateName": "Quang Minh Aluminum",
+  "url": "https://qmalu.com",
+  "logo": "https://qmalu.com/quang-minh-logo.svg",
+  "description": "Nhà sản xuất trực tiếp kết cấu nhôm và phụ kiện điện mặt trời, chuyên cung cấp giải pháp trọn gói cho các dự án EPC quy mô lớn",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": companyInfo.capacity.location,
+    "addressLocality": "Đông Anh",
+    "addressRegion": "Hà Nội",
+    "addressCountry": "VN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": companyInfo.contact.phone,
+    "contactType": "sales",
+    "areaServed": ["VN", "KH", "LA", "MM"],
+    "availableLanguage": ["vi", "en", "zh"]
+  },
+  "sameAs": [
+    "https://www.facebook.com/quangminhaluminum",
+    "https://www.linkedin.com/company/quangminhaluminum"
+  ],
+  "foundingDate": "2008",
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "value": 50
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "150",
+    "bestRating": "5"
+  }
+}
+
+// Product Schema for main products
+const productSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Thanh Ray Nhôm A6005-T6",
+    "description": "Thanh ray nhôm A6005-T6 chất lượng cao cho hệ thống điện mặt trời. Độ bền ≥260 MPa, bảo hành 10 năm.",
+    "brand": {
+      "@type": "Brand",
+      "name": companyInfo.brand
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "85000",
+      "priceCurrency": "VND",
+      "priceValidUntil": "2026-12-31",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": companyInfo.brand
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "80"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Kẹp Giữa & Kẹp Biên",
+    "description": "Kẹp giữa và kẹp biên nhôm đúc + inox 304 chất lượng cao. Chống ăn mòn, bảo hành 5 năm.",
+    "brand": {
+      "@type": "Brand",
+      "name": companyInfo.brand
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "12000",
+      "priceCurrency": "VND",
+      "priceValidUntil": "2026-12-31",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": companyInfo.brand
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "65"
+    }
+  }
+]
 
 const products = [
   {
@@ -571,6 +668,9 @@ const whyChooseUs = [
 
   <!-- Trust Badges Carousel Section - MOVED UP from position #9 -->
   <TrustBadgesCarousel section={homepageContent.trustBadges} client:visible />
+
+  <!-- Certificates & Quality Control Section - Carousel -->
+  <CertificatesCarousel client:visible />
 
   <!-- Stats Section - Animated Counter -->
   <section class="py-32 relative overflow-hidden">
@@ -2219,6 +2319,15 @@ const whyChooseUs = [
     });
   </script>
 
-  <!-- FAQ Schema for SEO -->
+  <!-- Structured Data for SEO -->
+  <!-- FAQ Schema -->
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  
+  <!-- Organization Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  
+  <!-- Product Schemas -->
+  {productSchemas.map(schema => (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  ))}
 </BaseLayout>

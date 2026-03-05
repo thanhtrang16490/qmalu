@@ -28,66 +28,129 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
-    id: 'bac-ninh-5mw',
-    title: 'Dự Án Điện Mặt Trời 5MW Bắc Ninh',
-    client: 'Công ty TNHH Năng lượng Xanh Việt Nam (EPC Contractor)',
-    industry: 'EPC - Năng lượng tái tạo',
-    location: 'KCN Quế Võ, Bắc Ninh',
-    capacity: '5MWp',
-    image: '/images/projects/bac-ninh-5mw.jpg',
-    challenge: 'Nhà thầu EPC cần cung cấp trọn gói hệ giá đỡ cho dự án 5MWp trong thời gian ngắn (2 tháng) với chi phí tối ưu. Địa hình phức tạp với mái nhà xưởng bằng và mái tôn nghiêng. Yêu cầu đảm bảo tiến độ thi công và chất lượng theo tiêu chuẩn quốc tế.',
-    solution: 'Cung cấp trọn bộ giá đỡ nhôm A6005-T6 bao gồm: thanh ray 4.2m, chân đỡ mái bằng ballast, L-feet cho mái nghiêng, kẹp giữa/biên, phụ kiện tiếp địa và bulong inox. Hỗ trợ thiết kế kỹ thuật miễn phí, tính toán kết cấu theo AS/NZS 1170. Giao hàng theo 3 đợt phù hợp tiến độ thi công. Đội kỹ thuật hỗ trợ 24/7 tại hiện trường.',
+    id: 'hue-anh-rooftop',
+    title: 'Dự Án Điện Mặt Trời Áp Mái - Công ty TNHH Huế Anh',
+    client: 'Công ty TNHH Huế Anh',
+    industry: 'Sản xuất - Công nghiệp',
+    location: 'Huế',
+    capacity: '1.5MWp',
+    image: '/images/projects/hue-anh-rooftop.jpg',
+    challenge: 'Lắp đặt hệ thống điện mặt trời trên mái nhà xưởng sản xuất với diện tích lớn. Yêu cầu đảm bảo chịu tải tốt, không ảnh hưởng đến hoạt động sản xuất, và thi công nhanh để sớm đưa vào vận hành.',
+    solution: 'Cung cấp hệ thống giá đỡ mái bằng chuyên dụng với thanh ray nhôm A6005-T6, kẹp giữa/biên chất lượng cao. Thiết kế tối ưu giúp lắp đặt nhanh chóng, đảm bảo an toàn kết cấu. Hỗ trợ kỹ thuật 24/7 trong suốt quá trình thi công.',
     results: [
-      { label: 'Tiết kiệm chi phí', value: '30%', icon: '💰' },
-      { label: 'Rút ngắn thời gian', value: '33%', icon: '⚡' },
-      { label: 'Vật tư đồng bộ', value: '100%', icon: '✓' }
+      { label: 'Công suất', value: '1.5MWp', icon: '⚡' },
+      { label: 'Tiết kiệm điện', value: '40%', icon: '💰' },
+      { label: 'Hoàn thành đúng hạn', value: '100%', icon: '✓' }
     ],
     testimonial: {
-      quote: 'Quang Minh là đối tác tin cậy cho dự án EPC của chúng tôi. Giá đỡ nhôm A6005-T6 chất lượng cao, giá cạnh tranh hơn 30% so với nhập khẩu. Đặc biệt là dịch vụ thiết kế kỹ thuật miễn phí và giao hàng đúng tiến độ giúp chúng tôi hoàn thành dự án sớm hơn 1 tháng. Sau 2 năm vận hành, hệ thống vẫn ổn định tuyệt đối.',
-      author: 'Nguyễn Văn Thành',
-      role: 'Giám đốc Dự án - Năng lượng Xanh Việt Nam'
+      quote: 'Hệ thống giá đỡ của Quang Minh chất lượng tốt, lắp đặt nhanh chóng và chuyên nghiệp. Sau khi đưa vào vận hành, nhà máy tiết kiệm được 40% chi phí điện hàng tháng.',
+      author: 'Đại diện Công ty',
+      role: 'Giám đốc - Công ty TNHH Huế Anh'
     }
   },
   {
-    id: 'khu-do-thi-2mw',
-    title: 'Hệ Thống Mái Nghiêng 2MWp Khu Đô Thị',
-    client: 'Công ty CP Xây dựng & Năng lượng Mai (EPC Contractor)',
-    industry: 'EPC - Bất động sản & Năng lượng',
-    location: 'Khu đô thị Ecopark, Hưng Yên',
+    id: 'hoang-tung-rooftop',
+    title: 'Dự Án Điện Mặt Trời Áp Mái - Công ty TNHH May Mặc Hoàng Tùng',
+    client: 'Công ty TNHH May Mặc Hoàng Tùng',
+    industry: 'May mặc - Dệt may',
+    location: 'Bắc Ninh',
     capacity: '2MWp',
-    image: '/images/projects/khu-do-thi-2mw.jpg',
-    challenge: 'Dự án lắp đặt hệ thống NLMT trên 150 mái nhà biệt thự với góc độ và loại mái khác nhau (mái ngói, mái tôn, mái bê tông). Yêu cầu thẩm mỹ cao, không làm hỏng kết cấu mái hiện có, đảm bảo chống thấm tuyệt đối. Nhà thầu cần giải pháp linh hoạt và dễ thi công để tiết kiệm nhân công.',
-    solution: 'Thiết kế hệ thống giá đỡ mái nghiêng đa năng với chân L điều chỉnh được (10-30 độ), phù hợp mọi loại mái. Cung cấp đầy đủ: L-feet nhôm, tile hook cho mái ngói, vít tôn chuyên dụng, đệm cao su EPDM chống thấm. Hướng dẫn thi công chi tiết và hỗ trợ kỹ thuật tại 5 điểm thi công đồng thời. Giao hàng linh hoạt theo tiến độ từng cụm nhà.',
+    image: '/images/projects/hoang-tung-rooftop.jpg',
+    challenge: 'Dự án lắp đặt trên mái nhà xưởng may mặc với diện tích rộng. Yêu cầu hệ thống chịu tải tốt, chống ăn mòn cao do môi trường sản xuất, và đảm bảo thẩm mỹ.',
+    solution: 'Cung cấp trọn bộ hệ giá đỡ nhôm A6005-T6 với lớp anodized chống ăn mòn. Thiết kế hệ thống ballast không cần khoan mái, đảm bảo không thấm nước. Giao hàng đúng tiến độ và hỗ trợ kỹ thuật tận tình.',
     results: [
-      { label: 'Hoàn thành sớm', value: '2 tuần', icon: '📅' },
-      { label: 'Mái nhà lắp đặt', value: '150+', icon: '🏠' },
-      { label: 'Tiết kiệm nhân công', value: '40%', icon: '⭐' }
+      { label: 'Công suất', value: '2MWp', icon: '⚡' },
+      { label: 'Giảm chi phí', value: '35%', icon: '💰' },
+      { label: 'Không thấm nước', value: '100%', icon: '🛡️' }
     ],
     testimonial: {
-      quote: 'Hệ thống giá đỡ mái nghiêng của Quang Minh thiết kế rất thông minh, dễ lắp đặt, giúp chúng tôi tiết kiệm 40% nhân công so với dự kiến. Chất lượng nhôm A6005-T6 cao cấp, chịu được mưa bão tốt. Đặc biệt là dịch vụ giao hàng linh hoạt và hỗ trợ kỹ thuật nhiệt tình giúp dự án hoàn thành sớm hơn 2 tuần.',
-      author: 'Trần Thị Mai',
-      role: 'Giám đốc Điều hành - Xây dựng & Năng lượng Mai'
+      quote: 'Quang Minh cung cấp giải pháp tối ưu cho nhà xưởng của chúng tôi. Hệ thống lắp đặt nhanh, không ảnh hưởng đến sản xuất, và giúp tiết kiệm đáng kể chi phí điện.',
+      author: 'Đại diện Công ty',
+      role: 'Giám đốc - Công ty TNHH May Mặc Hoàng Tùng'
     }
   },
   {
-    id: 'hai-phong-10mw',
-    title: 'Dự Án Mái Bằng 10MWp Hải Phòng',
-    client: 'Công ty CP Điện lực & Năng lượng Hải Phòng (EPC Contractor)',
-    industry: 'EPC - Điện lực & Công nghiệp',
-    location: 'KCN VSIP Hải Phòng',
-    capacity: '10MWp',
-    image: '/images/projects/hai-phong-10mw.jpg',
-    challenge: 'Dự án quy mô lớn nhất của nhà thầu, lắp đặt trên mái bằng nhà xưởng 50,000m². Yêu cầu chịu tải cao do gần biển (cách biển 5km), chịu gió mạnh cấp 12, ăn mòn muối. Cần đảm bảo an toàn tuyệt đối, không khoan thủng mái để tránh thấm. Thời gian thi công gấp (3 tháng) để kịp hưởng giá FIT.',
-    solution: 'Cung cấp hệ thống giá đỡ mái bằng ballast block chuyên dụng, không cần khoan mái. Tính toán kỹ thuật chi tiết theo tiêu chuẩn AS/NZS 1170 để chịu gió cấp 12 và tải trọng tuyết 1.5kN/m². Sử dụng nhôm A6005-T6 với lớp anodized 15µm chống ăn mòn muối. Cung cấp trọn bộ: ballast block bê tông, thanh ray 4.2m, kẹp giữa/biên, dây tiếp địa, bulong inox 316. Hỗ trợ 5 kỹ sư tại hiện trường trong suốt quá trình thi công.',
+    id: 'jinyi-jewelry-rooftop',
+    title: 'Dự Án Điện Mặt Trời Áp Mái - Công ty Jinyi Jewelry',
+    client: 'Công ty Công ty Jinyi Jewelry',
+    industry: 'Sản xuất trang sức',
+    location: 'Bắc Ninh',
+    capacity: '1.2MWp',
+    image: '/images/projects/jinyi-jewelry-rooftop.jpg',
+    challenge: 'Lắp đặt hệ thống điện mặt trời trên nhiều mái nhà xưởng với kết cấu khác nhau. Yêu cầu cao về thẩm mỹ và đảm bảo an toàn tuyệt đối cho khu vực sản xuất trang sức cao cấp.',
+    solution: 'Thiết kế hệ thống giá đỡ linh hoạt phù hợp với từng loại mái. Sử dụng nhôm A6005-T6 cao cấp với bề mặt hoàn thiện đẹp. Thi công cẩn thận, đảm bảo không ảnh hưởng đến hoạt động sản xuất.',
     results: [
-      { label: 'Lắp đặt nhanh', value: '2x', icon: '⚡' },
-      { label: 'An toàn tuyệt đối', value: '100%', icon: '🛡️' },
-      { label: 'Chịu gió', value: 'Cấp 12', icon: '💨' }
+      { label: 'Công suất', value: '1.2MWp', icon: '⚡' },
+      { label: 'Thẩm mỹ cao', value: '100%', icon: '⭐' },
+      { label: 'An toàn', value: '100%', icon: '✓' }
     ],
     testimonial: {
-      quote: 'Đây là dự án lớn nhất của chúng tôi và Quang Minh đã chứng minh là đối tác đáng tin cậy. Giá đỡ mái bằng ballast thiết kế thông minh, chịu tải tốt, lắp đặt nhanh gấp đôi so với hệ thống cũ. Đội ngũ kỹ thuật hỗ trợ tính toán chi tiết, đảm bảo an toàn tuyệt đối cho công trình. Nhờ đó chúng tôi hoàn thành dự án đúng hạn và đạt chứng nhận COD kịp thời.',
-      author: 'Phạm Đức Long',
-      role: 'Trưởng phòng Kỹ thuật - Điện lực & Năng lượng Hải Phòng'
+      quote: 'Hệ thống giá đỡ của Quang Minh không chỉ chất lượng tốt mà còn đẹp mắt, phù hợp với tiêu chuẩn cao của nhà máy chúng tôi. Đội ngũ thi công chuyên nghiệp và cẩn thận.',
+      author: 'Đại diện Công ty',
+      role: 'Giám đốc - Công ty Jinyi Jewelry'
+    }
+  },
+  {
+    id: 'mg-thanh-hoa-showroom',
+    title: 'Dự Án Điện Mặt Trời Áp Mái Showroom - Công ty MG Thanh Hóa',
+    client: 'Công ty MG Thanh Hóa',
+    industry: 'Showroom ô tô',
+    location: 'Thanh Hóa',
+    capacity: '800kWp',
+    image: '/images/projects/mg-thanh-hoa-showroom.jpg',
+    challenge: 'Lắp đặt hệ thống điện mặt trời trên mái showroom ô tô với yêu cầu thẩm mỹ cao và không ảnh hưởng đến hình ảnh thương hiệu. Cần đảm bảo an toàn tuyệt đối cho khách hàng và xe.',
+    solution: 'Thiết kế hệ thống giá đỡ tối giản, thẩm mỹ cao phù hợp với showroom cao cấp. Sử dụng vật liệu nhôm A6005-T6 với bề mặt hoàn thiện đẹp. Thi công nhanh chóng trong thời gian nghỉ để không ảnh hưởng kinh doanh.',
+    results: [
+      { label: 'Công suất', value: '800kWp', icon: '⚡' },
+      { label: 'Thẩm mỹ', value: 'Cao cấp', icon: '⭐' },
+      { label: 'Không gián đoạn KD', value: '100%', icon: '✓' }
+    ],
+    testimonial: {
+      quote: 'Quang Minh hiểu rõ yêu cầu của showroom cao cấp. Hệ thống lắp đặt đẹp mắt, hài hòa với kiến trúc, và giúp chúng tôi tiết kiệm chi phí điện đáng kể.',
+      author: 'Đại diện Công ty',
+      role: 'Giám đốc - Công ty MG Thanh Hóa'
+    }
+  },
+  {
+    id: 'dam-tom-solar',
+    title: 'Dự Án Điện Mặt Trời Tại Đầm Tôm',
+    client: 'Anh Vương',
+    industry: 'Nuôi trồng thủy sản',
+    location: 'Miền Trung',
+    capacity: '500kWp',
+    image: '/images/projects/dam-tom-solar.jpg',
+    challenge: 'Lắp đặt hệ thống điện mặt trời trên mặt nước đầm tôm với môi trường khắc nghiệt (nước mặn, độ ẩm cao, gió mạnh). Yêu cầu chống ăn mòn cao và đảm bảo an toàn.',
+    solution: 'Thiết kế hệ thống giá đỡ nổi chuyên dụng với nhôm A6005-T6 và lớp anodized 15µm chống ăn mòn muối. Sử dụng phụ kiện inox 316 chống gỉ. Tính toán kỹ thuật chịu gió mạnh và sóng.',
+    results: [
+      { label: 'Công suất', value: '500kWp', icon: '⚡' },
+      { label: 'Chống ăn mòn', value: 'Cao', icon: '🛡️' },
+      { label: 'Tiết kiệm điện', value: '50%', icon: '💰' }
+    ],
+    testimonial: {
+      quote: 'Hệ thống của Quang Minh hoạt động rất tốt trong môi trường nước mặn khắc nghiệt. Giúp tôi tiết kiệm 50% chi phí điện cho hệ thống sục khí và máy bơm.',
+      author: 'Anh Vương',
+      role: 'Chủ đầm tôm'
+    }
+  },
+  {
+    id: 'vinhome-rooftop',
+    title: 'Dự Án Điện Mặt Trời Áp Mái Vinhome',
+    client: 'Khu đô thị Vinhome',
+    industry: 'Bất động sản - Khu đô thị',
+    location: 'Hà Nội',
+    capacity: '3MWp',
+    image: '/images/projects/vinhome-rooftop.jpg',
+    challenge: 'Lắp đặt hệ thống điện mặt trời trên nhiều tòa nhà cao tầng trong khu đô thị cao cấp. Yêu cầu thẩm mỹ cao, an toàn tuyệt đối, và không ảnh hưởng đến cư dân.',
+    solution: 'Thiết kế hệ thống giá đỡ mái bằng ballast cao cấp, không cần khoan mái. Sử dụng vật liệu nhôm A6005-T6 với bề mặt hoàn thiện đẹp. Thi công theo từng tòa, đảm bảo an toàn và không gây ồn.',
+    results: [
+      { label: 'Công suất', value: '3MWp', icon: '⚡' },
+      { label: 'Số tòa nhà', value: '15+', icon: '🏢' },
+      { label: 'Hài lòng cư dân', value: '100%', icon: '⭐' }
+    ],
+    testimonial: {
+      quote: 'Quang Minh thực hiện dự án rất chuyên nghiệp. Hệ thống lắp đặt đẹp, an toàn, và giúp khu đô thị tiết kiệm chi phí điện chung đáng kể.',
+      author: 'Ban quản lý',
+      role: 'Đại diện Ban quản lý Vinhome'
     }
   }
 ];
