@@ -75,113 +75,113 @@ export const featuredProjects = [
 export const partners = [
   {
     id: 1,
-    name: 'Tisco',
-    logo: '/partners/tisco.png',
+    name: 'TISCO',
+    logo: '/partner_brand/tisco-logo.png',
     category: 'Thép',
     description: 'Tập đoàn sản xuất thép hàng đầu Việt Nam'
   },
   {
     id: 2,
     name: 'Hòa Phát',
-    logo: '/partners/hoa-phat.png',
+    logo: '/partner_brand/hoa-phat-logo.png',
     category: 'Thép',
     description: 'Tập đoàn Hòa Phát - Sản xuất thép và bất động sản'
   },
   {
     id: 3,
     name: 'Vinacomin',
-    logo: '/partners/vinacomin.png',
+    logo: '/partner_brand/vinacomin-logo.png',
     category: 'Khai khoáng',
     description: 'Tập đoàn Công nghiệp Than - Khoáng sản Việt Nam'
   },
   {
     id: 4,
-    name: 'VAS Steel',
-    logo: '/partners/vas-steel.png',
+    name: 'VAS',
+    logo: '/partner_brand/vas-logo.png',
     category: 'Thép',
     description: 'Công ty sản xuất thép VAS'
   },
   {
     id: 5,
     name: 'TQIS',
-    logo: '/partners/tqis.png',
+    logo: '/partner_brand/tqis-logo.png',
     category: 'Kiểm định',
     description: 'Dịch vụ kiểm định chất lượng'
   },
   {
     id: 6,
     name: 'Lideco',
-    logo: '/partners/lideco.png',
+    logo: '/partner_brand/lideco-logo.png',
     category: 'Xây dựng',
     description: 'Công ty phát triển bất động sản'
   },
   {
     id: 7,
     name: 'Komatsu',
-    logo: '/partners/komatsu.png',
+    logo: '/partner_brand/komatsu-logo.png',
     category: 'Máy móc',
     description: 'Thiết bị và máy móc công nghiệp'
   },
   {
     id: 8,
     name: 'SCG',
-    logo: '/partners/scg.png',
+    logo: '/partner_brand/scg-logo.png',
     category: 'Vật liệu xây dựng',
     description: 'Tập đoàn vật liệu xây dựng SCG'
   },
   {
     id: 9,
     name: 'SEV',
-    logo: '/partners/sev.png',
+    logo: '/partner_brand/sev-logo.png',
     category: 'Năng lượng',
     description: 'Năng lượng cho thành phố xanh'
   },
   {
     id: 10,
     name: 'Vatec Saigon',
-    logo: '/partners/vatec-saigon.png',
+    logo: '/partner_brand/vatec-saigon-logo.png',
     category: 'Công nghệ',
     description: 'Giải pháp công nghệ và năng lượng'
   },
   {
     id: 11,
     name: 'BDO',
-    logo: '/partners/bdo.png',
+    logo: '/partner_brand/bdo-logo.png',
     category: 'Tư vấn',
     description: 'Dịch vụ tư vấn và kiểm toán'
   },
   {
     id: 12,
     name: 'SP Group',
-    logo: '/partners/sp-group.png',
+    logo: '/partner_brand/sp-group-logo.png',
     category: 'Năng lượng',
     description: 'Tập đoàn năng lượng SP Group'
   },
   {
     id: 13,
     name: 'TYP Steel',
-    logo: '/partners/typ-steel.png',
+    logo: '/partner_brand/typ-steel-logo.png',
     category: 'Thép',
     description: 'Công ty sản xuất thép TYP'
   },
   {
     id: 14,
     name: 'Nami Energy',
-    logo: '/partners/nami-energy.png',
+    logo: '/partner_brand/nami-energy.png',
     category: 'Năng lượng',
     description: 'Giải pháp năng lượng tái tạo'
   },
   {
     id: 15,
-    name: 'Sonha',
-    logo: '/partners/sonha.png',
+    name: 'Sơn Hà',
+    logo: '/partner_brand/son-ha-logo.png',
     category: 'Xây dựng',
     description: 'Công ty xây dựng và phát triển'
   },
   {
     id: 16,
-    name: 'Poma',
-    logo: '/partners/poma.png',
+    name: 'POMA',
+    logo: '/partner_brand/poma-logo.png',
     category: 'Sản xuất',
     description: 'Công ty sản xuất công nghiệp'
   }

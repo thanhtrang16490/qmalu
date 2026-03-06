@@ -80,29 +80,25 @@ const seoKeywords = [
         />
       </div>
 
-      <!-- Partners Grid with Logo Placeholders -->
+      <!-- Partners Grid with Actual Logos -->
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
         {partners.map((partner) => (
           <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-300 group">
             <div class="flex flex-col items-center justify-center h-full">
-              <!-- Logo Placeholder with Company Initial -->
-              <div class="w-16 h-16 bg-gradient-to-br from-red-100 to-red-200 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                <span class="text-2xl font-bold text-primary">
-                  {partner.name.charAt(0)}
-                </span>
+              <!-- Actual Partner Logo -->
+              <div class="w-24 h-24 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                <img 
+                  src={partner.logo} 
+                  alt={`${partner.name} logo`}
+                  class="max-w-full max-h-full object-contain"
+                  loading="lazy"
+                />
               </div>
               <h3 class="text-sm font-semibold text-gray-900 mb-1 text-center">{partner.name}</h3>
               <p class="text-xs text-gray-500 text-center">{partner.category}</p>
             </div>
           </div>
         ))}
-      </div>
-
-      <!-- Note about logos -->
-      <div class="mt-12 text-center">
-        <p class="text-sm text-gray-500 italic">
-          Logo các đối tác được hiển thị trong hình ảnh phía trên
-        </p>
       </div>
     </div>
   </section>
