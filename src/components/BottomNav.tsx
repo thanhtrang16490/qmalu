@@ -7,9 +7,10 @@
 interface BottomNavProps {
   currentPath?: string;
   onQuoteClick?: () => void;
+  onContactClick?: () => void;
 }
 
-export default function BottomNav({ currentPath = '/', onQuoteClick }: BottomNavProps) {
+export default function BottomNav({ currentPath = '/', onQuoteClick, onContactClick }: BottomNavProps) {
   // Detect language from path
   const isEnglish = currentPath.startsWith('/en');
   const isChinese = currentPath.startsWith('/cn');
@@ -71,8 +72,9 @@ export default function BottomNav({ currentPath = '/', onQuoteClick }: BottomNav
         </a>
         
         {/* Contact */}
-        <a
-          href={contactPath}
+        <button
+          id="mobile-contact-button"
+          onClick={onContactClick}
           className={`flex flex-col items-center justify-center gap-1 transition-colors ${
             isActive(contactPath) ? 'text-primary' : 'text-gray-600'
           }`}
@@ -82,12 +84,13 @@ export default function BottomNav({ currentPath = '/', onQuoteClick }: BottomNav
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
           </svg>
           <span className="text-xs font-medium">{labels.contact}</span>
-        </a>
+        </button>
         
         {/* Quote */}
         <button
+          id="mobile-quote-button"
           onClick={onQuoteClick}
-          className="flex flex-col items-center justify-center gap-1 text-primary transition-colors"
+          className="flex flex-col items-center justify-center gap-1 text-primary transition-colors active:scale-95"
           aria-label={labels.quote}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

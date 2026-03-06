@@ -31,12 +31,12 @@ const productsJson = JSON.stringify(products.map(p => ({
 ---
 
 <!-- General Quote Modal - Mobile Optimized -->
-<div id="general-quote-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-0 sm:p-4">
+<div id="general-quote-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-0 sm:p-4">
   <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" id="general-modal-backdrop"></div>
   
-  <div class="relative bg-white rounded-none sm:rounded-2xl shadow-2xl max-w-5xl w-full h-full sm:h-auto sm:max-h-[90vh] overflow-hidden flex flex-col z-[51]">
+  <div class="relative bg-white rounded-none sm:rounded-2xl shadow-2xl max-w-5xl w-full h-full sm:h-auto sm:max-h-[90vh] overflow-hidden flex flex-col z-[101]">
     <!-- Sticky Header - Mobile Optimized -->
-    <div class="sticky top-0 z-[52] bg-white border-b border-gray-200 px-4 sm:px-6 py-3 sm:py-4 safe-area-inset-top">
+    <div class="sticky top-0 z-[102] bg-white border-b border-gray-200 px-4 sm:px-6 py-3 sm:py-4 safe-area-inset-top">
       <div class="flex items-center justify-between">
         <div class="flex-1 min-w-0">
           <h2 class="text-lg sm:text-xl font-semibold text-gray-900 truncate">{t.title}</h2>
@@ -77,7 +77,7 @@ const productsJson = JSON.stringify(products.map(p => ({
       </div>
     </div>
 
-    <div class="flex-1 overflow-y-auto relative z-[51]">
+    <div class="flex-1 overflow-y-auto relative z-[101]">
       <!-- Step 1: Products -->
       <div id="step1-content" class="p-6" style="display:block">
         <!-- Tabs -->
@@ -350,7 +350,7 @@ const productsJson = JSON.stringify(products.map(p => ({
     </div>
 
     <!-- Sticky Footer - Mobile Optimized -->
-    <div class="sticky bottom-0 z-[52] border-t border-gray-200 px-4 sm:px-6 py-3 sm:py-4 bg-white safe-area-inset-bottom shadow-lg sm:shadow-none">
+    <div class="sticky bottom-0 z-[102] border-t border-gray-200 px-4 sm:px-6 py-3 sm:py-4 bg-white safe-area-inset-bottom shadow-lg sm:shadow-none">
       <!-- Mobile: Simplified layout -->
       <div class="flex sm:hidden flex-col gap-2">
         <!-- Primary action row -->
@@ -416,11 +416,11 @@ const productsJson = JSON.stringify(products.map(p => ({
 </div>
 
 <!-- Preview Modal - Mobile Optimized -->
-<div id="preview-modal" class="fixed inset-0 z-[60] hidden items-center justify-center p-0 sm:p-4">
+<div id="preview-modal" class="fixed inset-0 z-[110] hidden items-center justify-center p-0 sm:p-4">
   <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="preview-backdrop"></div>
   
-  <div class="relative bg-white rounded-none sm:rounded-2xl shadow-2xl max-w-4xl w-full h-full sm:h-auto sm:max-h-[90vh] overflow-hidden flex flex-col z-[61]">
-    <div class="sticky top-0 z-[62] bg-white border-b border-gray-200 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between safe-area-inset-top">
+  <div class="relative bg-white rounded-none sm:rounded-2xl shadow-2xl max-w-4xl w-full h-full sm:h-auto sm:max-h-[90vh] overflow-hidden flex flex-col z-[111]">
+    <div class="sticky top-0 z-[112] bg-white border-b border-gray-200 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between safe-area-inset-top">
       <h2 class="text-lg sm:text-xl font-semibold text-gray-900">{t.previewQuote}</h2>
       <button id="close-preview-modal" class="p-2 hover:bg-gray-100 rounded-lg transition-colors touch-manipulation" aria-label="Close preview">
         <svg class="w-6 h-6 sm:w-5 sm:h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -429,11 +429,11 @@ const productsJson = JSON.stringify(products.map(p => ({
       </button>
     </div>
 
-    <div id="preview-content" class="flex-1 overflow-y-auto overscroll-contain p-0 sm:p-6 bg-gray-50 -webkit-overflow-scrolling-touch relative z-[61]">
+    <div id="preview-content" class="flex-1 overflow-y-auto overscroll-contain p-0 sm:p-6 bg-gray-50 -webkit-overflow-scrolling-touch relative z-[111]">
       <!-- Preview content will be inserted here -->
     </div>
 
-    <div class="sticky bottom-0 z-[62] border-t border-gray-200 px-4 sm:px-6 py-3 sm:py-4 bg-white flex flex-col sm:flex-row gap-2 sm:gap-3 justify-end safe-area-inset-bottom shadow-lg sm:shadow-none">
+    <div class="sticky bottom-0 z-[112] border-t border-gray-200 px-4 sm:px-6 py-3 sm:py-4 bg-white flex flex-col sm:flex-row gap-2 sm:gap-3 justify-end safe-area-inset-bottom shadow-lg sm:shadow-none">
       <button id="close-preview-button" class="w-full sm:w-auto px-4 py-3 sm:py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 active:scale-98 transition-all text-sm font-medium touch-manipulation">
         {t.cancel}
       </button>
@@ -835,9 +835,43 @@ const productsJson = JSON.stringify(products.map(p => ({
   }
 
   if (headerButton) headerButton.addEventListener('click', openModal)
-  if (mobileButton) mobileButton.addEventListener('click', openModal)
   if (footerButton) footerButton.addEventListener('click', openModal)
   if (productButton) productButton.addEventListener('click', openModal)
+  
+  // Mobile button is in React component (BottomNav) that hydrates after page load
+  // Use MutationObserver to wait for it or retry mechanism
+  function attachMobileButtonListener() {
+    const btn = document.getElementById('mobile-quote-button')
+    if (btn) {
+      btn.addEventListener('click', openModal)
+      return true
+    }
+    return false
+  }
+  
+  // Try immediately
+  if (!attachMobileButtonListener()) {
+    // If not found, wait for React hydration
+    if (typeof MutationObserver !== 'undefined') {
+      const observer = new MutationObserver(() => {
+        if (attachMobileButtonListener()) {
+          observer.disconnect()
+        }
+      })
+      observer.observe(document.body, { childList: true, subtree: true })
+      
+      // Stop observing after 5 seconds to prevent memory leaks
+      setTimeout(() => observer.disconnect(), 5000)
+    } else {
+      // Fallback: retry a few times
+      let attempts = 0
+      const interval = setInterval(() => {
+        if (attachMobileButtonListener() || attempts++ > 10) {
+          clearInterval(interval)
+        }
+      }, 500)
+    }
+  }
 
   if (closeButton) closeButton.addEventListener('click', closeModal)
   if (cancelButton) cancelButton.addEventListener('click', closeModal)
@@ -1009,7 +1043,7 @@ const productsJson = JSON.stringify(products.map(p => ({
   
   function showToast(message, type = 'info') {
     const toast = document.createElement('div')
-    toast.className = `fixed top-4 left-1/2 -translate-x-1/2 px-6 py-3 rounded-lg shadow-lg text-white z-[70] transition-opacity duration-300 ${
+    toast.className = `fixed top-4 left-1/2 -translate-x-1/2 px-6 py-3 rounded-lg shadow-lg text-white z-[120] transition-opacity duration-300 ${
       type === 'success' ? 'bg-green-600' : 
       type === 'error' ? 'bg-red-600' : 
       'bg-primary'

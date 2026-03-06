@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Mobile Quote Button</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .status {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+    .success { background: #d4edda; color: #155724; }
+    .error { background: #f8d7da; color: #721c24; }
+    .info { background: #d1ecf1; color: #0c5460; }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    #modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border: 2px solid #333;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    #modal.show {
+      display: block;
+    }
+    #backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    #backdrop.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mobile Quote Button Test</h1>
+  
+  <div id="status-container"></div>
+  
+  <h2>Test Scenarios</h2>
+  
+  <h3>Scenario 1: Button exists immediately</h3>
+  <button id="mobile-quote-button">Mobile Quote Button (Immediate)</button>
+  <button onclick="testScenario1()">Test Scenario 1</button>
+  
+  <h3>Scenario 2: Button added after delay (simulates React hydration)</h3>
+  <div id="delayed-button-container"></div>
+  <button onclick="testScenario2()">Test Scenario 2 (adds button after 1s)</button>
+  
+  <h3>Scenario 3: Button added after long delay (5s timeout test)</h3>
+  <div id="very-delayed-button-container"></div>
+  <button onclick="testScenario3()">Test Scenario 3 (adds button after 6s - should timeout)</button>
+  
+  <div id="backdrop"></div>
+  <div id="modal">
+    <h2>Quote Modal Opened!</h2>
+    <p>The mobile button successfully triggered the modal.</p>
+    <button onclick="closeModal()">Close</button>
+  </div>
+
+  <script>
+    let modalOpenCount = 0;
+    
+    function openModal() {
+      modalOpenCount++;
+      document.getElementById('modal').classList.add('show');
+      document.getElementById('backdrop').classList.add('show');
+      addStatus(`Modal opened! (Count: ${modalOpenCount})`, 'success');
+    }
+    
+    function closeModal() {
+      document.getElementById('modal').classList.remove('show');
+      document.getElementById('backdrop').classList.remove('show');
+    }
+    
+    function addStatus(message, type = 'info') {
+      const container = document.getElementById('status-container');
+      const div = document.createElement('div');
+      div.className = `status ${type}`;
+      div.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+      container.insertBefore(div, container.firstChild);
+    }
+    
+    // Simulate the GeneralQuoteModal script logic
+    function attachMobileButtonListener() {
+      const btn = document.getElementById('mobile-quote-button');
+      if (btn) {
+        btn.addEventListener('click', openModal);
+        addStatus('Event listener attached to mobile-quote-button', 'success');
+        return true;
+      }
+      addStatus('mobile-quote-button not found', 'error');
+      return false;
+    }
+    
+    function initializeModalScript() {
+      addStatus('Initializing modal script...', 'info');
+      
+      // Try immediately
+      if (!attachMobileButtonListener()) {
+        addStatus('Button not found immediately, setting up MutationObserver...', 'info');
+        
+        // If not found, wait for React hydration
+        if (typeof MutationObserver !== 'undefined') {
+          const observer = new MutationObserver(() => {
+            addStatus('MutationObserver detected DOM change', 'info');
+            if (attachMobileButtonListener()) {
+              observer.disconnect();
+              addStatus('MutationObserver disconnected (button found)', 'success');
+            }
+          });
+          observer.observe(document.body, { childList: true, subtree: true });
+          
+          // Stop observing after 5 seconds to prevent memory leaks
+          setTimeout(() => {
+            observer.disconnect();
+            addStatus('MutationObserver disconnected (5s timeout)', 'error');
+          }, 5000);
+        }
+      }
+    }
+    
+    function testScenario1() {
+      addStatus('=== Testing Scenario 1: Button exists immediately ===', 'info');
+      // Button already exists in DOM, just click it
+      const btn = document.getElementById('mobile-quote-button');
+      if (btn) {
+        btn.click();
+      }
+    }
+    
+    function testScenario2() {
+      addStatus('=== Testing Scenario 2: Button added after 1s delay ===', 'info');
+      
+      // Remove existing button
+      const existing = document.getElementById('mobile-quote-button');
+      if (existing) existing.remove();
+      
+      // Clear container
+      const container = document.getElementById('delayed-button-container');
+      container.innerHTML = '';
+      
+      // Reinitialize script
+      initializeModalScript();
+      
+      // Add button after 1 second (simulates React hydration)
+      setTimeout(() => {
+        addStatus('Adding button to DOM (simulating React hydration)...', 'info');
+        const btn = document.createElement('button');
+        btn.id = 'mobile-quote-button';
+        btn.textContent = 'Mobile Quote Button (Delayed)';
+        container.appendChild(btn);
+        
+        // Try clicking after another second
+        setTimeout(() => {
+          addStatus('Attempting to click delayed button...', 'info');
+          btn.click();
+        }, 1000);
+      }, 1000);
+    }
+    
+    function testScenario3() {
+      addStatus('=== Testing Scenario 3: Button added after 6s (should timeout) ===', 'info');
+      
+      // Remove existing button
+      const existing = document.getElementById('mobile-quote-button');
+      if (existing) existing.remove();
+      
+      // Clear container
+      const container = document.getElementById('very-delayed-button-container');
+      container.innerHTML = '';
+      
+      // Reinitialize script
+      initializeModalScript();
+      
+      // Add button after 6 seconds (after timeout)
+      setTimeout(() => {
+        addStatus('Adding button to DOM after timeout...', 'error');
+        const btn = document.createElement('button');
+        btn.id = 'mobile-quote-button';
+        btn.textContent = 'Mobile Quote Button (Very Delayed)';
+        container.appendChild(btn);
+        
+        // Try clicking
+        setTimeout(() => {
+          addStatus('Attempting to click very delayed button...', 'info');
+          btn.click();
+        }, 500);
+      }, 6000);
+    }
+    
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      addStatus('Page loaded', 'info');
+      initializeModalScript();
+    });
+  </script>
+</body>
+</html>

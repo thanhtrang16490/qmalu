@@ -2,6 +2,7 @@
 import '../styles/global.css'
 import LanguageSwitcher from '../components/LanguageSwitcher.astro'
 import BottomNav from '../components/BottomNav'
+import QuickContactModal from '../components/QuickContactModal'
 import { getLangFromUrl, type Language } from '../i18n/languages'
 import { getLocalizedPath } from '../i18n/url-utils'
 
@@ -40,7 +41,7 @@ const {
     'industrial aluminum',
     'Hà Nam Vietnam'
   ],
-  ogImage = '/og-image.png',
+  ogImage = '/nha-may.png',
   canonical
 } = Astro.props
 
@@ -49,6 +50,9 @@ const SITE_URL = Astro.url.origin
 const currentUrl = canonical || Astro.url.pathname
 const fullUrl = `${SITE_URL}${currentUrl}`
 const ogImageUrl = `${SITE_URL}${ogImage}`
+
+// Add hotline to Open Graph description
+const ogDescription = `${description} | Hotline: 0947 776 662`
 
 // Structured Data - Organization
 const organizationSchema = {
@@ -118,7 +122,7 @@ const websiteSchema = {
     <meta property="og:type" content="website" />
     <meta property="og:url" content={fullUrl} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={ogDescription} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -151,17 +155,28 @@ const websiteSchema = {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={fullUrl} />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={ogDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
-    <meta name="twitter:creator" content="@appejv" />
-    <meta name="twitter:site" content="@appejv" />
+    <meta name="twitter:creator" content="@quangminhaluminum" />
+    <meta name="twitter:site" content="@quangminhaluminum" />
     
     <!-- Zalo Open Graph -->
     <meta property="zalo:title" content={title} />
-    <meta property="zalo:description" content={description} />
+    <meta property="zalo:description" content={ogDescription} />
     <meta property="zalo:image" content={ogImageUrl} />
     <meta property="zalo:url" content={fullUrl} />
-    <meta property="zalo:app_id" content="YOUR_ZALO_APP_ID" />
+    
+    <!-- LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="article:author" content="Quang Minh Technology" />
+    
+    <!-- WhatsApp / Telegram -->
+    <meta property="og:image:alt" content={`${title} - Nhôm Quang Minh`} />
+    <meta property="og:image:secure_url" content={ogImageUrl} />
+    
+    <!-- Pinterest -->
+    <meta name="pinterest-rich-pin" content="true" />
+    <meta property="og:see_also" content={SITE_URL} />
     
     <!-- Additional SEO Meta Tags -->
     <meta name="geo.region" content="VN-63" />
@@ -480,6 +495,42 @@ if (menuButton && menuClose && menu && overlay) {
           lastScroll = currentScroll;
         });
       }
+
+      // Quick Contact Modal Handler
+      function openQuickContactModal() {
+        const modal = document.getElementById('quick-contact-modal');
+        if (modal) {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      // Attach to mobile contact button (wait for React hydration)
+      function attachContactButtonListener() {
+        const btn = document.getElementById('mobile-contact-button');
+        if (btn) {
+          btn.addEventListener('click', openQuickContactModal);
+          return true;
+        }
+        return false;
+      }
+
+      // Try immediately
+      if (!attachContactButtonListener()) {
+        // If not found, wait for React hydration
+        if (typeof MutationObserver !== 'undefined') {
+          const observer = new MutationObserver(() => {
+            if (attachContactButtonListener()) {
+              observer.disconnect();
+            }
+          });
+          observer.observe(document.body, { childList: true, subtree: true });
+          
+          // Stop observing after 5 seconds
+          setTimeout(() => observer.disconnect(), 5000);
+        }
+      }
     </script>
 
     <!-- Main Content -->
@@ -489,6 +540,9 @@ if (menuButton && menuClose && menu && overlay) {
 
     <!-- Mobile Bottom Navigation - Global -->
     <BottomNav currentPath={Astro.url.pathname} client:load />
+
+    <!-- Quick Contact Modal - Mobile -->
+    <QuickContactModal lang={currentLang} client:load />
 
     <!-- Footer - Apple Style -->
     <footer class="bg-[#f5f5f7] text-gray-900 border-t border-gray-200">

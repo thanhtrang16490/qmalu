@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import GeneralQuoteModal from '../components/GeneralQuoteModal.astro'
+import { getProducts } from '../lib/supabase'
+import { companyInfo } from '../data/company-info'
+
+// Fetch all products for the quote form
+const allProducts = await getProducts()
+
+const seoTitle = "Yêu Cầu Báo Giá - Kết Cấu Nhôm Điện Mặt Trời | Quang Minh"
+const seoDescription = "Gửi yêu cầu báo giá cho dự án điện mặt trời của bạn. Nhận báo giá chi tiết trong 24h. Hỗ trợ thiết kế kỹ thuật miễn phí. Liên hệ: 0947 776 662"
+const seoKeywords = [
+  "báo giá nhôm điện mặt trời",
+  "yêu cầu báo giá solar",
+  "báo giá kết cấu nhôm",
+  "báo giá dự án MWp",
+  "liên hệ Quang Minh",
+  "quote request solar mounting"
+]
+---
+
+<BaseLayout 
+  title={seoTitle}
+  description={seoDescription}
+  keywords={seoKeywords}
+>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-blue-50 via-white to-green-50 pt-32 pb-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+          </svg>
+          <span>Phản hồi trong 24 giờ</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          Yêu Cầu Báo Giá Dự Án
+        </h1>
+        
+        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+          Điền thông tin dự án và chọn sản phẩm cần báo giá. Chúng tôi sẽ gửi báo giá chi tiết kèm tư vấn kỹ thuật trong vòng 24 giờ.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div class="bg-white rounded-xl p-6 shadow-lg">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Phản Hồi Nhanh</h3>
+            <p class="text-sm text-gray-600">Báo giá chi tiết trong 24h</p>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-lg">
+            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Giá Tốt Nhất</h3>
+            <p class="text-sm text-gray-600">Sản xuất trực tiếp, tiết kiệm 30%</p>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-lg">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Tư Vấn Miễn Phí</h3>
+            <p class="text-sm text-gray-600">Hỗ trợ thiết kế kỹ thuật</p>
+          </div>
+        </div>
+
+        <button 
+          id="quote-button" 
+          class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl text-lg font-semibold"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Bắt Đầu Yêu Cầu Báo Giá
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+          Tại Sao Chọn Quang Minh?
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {companyInfo.coreValues.map((value) => (
+            <div class="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all">
+              <div class="text-4xl mb-4">{value.icon}</div>
+              <h3 class="font-semibold text-gray-900 mb-2">{value.title}</h3>
+              <p class="text-sm text-gray-600">{value.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Information Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+          Hoặc Liên Hệ Trực Tiếp
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-xl p-6 shadow-lg">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-2">Hotline</h3>
+                <a href={`tel:${companyInfo.contact.phone}`} class="text-blue-600 hover:text-blue-700 font-medium">
+                  {companyInfo.contact.phone}
+                </a>
+                <p class="text-sm text-gray-600 mt-1">Hỗ trợ 24/7</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-lg">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-2">Email</h3>
+                <a href={`mailto:${companyInfo.contact.email}`} class="text-blue-600 hover:text-blue-700 font-medium">
+                  {companyInfo.contact.email}
+                </a>
+                <p class="text-sm text-gray-600 mt-1">Phản hồi trong 24h</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-6 shadow-lg md:col-span-2">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-2">Địa Chỉ Nhà Máy</h3>
+                <p class="text-gray-700">{companyInfo.contact.factory}</p>
+                <a 
+                  href={companyInfo.contact.googleMapsUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 text-sm mt-2"
+                >
+                  <span>Xem bản đồ</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-gradient-to-br from-blue-600 to-blue-700 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4">
+        Sẵn Sàng Bắt Đầu Dự Án?
+      </h2>
+      <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+        Hãy để chúng tôi giúp bạn tối ưu chi phí và tiến độ cho dự án điện mặt trời
+      </p>
+      <button 
+        id="footer-quote-button" 
+        class="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl text-lg font-semibold"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        Yêu Cầu Báo Giá Ngay
+      </button>
+    </div>
+  </section>
+
+  <!-- Quote Modal - Same as product detail page -->
+  <GeneralQuoteModal products={allProducts} lang="vi" />
+</BaseLayout>

@@ -11,6 +11,7 @@ import CaseStudies from '../components/CaseStudies'
 import InteractiveMap from '../components/InteractiveMap'
 import ScrollProgress from '../components/ScrollProgress.astro'
 import MobileQuoteFAB from '../components/MobileQuoteFAB'
+import GeneralQuoteModal from '../components/GeneralQuoteModal.astro'
 import { companyInfo } from '../data/company-info'
 import { homepageContent } from '../data/homepage-content'
 import { caseStudies } from '../data/case-studies'
@@ -1525,8 +1526,8 @@ const whyChooseUs = [
     </div>
   </section>
 
-  <!-- Case Studies Section - NEW -->
-  <CaseStudies caseStudies={caseStudies} client:visible />
+  <!-- Case Studies Section - Top 3 Projects -->
+  <CaseStudies caseStudies={caseStudies.slice(0, 3)} client:visible />
 
   <!-- Final CTA Section - B2B Focus -->
   <section class="py-32 px-4 relative overflow-hidden bg-gradient-to-br from-primary/5 via-white to-blue-50">
@@ -1746,12 +1747,15 @@ const whyChooseUs = [
           </svg>
           Gọi ngay
         </a>
-        <a href="/lien-he" class="magnetic-button px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-full font-medium transition-colors shadow-sm">
+        <button id="header-quote-button" class="magnetic-button px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-full font-medium transition-colors shadow-sm">
           Nhận báo giá
-        </a>
+        </button>
       </div>
     </div>
   </div>
+
+  <!-- General Quote Modal -->
+  <GeneralQuoteModal products={allProducts} lang="vi" />
 
   </div>
 

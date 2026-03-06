@@ -1,17 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import InteractiveMap from '../components/InteractiveMap'
+import { companyInfo } from '../data/company-info'
 
 const seoTitle = "Liên hệ - Nhôm Quang Minh | Tư vấn sản phẩm nhôm công nghiệp"
-const seoDescription = "Liên hệ Quang Minh để được tư vấn và hỗ trợ về sản phẩm nhôm công nghiệp. Hotline: 0947 776 662. Email: info@qmalu.com. Địa chỉ: Km 50 QL1A, Phủ Lý, Hà Nam."
+const seoDescription = "Liên hệ Quang Minh để được tư vấn và hỗ trợ về sản phẩm nhôm công nghiệp. Hotline: 0947 776 662. Email: info@qmalu.com. Địa chỉ: Lô CN09 KCN Nguyên Khê, Đông Anh, Hà Nội."
 const seoKeywords = [
   "liên hệ Quang Minh",
   "tư vấn sản phẩm nhôm công nghiệp",
   "hotline Quang Minh",
-  "địa chỉ Quang Minh Hà Nam",
+  "địa chỉ Quang Minh Hà Nội",
   "email Quang Minh",
   "hỗ trợ khách hàng",
   "đặt hàng sản phẩm nhôm công nghiệp"
 ]
+
+// Map location data
+const mapLocation = {
+  lat: companyInfo.contact.coordinates.lat,
+  lng: companyInfo.contact.coordinates.lng,
+  name: companyInfo.name,
+  address: companyInfo.contact.factory,
+  phone: companyInfo.contact.phone,
+  photo: '/quang-minh-logo.svg'
+}
 ---
 
 <BaseLayout 
@@ -101,12 +113,21 @@ const seoKeywords = [
               </svg>
             </div>
             <div>
-              <h3 class="text-[17px] font-semibold text-gray-900 mb-2">Địa chỉ văn phòng</h3>
+              <h3 class="text-[17px] font-semibold text-gray-900 mb-2">Địa chỉ nhà máy</h3>
               <p class="text-[15px] text-gray-600 leading-relaxed">
-                Km 50 Quốc lộ 1A, Xã Tiên Tân<br />
-                Phủ Lý, Hà Nam<br />
-                Việt Nam
+                {companyInfo.contact.factory}
               </p>
+              <a 
+                href={companyInfo.contact.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1 text-primary hover:text-primary-dark text-sm mt-2"
+              >
+                <span>Xem bản đồ</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
@@ -240,60 +261,45 @@ const seoKeywords = [
     </div>
   </section>
 
-  <!-- Map Section -->
-  <section class="py-12 md:py-16 bg-[#f5f5f7]">
+  <!-- Map Section - Using InteractiveMap Component -->
+  <section class="py-16 md:py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-8">
-        <h2 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-2 tracking-tight">
-          Tìm đường đến văn phòng
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 tracking-tight">
+          Tìm đường đến nhà máy
         </h2>
-        <p class="text-[15px] text-gray-600">
-          Km 50 Quốc lộ 1A, Xã Tiên Tân, Phủ Lý, Hà Nam
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          {mapLocation.address}
         </p>
       </div>
       
-      <div class="bg-white rounded-2xl overflow-hidden shadow-sm">
-        <div class="aspect-video relative">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3728.2!2d105.92748754703804!3d20.601988009590755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDM2JzA3LjIiTiAxMDXCsDU1JzM4LjkiRQ!5e0!3m2!1svi!2svn!4v1709000000000!5m2!1svi!2svn"
-            width="100%"
-            height="100%"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            class="absolute inset-0"
-            title="Bản đồ Nhôm Quang Minh"
-          ></iframe>
+      <div class="max-w-5xl mx-auto">
+        <InteractiveMap 
+          location={mapLocation}
+          zoom={15}
+          fallbackImage="/quang-minh-logo.svg"
+          client:visible
+        />
+      </div>
+
+      <!-- Location Details -->
+      <div class="mt-12 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 text-center shadow-sm ring-1 ring-gray-900/5">
+          <div class="text-3xl mb-3">📍</div>
+          <h3 class="font-semibold text-gray-900 mb-2">Địa chỉ</h3>
+          <p class="text-gray-600 text-sm">{mapLocation.address}</p>
         </div>
-        
-        <div class="p-6 border-t border-gray-200">
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </div>
-              <div>
-                <p class="text-[15px] font-medium text-gray-900">Nhôm Quang Minh</p>
-                <p class="text-[13px] text-gray-600">Km 50 QL1A, Phủ Lý, Hà Nam</p>
-              </div>
-            </div>
-            
-            <a 
-              href="https://maps.app.goo.gl/5AQ9xF3Mj1Lqo7HG8"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary-dark text-white rounded-lg text-[13px] font-medium transition-all"
-            >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-              </svg>
-              Chỉ đường
-            </a>
-          </div>
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 text-center shadow-sm ring-1 ring-gray-900/5">
+          <div class="text-3xl mb-3">📞</div>
+          <h3 class="font-semibold text-gray-900 mb-2">Điện thoại</h3>
+          <a href={`tel:${mapLocation.phone}`} class="text-primary hover:text-primary-dark font-medium">
+            {mapLocation.phone}
+          </a>
+        </div>
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 text-center shadow-sm ring-1 ring-gray-900/5">
+          <div class="text-3xl mb-3">🏭</div>
+          <h3 class="font-semibold text-gray-900 mb-2">Quy mô</h3>
+          <p class="text-gray-600 text-sm">Nhà máy {companyInfo.capacity.factoryArea}</p>
         </div>
       </div>
     </div>
