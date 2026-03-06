@@ -538,10 +538,10 @@ export const homepageContent: HomepageContent = {
     title: 'Nhà máy sản xuất',
     subtitle: 'Ghé thăm cơ sở sản xuất hiện đại của chúng tôi',
     location: {
-      lat: 21.0285,
-      lng: 105.8542,
+      lat: 21.165485437772254,
+      lng: 105.83500360198961,
       name: 'Công ty Cổ phần Kỹ thuật Công nghệ Quang Minh',
-      address: 'Lô CN09 KCN Nguyên Khê, Xã Phúc Thịnh, TP Hà Nội',
+      address: 'Lô CN09 Khu Công nghiệp Nguyên Khê, Xã Phúc Thịnh, Đông Anh, Hà Nội',
       phone: '+84 947 776 662',
       photo: '/images/factory/exterior.jpg'
     },

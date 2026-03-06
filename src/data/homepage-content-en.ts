@@ -405,10 +405,10 @@ export const homepageContentEn: HomepageContent = {
     title: 'Our Factory Location',
     subtitle: 'Visit us at our modern facility',
     location: {
-      lat: 21.0285,
-      lng: 105.8542,
+      lat: 21.165485437772254,
+      lng: 105.83500360198961,
       name: 'Quang Minh Technology Joint Stock Company',
-      address: 'Lot CN09, Nguyen Khe Industrial Park, Phuc Thinh Commune, Hanoi City',
+      address: 'Lot CN09, Nguyen Khe Industrial Park, Phuc Thinh Commune, Dong Anh, Hanoi',
       phone: '+84 947 776 662'
     },
     zoom: 15,

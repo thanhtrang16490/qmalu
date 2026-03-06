@@ -74,7 +74,11 @@ export default function InteractiveMap({
             center={[location.lat, location.lng]}
             zoom={zoom}
             style={{ height: '100%', width: '100%' }}
-            scrollWheelZoom={true}
+            scrollWheelZoom={false}
+            dragging={false}
+            touchZoom={false}
+            doubleClickZoom={false}
+            zoomControl={true}
             whenReady={() => {
               if (isMounted) {
                 setMapLoaded(true);
