@@ -13,7 +13,21 @@ interface Certificate {
   alt: string;
 }
 
-export default function CertificatesCarousel() {
+interface CertificatesCarouselProps {
+  title?: string;
+  subtitle?: string;
+  badge?: string;
+  navigationHint?: string;
+  screenReaderTitle?: string;
+}
+
+export default function CertificatesCarousel({
+  title = 'Chất Lượng Được Chứng Nhận',
+  subtitle = 'Đạt tiêu chuẩn quốc tế ISO 9001:2015, test reports đầy đủ, cam kết chất lượng dài hạn',
+  badge = 'Chứng nhận & Kiểm định',
+  navigationHint = 'Sử dụng phím mũi tên để điều hướng • Vuốt trên mobile',
+  screenReaderTitle = 'Chứng nhận chất lượng:'
+}: CertificatesCarouselProps) {
   const certificates: Certificate[] = [
     { id: 1, image: '/certificate/certificate-1.png', alt: 'Chứng nhận ISO 9001:2015' },
     { id: 2, image: '/certificate/certificate-2.png', alt: 'Test Report - Kiểm tra tải trọng' },
@@ -191,13 +205,13 @@ export default function CertificatesCarousel() {
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
-            <span>Chứng nhận & Kiểm định</span>
+            <span>{badge}</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Chất Lượng Được Chứng Nhận
+            {title}
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-            Đạt tiêu chuẩn quốc tế ISO 9001:2015, test reports đầy đủ, cam kết chất lượng dài hạn
+            {subtitle}
           </p>
         </div>
 
@@ -375,12 +389,12 @@ export default function CertificatesCarousel() {
 
         {/* Keyboard Navigation Hint */}
         <p className="text-center text-sm text-gray-500 mt-4 hidden md:block">
-          Sử dụng phím mũi tên để điều hướng • Vuốt trên mobile
+          {navigationHint}
         </p>
 
         {/* Accessibility: Screen reader only text */}
         <div className="sr-only">
-          <h3>Chứng nhận chất lượng:</h3>
+          <h3>{screenReaderTitle}</h3>
           <ul>
             {certificates.map((cert) => (
               <li key={cert.id}>{cert.alt}</li>

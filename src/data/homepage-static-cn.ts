@@ -430,5 +430,13 @@ export const homepageStaticCn = {
     whyChooseSubtitleText: "您EPC项目的可靠合作伙伴，具有5大突出优势",
     competitiveAdvantage: "竞争优势",
     finalCtaDescriptionText: "立即联系获取详细报价、免费技术设计和为您的MWp项目提供最佳解决方案咨询"
+  },
+  
+  certificates: {
+    badge: '认证与检测',
+    title: '认证质量',
+    subtitle: '符合国际ISO 9001:2015标准，完整测试报告，长期质量承诺',
+    navigationHint: '使用箭头键导航 • 移动端滑动',
+    screenReaderTitle: '质量认证：'
   }
 };

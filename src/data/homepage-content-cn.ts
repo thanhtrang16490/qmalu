@@ -259,7 +259,7 @@ export const homepageContentCn: HomepageContent = {
       },
       {
         id: 'partner-2',
-        name: 'Hòa Phát',
+        name: '和发集团',
         logo: '/images/badges/hoa-phat.svg',
         type: 'partner'
       },
@@ -271,7 +271,7 @@ export const homepageContentCn: HomepageContent = {
       },
       {
         id: 'partner-4',
-        name: 'Hưng Thịnh',
+        name: '兴盛集团',
         logo: '/images/badges/hung-thinh.svg',
         type: 'partner'
       },

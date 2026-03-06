@@ -259,7 +259,7 @@ export const homepageContentEn: HomepageContent = {
       },
       {
         id: 'partner-2',
-        name: 'Hòa Phát',
+        name: 'Hoa Phat',
         logo: '/images/badges/hoa-phat.svg',
         type: 'partner'
       },
@@ -271,7 +271,7 @@ export const homepageContentEn: HomepageContent = {
       },
       {
         id: 'partner-4',
-        name: 'Hưng Thịnh',
+        name: 'Hung Thinh',
         logo: '/images/badges/hung-thinh.svg',
         type: 'partner'
       },

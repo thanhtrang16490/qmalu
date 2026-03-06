@@ -430,5 +430,13 @@ export const homepageStaticEn = {
     whyChooseSubtitleText: "Reliable partner for your EPC project with 5 outstanding advantages",
     competitiveAdvantage: "Competitive Advantage",
     finalCtaDescriptionText: "Contact now for detailed quote, free technical design and optimal solution consulting for your MWp project"
+  },
+  
+  certificates: {
+    badge: 'Certifications & Testing',
+    title: 'Certified Quality',
+    subtitle: 'Meeting international ISO 9001:2015 standards, complete test reports, long-term quality commitment',
+    navigationHint: 'Use arrow keys to navigate • Swipe on mobile',
+    screenReaderTitle: 'Quality certifications:'
   }
 };

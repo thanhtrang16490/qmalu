@@ -428,6 +428,51 @@ export const companyInfoEn = {
     }
   ],
   
+  // EPC Solutions
+  epcSolutions: {
+    title: 'Complete EPC Project Solutions',
+    description: 'Providing complete solar mounting systems from design to construction',
+    features: [
+      {
+        title: 'Complete Supply',
+        description: 'Full rails, brackets, panel clamps, accessories',
+        icon: '📦'
+      },
+      {
+        title: 'Material Synchronization',
+        description: 'All products from one source, easy to manage',
+        icon: '🔗'
+      },
+      {
+        title: 'Optimized Construction',
+        description: 'Easy-to-install design, save 50% time',
+        icon: '⚡'
+      },
+      {
+        title: 'Cost Control',
+        description: 'Direct manufacturing price, save 30%',
+        icon: '💰'
+      },
+      {
+        title: 'Technical Support',
+        description: 'Free design consultation, structural calculations',
+        icon: '🔧'
+      },
+      {
+        title: 'Suitable for MWp',
+        description: 'Meeting large-scale projects, on-time delivery',
+        icon: '☀️'
+      }
+    ],
+    benefits: [
+      'Save 30% cost compared to imports',
+      'Reduce 50% construction time',
+      '10-year structural warranty',
+      '24/7 technical support',
+      'On-time delivery according to project schedule'
+    ]
+  },
+  
   statisticsLabels: {
     customers: 'Customers',
     experience: 'Years Experience',
@@ -556,6 +601,51 @@ export const companyInfoCn = {
       icon: '📦'
     }
   ],
+  
+  // EPC Solutions
+  epcSolutions: {
+    title: 'EPC项目完整解决方案',
+    description: '从设计到施工提供完整的太阳能支架系统',
+    features: [
+      {
+        title: '完整供应',
+        description: '完整的导轨、支架、面板夹具、配件',
+        icon: '📦'
+      },
+      {
+        title: '材料同步',
+        description: '所有产品来自一个来源，易于管理',
+        icon: '🔗'
+      },
+      {
+        title: '优化施工',
+        description: '易于安装的设计，节省50%时间',
+        icon: '⚡'
+      },
+      {
+        title: '成本控制',
+        description: '直接制造价格，节省30%',
+        icon: '💰'
+      },
+      {
+        title: '技术支持',
+        description: '免费设计咨询、结构计算',
+        icon: '🔧'
+      },
+      {
+        title: '适合MWp',
+        description: '满足大型项目，准时交货',
+        icon: '☀️'
+      }
+    ],
+    benefits: [
+      '比进口产品节省30%成本',
+      '缩短50%施工时间',
+      '结构10年保修',
+      '24/7技术支持',
+      '按项目进度准时交货'
+    ]
+  },
   
   statisticsLabels: {
     customers: '客户',

@@ -106,7 +106,7 @@ const whyChooseUs = homepageStaticCn.whyChooseUs
       <!-- Enhanced CTA Buttons -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center opacity-0 hero-fade-in mb-16" style="animation-delay: 0.8s">
         <a 
-          href="/lien-he"
+          href="/cn/contact"
           class="magnetic-button group bg-primary hover:bg-primary-dark text-white px-10 py-5 rounded-full font-semibold text-lg transition-all inline-flex items-center justify-center gap-3 shadow-lg hover:shadow-xl"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -318,7 +318,7 @@ const whyChooseUs = homepageStaticCn.whyChooseUs
           <!-- CTA -->
           <div class="flex flex-col sm:flex-row gap-4">
             <a 
-              href="/gioi-thieu"
+              href="/cn/about"
               class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all"
             >
               <span>{homepageStaticCn.htmlContent.learnMore}</span>
@@ -327,7 +327,7 @@ const whyChooseUs = homepageStaticCn.whyChooseUs
               </svg>
             </a>
             <a 
-              href="/lien-he"
+              href="/cn/contact"
               class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg border-2 border-gray-300 hover:border-gray-400 transition-all"
             >
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -345,7 +345,14 @@ const whyChooseUs = homepageStaticCn.whyChooseUs
   <TrustBadgesCarousel section={homepageContent.trustBadges} client:visible />
 
   <!-- Certificates & Quality Control Section - Carousel -->
-  <CertificatesCarousel client:load />
+  <CertificatesCarousel 
+    title={homepageStaticCn.certificates.title}
+    subtitle={homepageStaticCn.certificates.subtitle}
+    badge={homepageStaticCn.certificates.badge}
+    navigationHint={homepageStaticCn.certificates.navigationHint}
+    screenReaderTitle={homepageStaticCn.certificates.screenReaderTitle}
+    client:load 
+  />
 
   <!-- Stats Section - Animated Counter -->
   <section class="py-32 relative overflow-hidden">
@@ -386,7 +393,7 @@ const whyChooseUs = homepageStaticCn.whyChooseUs
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 scroll-reveal">
         {products.map((product) => (
           <a 
-            href="/san-pham"
+            href="/cn/products"
             class="group bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
           >
             <!-- Product Image -->
@@ -462,7 +469,7 @@ const whyChooseUs = homepageStaticCn.whyChooseUs
       <!-- CTA to Full Product Page -->
       <div class="text-center scroll-reveal">
         <a 
-          href="/san-pham"
+          href="/cn/products"
           class="magnetic-button inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white px-10 py-5 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -699,7 +706,7 @@ const whyChooseUs = homepageStaticCn.whyChooseUs
       <div class="text-center mt-12 scroll-reveal">
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a 
-            href="/lien-he"
+            href="/cn/contact"
             class="magnetic-button inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white px-10 py-5 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all"
           >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -708,7 +715,7 @@ const whyChooseUs = homepageStaticCn.whyChooseUs
             <span>{homepageStaticCn.htmlContent.ctaPrimary}</span>
           </a>
           <a 
-            href="/san-pham"
+            href="/cn/products"
             class="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-semibold text-lg px-6 py-3"
           >
             <span>{homepageStaticCn.htmlContent.viewCatalog}</span>
@@ -836,7 +843,7 @@ const whyChooseUs = homepageStaticCn.whyChooseUs
       <!-- CTA -->
       <div class="text-center mt-16 scroll-reveal">
         <a 
-          href="/lien-he"
+          href="/cn/contact"
           class="magnetic-button inline-flex items-center gap-3 bg-primary hover:bg-primary-dark text-white px-10 py-5 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -949,7 +956,7 @@ const whyChooseUs = homepageStaticCn.whyChooseUs
 
           <div class="flex flex-col sm:flex-row gap-4 justify-center items-center text-sm text-gray-600">
             <a 
-              href="/san-pham"
+              href="/cn/products"
               class="inline-flex items-center gap-2 hover:text-primary transition-colors"
             >
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -959,7 +966,7 @@ const whyChooseUs = homepageStaticCn.whyChooseUs
             </a>
             <span class="hidden sm:inline text-gray-400">•</span>
             <a 
-              href="/gioi-thieu"
+              href="/cn/about"
               class="inline-flex items-center gap-2 hover:text-primary transition-colors"
             >
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -990,7 +997,7 @@ const whyChooseUs = homepageStaticCn.whyChooseUs
             <div class="text-center md:text-left">
               <div class="text-sm font-semibold text-gray-500 mb-2">工厂</div>
               <p class="text-lg font-semibold text-gray-900">
-                KCN Nguyên Khê, Đông Anh, HN
+                元溪工业园，东英，河内
               </p>
             </div>
           </div>
@@ -1097,7 +1104,7 @@ const whyChooseUs = homepageStaticCn.whyChooseUs
           </svg>
           立即致电
         </a>
-        <a href="/lien-he" class="magnetic-button px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-full font-medium transition-colors shadow-sm">
+        <a href="/cn/contact" class="magnetic-button px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-full font-medium transition-colors shadow-sm">
           获取报价
         </a>
       </div>
