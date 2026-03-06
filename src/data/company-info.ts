@@ -17,7 +17,12 @@ export const companyInfo = {
     taxCode: '0106124982',
     phone: '0947 776 662',
     email: 'info@qmalu.com',
-    website: 'https://qmalu.com'
+    website: 'https://qmalu.com',
+    coordinates: {
+      lat: 21.165485437772254,
+      lng: 105.83500360198961
+    },
+    googleMapsUrl: 'https://maps.app.goo.gl/43W5jSshicKhDimG8'
   },
   
   // Lịch sử
