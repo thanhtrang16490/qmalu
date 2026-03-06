@@ -1,9 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import Hero3DBackground from '../../components/Hero3DBackground'
-import DNA3DHelix from '../../components/DNA3DHelix'
 import ParticleWave3D from '../../components/ParticleWave3D'
-import AnimatedSphere3D from '../../components/AnimatedSphere3D'
 import AnimatedCounter from '../../components/AnimatedCounter'
 import CertificatesAndPartners from '../../components/CertificatesAndPartners'
 import CaseStudies from '../../components/CaseStudies'
@@ -1053,12 +1051,24 @@ const whyChooseUs = homepageStaticEn.whyChooseUs
       </div>
 
       <div class="max-w-5xl mx-auto scroll-reveal">
-        <InteractiveMap 
-          location={homepageContent.interactiveMap.location}
-          zoom={homepageContent.interactiveMap.zoom}
-          fallbackImage={homepageContent.interactiveMap.fallbackImage}
-          client:visible
-        />
+        <!-- Mobile: Static image -->
+        <div class="md:hidden rounded-2xl overflow-hidden shadow-xl">
+          <img 
+            src={homepageContent.interactiveMap.fallbackImage} 
+            alt="Quang Minh Factory Location Map" 
+            loading="lazy"
+            class="w-full h-auto"
+          />
+        </div>
+        <!-- Desktop: Interactive map -->
+        <div class="hidden md:block">
+          <InteractiveMap 
+            location={homepageContent.interactiveMap.location}
+            zoom={homepageContent.interactiveMap.zoom}
+            fallbackImage={homepageContent.interactiveMap.fallbackImage}
+            client:visible
+          />
+        </div>
       </div>
 
       <!-- Location Details -->

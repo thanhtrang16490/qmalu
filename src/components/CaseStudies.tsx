@@ -5,6 +5,8 @@
  * Designed for B2B credibility building.
  */
 
+import React from 'react';
+
 interface CaseStudy {
   id: string;
   title: string;
@@ -32,6 +34,20 @@ interface CaseStudiesProps {
 }
 
 export default function CaseStudies({ caseStudies }: CaseStudiesProps) {
+  // Mobile optimization: Show only 2 case studies on mobile
+  const [isMobile, setIsMobile] = React.useState(false);
+  
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
+  const displayedCaseStudies = isMobile ? caseStudies.slice(0, 2) : caseStudies;
+  
   return (
     <section className="py-32 px-4 relative overflow-hidden bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto relative z-10">
@@ -47,7 +63,7 @@ export default function CaseStudies({ caseStudies }: CaseStudiesProps) {
 
         {/* Case Studies Grid */}
         <div className="space-y-12 md:space-y-16">
-          {caseStudies.map((study, index) => (
+          {displayedCaseStudies.map((study, index) => (
             <div
               key={study.id}
               className={`scroll-reveal flex flex-col ${

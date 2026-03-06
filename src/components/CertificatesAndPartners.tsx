@@ -51,10 +51,14 @@ export default function CertificatesAndPartners({
 
   const { badges } = partnersSection;
   
+  // Mobile optimization: Limit certificates and partners
+  const displayCertificates = isMobile ? certificates.slice(0, 3) : certificates;
+  const displayBadges = isMobile ? badges.slice(0, 8) : badges;
+  
   // Split badges into two equal rows
-  const halfLength = Math.ceil(badges.length / 2);
-  const row1Badges = badges.slice(0, halfLength);
-  const row2Badges = badges.slice(halfLength);
+  const halfLength = Math.ceil(displayBadges.length / 2);
+  const row1Badges = displayBadges.slice(0, halfLength);
+  const row2Badges = displayBadges.slice(halfLength);
   
   // Triplicate each row for seamless loop
   const triplicatedRow1 = [...row1Badges, ...row1Badges, ...row1Badges];
@@ -99,16 +103,16 @@ export default function CertificatesAndPartners({
   const goToNext = useCallback(() => {
     if (isTransitioning) return;
     setIsTransitioning(true);
-    setActiveIndex((prev) => (prev + 1) % certificates.length);
+    setActiveIndex((prev) => (prev + 1) % displayCertificates.length);
     setTimeout(() => setIsTransitioning(false), 700);
-  }, [certificates.length, isTransitioning]);
+  }, [displayCertificates.length, isTransitioning]);
 
   const goToPrevious = useCallback(() => {
     if (isTransitioning) return;
     setIsTransitioning(true);
-    setActiveIndex((prev) => (prev - 1 + certificates.length) % certificates.length);
+    setActiveIndex((prev) => (prev - 1 + displayCertificates.length) % displayCertificates.length);
     setTimeout(() => setIsTransitioning(false), 700);
-  }, [certificates.length, isTransitioning]);
+  }, [displayCertificates.length, isTransitioning]);
 
   const goToIndex = useCallback((index: number) => {
     if (isTransitioning) return;
@@ -156,8 +160,8 @@ export default function CertificatesAndPartners({
 
   const getPositionClass = (index: number) => {
     let diff = index - activeIndex;
-    if (diff > certificates.length / 2) diff -= certificates.length;
-    else if (diff < -certificates.length / 2) diff += certificates.length;
+    if (diff > displayCertificates.length / 2) diff -= displayCertificates.length;
+    else if (diff < -displayCertificates.length / 2) diff += displayCertificates.length;
     if (diff === 0) return 'active';
     if (Math.abs(diff) === 1) return 'adjacent';
     return 'far';
@@ -165,8 +169,8 @@ export default function CertificatesAndPartners({
 
   const getTransformOffset = (index: number) => {
     let diff = index - activeIndex;
-    if (diff > certificates.length / 2) diff -= certificates.length;
-    else if (diff < -certificates.length / 2) diff += certificates.length;
+    if (diff > displayCertificates.length / 2) diff -= displayCertificates.length;
+    else if (diff < -displayCertificates.length / 2) diff += displayCertificates.length;
     return diff * 280;
   };
 
@@ -208,7 +212,7 @@ export default function CertificatesAndPartners({
           onTouchEnd={handleTouchEnd}
         >
           <div className="absolute inset-0 flex items-center justify-center" style={{ transformStyle: 'preserve-3d' }}>
-            {certificates.map((cert, index) => {
+            {displayCertificates.map((cert, index) => {
               const positionClass = getPositionClass(index);
               const transformOffset = getTransformOffset(index);
               const isActive = index === activeIndex;

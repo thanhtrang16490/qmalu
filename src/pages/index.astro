@@ -1,9 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import Hero3DBackground from '../components/Hero3DBackground'
-import DNA3DHelix from '../components/DNA3DHelix'
 import ParticleWave3D from '../components/ParticleWave3D'
-import AnimatedSphere3D from '../components/AnimatedSphere3D'
 import AnimatedCounter from '../components/AnimatedCounter'
 import CertificatesAndPartners from '../components/CertificatesAndPartners'
 import CaseStudies from '../components/CaseStudies'
@@ -380,10 +378,13 @@ const whyChooseUs = [
   <div class="min-h-screen bg-white">
   <!-- Hero Section - Apple Style -->
   <section class="min-h-screen md:min-h-screen flex items-center justify-center px-4 pt-24 pb-20 relative overflow-hidden" id="hero-section" style="min-height: 80vh;">
-    <!-- 3D Enhanced Background - client:only for SSR compatibility - Desktop only -->
-    <div class="absolute inset-0 opacity-20 desktop-only" data-parallax="0.3">
+    <!-- 3D Enhanced Background - Desktop only -->
+    <div class="hidden md:block absolute inset-0 opacity-20" data-parallax="0.3">
       <Hero3DBackground client:only="react" />
     </div>
+    
+    <!-- Mobile: Static gradient background -->
+    <div class="md:hidden absolute inset-0 bg-gradient-to-br from-blue-600/10 via-blue-500/5 to-blue-400/10"></div>
     
     <!-- Simple overlay -->
     <div class="absolute inset-0 bg-neutral-50/80" data-parallax="0.4"></div>
@@ -406,14 +407,19 @@ const whyChooseUs = [
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
           </svg>
-          <span>Chuyên gia giá đỡ Solar 10+ năm • 5,000+ dự án • 500MW+ công suất</span>
+          <!-- Mobile: Short text -->
+          <span class="md:hidden">10+ năm • 500MW+</span>
+          <!-- Desktop: Full text -->
+          <span class="hidden md:inline">Chuyên gia giá đỡ Solar 10+ năm • 5,000+ dự án • 500MW+ công suất</span>
         </div>
       </div>
       
       <!-- Main Heading - Value Proposition -->
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 leading-[1.1] opacity-0 hero-fade-in tracking-tight" style="animation-delay: 0.3s" data-depth="0.3">
-        Giải Pháp Kết Cấu Nhôm<br />
-        Cho Dự Án Điện Mặt Trời <span class="text-primary">MWp</span>
+      <h1 class="text-4xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 leading-[1.1] opacity-0 hero-fade-in tracking-tight" style="animation-delay: 0.3s" data-depth="0.3">
+        <!-- Mobile: Shorter title -->
+        <span class="md:hidden">Giải Pháp Nhôm<br />Dự Án <span class="text-primary">MWp</span></span>
+        <!-- Desktop: Full title -->
+        <span class="hidden md:inline">Giải Pháp Kết Cấu Nhôm<br />Cho Dự Án Điện Mặt Trời <span class="text-primary">MWp</span></span>
       </h1>
       
       <!-- Subheading - Clear Benefits -->
@@ -691,9 +697,14 @@ const whyChooseUs = [
     <!-- Base gradient -->
     <div class="absolute inset-0 bg-white" data-parallax="0.3"></div>
     
-    <!-- 3D Wave Background -->
-    <div class="absolute inset-0 opacity-[0.08]" data-parallax="0.5">
+    <!-- 3D Wave Background - Desktop only -->
+    <div class="hidden lg:block absolute inset-0 opacity-[0.08]" data-parallax="0.5">
       <ParticleWave3D client:only="react" />
+    </div>
+    
+    <!-- Mobile: Simple radial gradient -->
+    <div class="lg:hidden absolute inset-0 opacity-[0.08]">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.15),transparent_70%)]"></div>
     </div>
     
     <div class="container mx-auto relative z-10">
@@ -1488,12 +1499,24 @@ const whyChooseUs = [
       </div>
 
       <div class="max-w-5xl mx-auto scroll-reveal">
-        <InteractiveMap 
-          location={homepageContent.interactiveMap.location}
-          zoom={homepageContent.interactiveMap.zoom}
-          fallbackImage={homepageContent.interactiveMap.fallbackImage}
-          client:visible
-        />
+        <!-- Mobile: Static image -->
+        <div class="md:hidden rounded-2xl overflow-hidden shadow-xl">
+          <img 
+            src={homepageContent.interactiveMap.fallbackImage} 
+            alt="Bản đồ vị trí nhà máy Quang Minh" 
+            loading="lazy"
+            class="w-full h-auto"
+          />
+        </div>
+        <!-- Desktop: Interactive map -->
+        <div class="hidden md:block">
+          <InteractiveMap 
+            location={homepageContent.interactiveMap.location}
+            zoom={homepageContent.interactiveMap.zoom}
+            fallbackImage={homepageContent.interactiveMap.fallbackImage}
+            client:visible
+          />
+        </div>
       </div>
 
       <!-- Location Details -->
