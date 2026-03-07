@@ -514,10 +514,22 @@ section {
   }
 }
 
-/* Apple-style Typography */
+/* Apple-style Typography with Optimized System Font Stack */
 body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'kern' 1;
+  font-kerning: normal;
+}
+
+/* Optimize font rendering for better performance */
+* {
+  font-synthesis: none;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 /* Bounce animation */

@@ -252,13 +252,16 @@ const websiteSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
     
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Preconnect to external domains for faster resource loading -->
     <link rel="preconnect" href="https://www.google-analytics.com" />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://connect.facebook.net" />
     <link rel="dns-prefetch" href="https://sp.zalo.me" />
+    <link rel="dns-prefetch" href="https://www.clarity.ms" />
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/quang-minh-logo.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/quang-minh-square-logo.svg" as="image" type="image/svg+xml" />
     
     <!-- Google Analytics 4 with Partytown -->
     <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-KL7B65498K"></script>
