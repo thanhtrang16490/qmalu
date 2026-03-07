@@ -94,7 +94,7 @@ Xuất xứ: QM Solar`,
     price: 61500,
     unit: 'mét',
     stock: 1000,
-    image_url: '/products/rail-26x52.jpg',
+    image_url: '/products/thanh-ray-nhom-rail-26x53mm.png',
     description: 'Thanh ray nhôm A6005-T6 dài 4.2m, tỉ trọng 0.65kg/m, chịu tải cao',
     specifications: `Mã sản phẩm: QM-001
 Kích thước: 26x52mm

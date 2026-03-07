@@ -107,23 +107,6 @@ function formatPrice(price: number | null): string {
             </p>
           )}
 
-          {/* Price */}
-          <div class="mb-8 pb-8 border-b border-gray-200">
-            <div class="flex items-baseline gap-2 mb-1">
-              <span class="text-4xl font-semibold text-gray-900">
-                {formatPrice(product.price)}
-              </span>
-              {product.unit && product.price !== null && (
-                <span class="text-[17px] text-gray-600">
-                  /{product.unit}
-                </span>
-              )}
-            </div>
-            {product.price !== null && (
-              <p class="text-[13px] text-gray-500">Price includes VAT</p>
-            )}
-          </div>
-
           {/* Specifications */}
           {product.specifications && (
             <div class="mb-8 pb-8 border-b border-gray-200">
@@ -215,16 +198,6 @@ function formatPrice(price: number | null): string {
                 <h3 class="text-[15px] font-semibold text-gray-900 mb-1 line-clamp-2 group-hover:text-primary transition-colors">
                   {relatedProduct.name}
                 </h3>
-                <div class="flex items-baseline gap-2">
-                  <span class="text-[17px] font-semibold text-gray-900">
-                    {formatPrice(relatedProduct.price)}
-                  </span>
-                  {relatedProduct.unit && relatedProduct.price !== null && (
-                    <span class="text-[13px] text-gray-500">
-                      /{relatedProduct.unit}
-                    </span>
-                  )}
-                </div>
               </div>
             </a>
           ))}

@@ -183,25 +183,6 @@ function formatPrice(price: number): string {
                   {product.description}
                 </p>
               )}
-
-              <div class="flex items-baseline gap-0.5 sm:gap-1 md:gap-1.5">
-                {product.price !== null ? (
-                  <>
-                    <span class="text-[13px] sm:text-[14px] md:text-[15px] lg:text-[17px] font-bold text-gray-900">
-                      {formatPrice(product.price)}đ
-                    </span>
-                    {product.unit && (
-                      <span class="text-[10px] sm:text-[11px] md:text-[12px] text-gray-500">
-                        /{product.unit}
-                      </span>
-                    )}
-                  </>
-                ) : (
-                  <span class="text-[11px] sm:text-[12px] md:text-[13px] font-medium text-primary">
-                    Contact for quote
-                  </span>
-                )}
-              </div>
             </div>
           </a>
         ))}

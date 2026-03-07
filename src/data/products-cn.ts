@@ -70,7 +70,7 @@ export const productsCn: Product[] = [
     price: 61500,
     unit: '米',
     stock: 1000,
-    image_url: '/products/rail-26x52.jpg',
+    image_url: '/products/thanh-ray-nhom-rail-26x53mm.png',
     description: 'A6005-T6铝导轨长4.2米，重量0.65kg/米，高承载能力',
     specifications: `产品代码：QM-001
 尺寸：26x52mm

@@ -194,39 +194,6 @@ const breadcrumbSchema = {
             </p>
           )}
 
-          {/* Price */}
-          <div class="mb-8 pb-8 border-b border-gray-200" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-            <meta itemprop="priceCurrency" content="VND" />
-            <meta itemprop="availability" content="https://schema.org/InStock" />
-            <link itemprop="url" href={`${Astro.url.origin}/san-pham/${product.slug}`} />
-            {product.price !== null ? (
-              <>
-                <div class="flex items-baseline gap-2 mb-1">
-                  <span class="text-4xl font-semibold text-gray-900" itemprop="price" content={product.price.toString()}>
-                    {formatPrice(product.price)}đ
-                  </span>
-                  {product.unit && (
-                    <span class="text-[17px] text-gray-600">
-                      /{product.unit}
-                    </span>
-                  )}
-                </div>
-                <p class="text-[13px] text-gray-500">Giá đã bao gồm VAT</p>
-              </>
-            ) : (
-              <>
-                <div class="mb-2">
-                  <span class="text-3xl font-semibold text-primary">
-                    Liên hệ để báo giá
-                  </span>
-                </div>
-                <p class="text-[15px] text-gray-600">
-                  Vui lòng liên hệ để nhận báo giá chi tiết cho sản phẩm này
-                </p>
-              </>
-            )}
-          </div>
-
           {/* Specifications */}
           {product.specifications && (
             <div class="mb-8 pb-8 border-b border-gray-200">
@@ -317,24 +284,6 @@ const breadcrumbSchema = {
                   <h3 class="text-[15px] font-semibold text-gray-900 mb-1 line-clamp-2 group-hover:text-primary transition-colors">
                     {relatedProduct.name}
                   </h3>
-                  <div class="flex items-baseline gap-2">
-                    {relatedProduct.price !== null ? (
-                      <>
-                        <span class="text-[17px] font-semibold text-gray-900">
-                          {formatPrice(relatedProduct.price)}đ
-                        </span>
-                        {relatedProduct.unit && (
-                          <span class="text-[13px] text-gray-500">
-                            /{relatedProduct.unit}
-                          </span>
-                        )}
-                      </>
-                    ) : (
-                      <span class="text-[15px] font-medium text-primary">
-                        Liên hệ
-                      </span>
-                    )}
-                  </div>
                 </div>
               </a>
             </article>

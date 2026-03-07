@@ -70,7 +70,7 @@ Origin: QM Solar`,
     price: 61500,
     unit: 'meter',
     stock: 1000,
-    image_url: '/products/rail-26x52.jpg',
+    image_url: '/products/thanh-ray-nhom-rail-26x53mm.png',
     description: 'A6005-T6 aluminum rail 4.2m long, weight 0.65kg/m, high load capacity',
     specifications: `Product Code: QM-001
 Size: 26x52mm
